@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAClimaTECH</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Empresa especializada en sistemas de climatización, electricidad, maquinaria de hostelería y frío industrial en Mallorca. Servicios de instalación, mantenimiento y reparación.">
+    <meta name="keywords" content="climatización, aire acondicionado, calefacción, electricidad, frío comercial, hostelería, Mallorca, aerotermia">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="DAClimaTECH">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="DAClimaTECH - Sistemas de Climatización en Mallorca">
+    <meta property="og:description" content="Especialistas en climatización, electricidad y maquinaria de hostelería en Mallorca">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://daclimatech.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Favincon 512512.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">DAClimaTECH</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Inicio</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#services" class="nav-link">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
+                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
+                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
+                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
+                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
+                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
+                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
+                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
+                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#about" class="nav-link">Nosotros</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </nav> 
+    </header>
+
+    <!-- Home Section -->
+    <main>
+        <section class="home" id="home">
+            <div class="home-content">
+                <img class="home-logo" src="img/DAClimaTECH.png" alt="DAClimaTECH Logo">
+                <h1 class="home-title">Expertos en Climatización</h1>
+                <p class="home-subtitle">Soluciones integrales para tu hogar, oficina o comercio.</p>
+                <a href="#contact" class="cta-button">Solicita tu Presupuesto Gratis</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2 class="section-title fade-in">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">📝</div>
+                    <h3 class="service-title">Asesoría y Venta</h3>
+                    <p class="service-description">Te asesoramos en equipos, capacidad, formato y más especificaciones para llegar a una solución eficiente y que realmente se adapte a lo que estás buscando.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏡</div>
+                    <h3 class="service-title">Aerotermia</h3>
+                    <p class="service-description">Solución sostenible y eficiente para climatizar tu hogar y producir agua caliente sanitaria, aprovechando la energía del aire de manera inteligente.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">❄️</div>
+                    <h3 class="service-title">Aire Acondicionado</h3>
+                    <p class="service-description">Instalación, mantenimiento y reparación de equipos de aire acondicionado para enfriar, calentar, deshumidificar y filtrar el aire, mejorando el confort y salud de las personas.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔥</div>
+                    <h3 class="service-title">Calefacción</h3>
+                    <p class="service-description">Descubre nuestras soluciones avanzadas en calefacción para mantener tu hogar cálido y confortable durante todo el año.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Electricidad</h3>
+                    <p class="service-description">Instalación, mantenimiento o reparación de sistemas eléctricos tanto a nivel residencial como comercial.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🧊</div>
+                    <h3 class="service-title">Frío Comercial</h3>
+                    <p class="service-description">Las cámaras frigoríficas tienen como fin, el de reducir o mantener a un nivel muy bajo de temperatura el producto que en ella se encuentre.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🍽️</div>
+                    <h3 class="service-title">Maquinaria de Hostelería</h3>
+                    <p class="service-description">Disponer de una buena maquinaría de hostelería en tu negocio, es sinónimo de eficiencia, productividad y éxito.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💨</div>
+                    <h3 class="service-title">Ventilación - Extracción</h3>
+                    <p class="service-description">Estos sistemas son fundamentales para garantizar una buena calidad del aire en cualquier espacio, ya sea un hogar, una oficina o un edificio industrial.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛠️</div>
+                    <h3 class="service-title">Soporte Técnico</h3>
+                    <p class="service-description">Brindamos asistencia técnica remota, servicio de urgencias y servicio postventa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Nosotros</h2>
+                    <p class="about-description">
+                        Somos una empresa joven con un compromiso sólido: ofrecer calidad, rapidez y respeto al medio ambiente en cada proyecto que emprendemos.
+                    </p>
+                    <p class="about-description">
+                        Con una trayectoria respaldada por experiencia, nos especializamos en la instalación, mantenimiento y reparación de sistemas de climatización, electricidad, equipos de hostelería y frío comercial.
+                    </p>
+                    <p class="about-description">
+                        Nuestro enfoque se centra en crear un ambiente agradable para nuestros clientes, garantizando soluciones eficientes, sostenibles y que permitan ahorro de energía.
+                    </p>
+                    <p class="about-description">
+                        Nos enorgullece contar con técnicos cualificados, especializados y autorizados por el Ministerio de Industria, comprometidos con ofrecer un servicio de alta calidad y satisfacción del cliente.
+                    </p>
+                   
+                </div>
+                <div class="about-why-choose-us">
+                    <h3 class="section-title-w">¿Por qué elegirnos?</h3>
+                    <p class="about-description">
+                        <strong>Experiencia y trayectoria:</strong> Nuestro equipo de técnicos cualificados te garantiza un servicio de calidad y personalizado.
+                    </p>
+                    <p class="about-description">
+                        <strong>Soluciones eficientes:</strong> Ofrecemos sistemas de alta eficiencia energética que te ayudarán a ahorrar en tu factura de la luz.
+                    </p>
+                    <p class="about-description">
+                        <strong>Comodidad y bienestar:</strong> Disfruta de un ambiente interior confortable y saludable gracias a nuestros sistemas silenciosos, de alto rendimiento y de bajo consumo.
+                    </p>
+                    <p class="about-description">
+                        <strong>Compromiso con el medio ambiente:</strong> Utilizamos tecnologías limpias y sostenibles para cuidar el planeta.
+                    </p>
+                </div>
+                <div class="about-highlight">
+                    <strong>¡Estamos para brindarte las soluciones que mejor se adapten a tus necesidades, mejoren tu calidad de vida y cuiden de nuestro planeta!</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="contact-content">
+                <h2 class="section-title fade-in">¿Hablamos?</h2>
+                <div class="contact-info">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📞</div>
+                        <h3 class="contact-title">Teléfono</h3>
+                        <p class="contact-details">
+                            <a href="tel:+34600039668" class="contact-link">+34 600 039 668</a>
+                        </p>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">✉️</div>
+                        <h3 class="contact-title">Email</h3>
+                        <p class="contact-details">
+                            <a href="mailto:info@daclimatech.com" class="contact-link">info@daclimatech.com</a>
+                        </p>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">📍</div>
+                        <h3 class="contact-title">Ubicación</h3>
+                        <p class="contact-details">Mallorca<br>Nos desplazamos a toda la isla</p>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">🕐</div>
+                        <h3 class="contact-title">Horario</h3>
+                        <p class="contact-details">Lunes a Viernes<br>8:00 a 17:00 horas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Map Section -->
+        <section id="map" class="map-section">
+            <h2>Encuéntranos</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3496.2101139473098!2d3.0855469958591795!3d39.57227241851584!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1297b524297737d5%3A0x9663a35c388b45ff!2sCarrer%20de%20Bonany%2C%2092%2C%2007250%20Vilafranca%20de%20Bonany%2C%20Illes%20Balears!5e0!3m2!1ses!2ses!4v1752240605346!5m2!1ses!2ses" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section> 
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <nav class="footer-nav">
+                <a href="#" class="footer-link">Aviso Legal</a>
+                <a href="#" class="footer-link">Política de Cookies</a>
+                <a href="#" class="footer-link">Política de Privacidad</a>
+            </nav>
+            <p class="copyright">© 2024 DAClimaTECH. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            loading.classList.add('hidden');
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling and active nav
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        fadeInElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Service card hover effects
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Contact links analytics (placeholder)
+        const contactLinks = document.querySelectorAll('.contact-link');
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Contact method clicked:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
