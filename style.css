@@ -241,7 +241,7 @@ position: relative;
     animation: fadeInUp 1s ease-out;
 }
 
-.home-logo {
+.lazy {
     width: 600px;
     height: auto;
     margin: 0 auto 2rem;
@@ -323,7 +323,7 @@ position: relative;
     border-radius: 15px;
     padding: 2rem;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     position: relative;
     overflow: hidden;
@@ -341,10 +341,15 @@ position: relative;
     transition: transform 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
+/* Hover states mejorados */
+.service-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
 
 .service-card:hover::before {
     transform: scaleX(1);
@@ -588,7 +593,7 @@ position: relative;
         font-size: 2rem;
     }
 
-    .home-logo {
+    .lazy {
         width: 100%;
         max-width: 300px;
     }

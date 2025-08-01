@@ -107,7 +107,7 @@
                 <picture>
                     <source srcset="img/DAClimaTECH.webp" type="image/webp">
                     <source srcset="img/DAClimaTECH.png" type="image/png">
-                    <img class="home-logo" src="img/DAClimaTECH.png" alt="Logo DAClimaTECH" loading="lazy">
+                    <img class="lazy" data-src="img/DAClimaTECH.png" alt="Logo DAClimaTECH">
                 </picture>
                 <h1 class="home-title">Expertos en Climatización</h1>
                 <p class="home-subtitle">Soluciones integrales para tu hogar, oficina o comercio.</p>
@@ -271,6 +271,23 @@
         window.addEventListener('load', function() {
             const loading = document.getElementById('loading');
             loading.classList.add('hidden');
+
+            // Lazy loading mejorado
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                observer.unobserve(img);
+                }
+            });
+            });
+
+            // Observar imágenes lazy
+            document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+            });
         });
 
         // Mobile menu toggle
