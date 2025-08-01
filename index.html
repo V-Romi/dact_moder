@@ -2,17 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link reel="canonical" href="https://daclimatech.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAClimaTECH</title>
+
+    <!-- Preload recursos críticos -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="img/DAClimaTECH.png" as="image">
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Empresa especializada en sistemas de climatización, electricidad, maquinaria de hostelería y frío industrial en Mallorca. Servicios de instalación, mantenimiento y reparación.">
     <meta name="keywords" content="climatización, aire acondicionado, calefacción, electricidad, frío comercial, hostelería, Mallorca, aerotermia">
     <meta name="robots" content="index, follow">
     <meta name="author" content="DAClimaTECH">
+    <meta name="geo.region" content="ES-PM">
+    <meta name="geo.placename" content="Mallorca">
+    <meta name="language" content="es">
+
+    <!-- Schema.org para LocalBusiness -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "DAClimaTECH",
+            "description": "Especialistas en climatización, electricidad y maquinaria de hostelería en Mallorca",
+            "url": "https://daclimatech.com",
+            "logo": "https://daclimatech.com/img/DAClimaTECH.png",
+            "openingHours": Mo-Fr 08:00-17:00,
+            "sameAs": "https://www.instagram.com/daclimatech/",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mallorca",
+                "addressCountry": "ES"
+            },
+            "telephone": "+34600039668",
+            "email": "info@daclimatech.com",
+            "serviceArea": {
+                "@type": "Place",
+                "name": "Mallorca",
+            }
+        }
+    </script>
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="DAClimaTECH - Sistemas de Climatización en Mallorca">
+    <meta property="og:title" content="DAClimaTECH - Expertos en Climatización en Mallorca">
     <meta property="og:description" content="Especialistas en climatización, electricidad y maquinaria de hostelería en Mallorca">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://daclimatech.com">
@@ -71,7 +104,11 @@
     <main>
         <section class="home" id="home">
             <div class="home-content">
-                <img class="home-logo" src="img/DAClimaTECH.png" alt="DAClimaTECH Logo">
+                <picture>
+                    <source srcset="img/DAClimaTECH.webp" type="image/webp">
+                    <source srcset="img/DAClimaTECH.png" type="image/png">
+                    <img class="home-logo" src="img/DAClimaTECH.png" alt="Logo DAClimaTECH" loading="lazy">
+                </picture>
                 <h1 class="home-title">Expertos en Climatización</h1>
                 <p class="home-subtitle">Soluciones integrales para tu hogar, oficina o comercio.</p>
                 <a href="#contact" class="cta-button">Solicita tu Presupuesto Gratis</a>
