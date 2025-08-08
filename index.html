@@ -18,31 +18,6 @@
     <meta name="geo.placename" content="Mallorca">
     <meta name="language" content="es">
 
-    <!-- Schema.org para LocalBusiness -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "DAClimaTECH",
-            "description": "Especialistas en climatización, electricidad y maquinaria de hostelería en Mallorca",
-            "url": "https://daclimatech.com",
-            "logo": "https://daclimatech.com/img/DAClimaTECH.png",
-            "openingHours": Mo-Fr 08:00-17:00,
-            "sameAs": "https://www.instagram.com/daclimatech/",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Mallorca",
-                "addressCountry": "ES"
-            },
-            "telephone": "+34600039668",
-            "email": "info@daclimatech.com",
-            "serviceArea": {
-                "@type": "Place",
-                "name": "Mallorca",
-            }
-        }
-    </script>
-    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="DAClimaTECH - Expertos en Climatización en Mallorca">
     <meta property="og:description" content="Expertos en climatización, electricidad, frío comercial, sistemas de ventilación - extracción y maquinaria de hostelería en Mallorca">
@@ -59,7 +34,101 @@
     
     <!-- CSS Reset -->
     <link rel="stylesheet" href="style.css">
-    
+
+    <!-- Schema.org para LocalBusiness -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "DAClimaTECH",
+            "alternateName": "DA Clima TECH",
+            "description": "Expertos en climatización sostenible, aerotermia, aire acondicionado, calefacción, electricidad, frío comercial y maquinaria de hostelería en Mallorca",
+            "url": "https://daclimatech.com",
+            "logo": "https://daclimatech.com/img/daclimatech-portada  (650 x 448 px).png",
+            "image": "https://daclimatech.com/img/daclimatech-portada  (650 x 448 px).png",
+            "telephone": "+34600039668",
+            "email": "info@daclimatech.com",
+            "foundingDate": "2024",
+            "priceRange": "€€",
+            "paymentAccepted": ["Efectivo", "Transferencia", "Tarjeta"],
+            "currenciesAccepted": "EUR",
+            "openingHours": [
+                "Mo-Fr 08:00-17:00"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Mallorca",
+                "addressRegion": "Islas Baleares",
+                "addressCountry": "ES"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 39.56905,
+                "longitude": 3.07507
+            },
+            "areaServed": {
+                "@type": "Place",
+                "name": "Mallorca"
+            },
+            "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 39.56905,
+                    "longitude": 3.07507
+                },
+                "geoRadius": "50000"
+            },
+            "sameAs": [
+                "https://www.instagram.com/daclimatech/"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Servicios de Climatización",
+                "itemListElement": [
+                    {
+                        "@type": "OfferCatalog",
+                        "name": "Aerotermia",
+                        "itemListElement": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Instalación de Aerotermia"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "OfferCatalog", 
+                        "name": "Aire Acondicionado",
+                        "itemListElement": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Instalación Aire Acondicionado"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "@type": "OfferCatalog",
+                        "name": "Calefacción", 
+                        "itemListElement": [
+                            {
+                                "@type": "Offer",
+                                "itemOffered": {
+                                    "@type": "Service",
+                                    "name": "Sistemas de Calefacción"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Loading Screen -->
