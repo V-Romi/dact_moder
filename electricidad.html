@@ -36,31 +36,39 @@
 
         <!-- Navigation -->
         <header class="header">
-            <nav class="nav">
-                <p class="logo"><a href="index.html" class="logo">DAClimaTECH</a></p>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#home" class="nav-link active">Inicio</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#services" class="nav-link">Servicios</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
-                            <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
-                            <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
-                            <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
-                            <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
-                            <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
-                            <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
-                            <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
-                            <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
+            <nav class="nav" aria-label="Navegación principal">
+                <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+                <p class="logo"><a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">DAClimaTECH</a></p>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
+                    <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                        <a href="#services" class="nav-link" aria-expanded="false">Servicios</a>
+                        <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
+                            <li><a href="asesoria-y-venta.html" class="dropdown-link" aria-label="Más información sobre asesoría y venta de equipos de climatización">Asesoría y Venta</a></li>
+                            <li><a href="aerotermia.html" class="dropdown-link" aria-label="Más información sobre servicios de aerotermia en Mallorca">Aerotermia</a></li>
+                            <li><a href="aire-acondicionado.html" class="dropdown-link" aria-label="Más información sobre instalación de aire acondicionado">Aire Acondicionado</a></li>
+                            <li><a href="calefaccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de calefacción eficientes">Calefacción</a></li>
+                            <li><a href="electricidad.html" class="dropdown-link" aria-label="Más información sobre servicios de electricidad y instalaciones eléctricas">Electricidad</a></li>
+                            <li><a href="frio-comercial.html" class="dropdown-link" aria-label="Más información sobre equipos de frío comercial para hostelería">Frío Comercial</a></li>
+                            <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link" aria-label="Más información sobre maquinaria profesional de hostelería">Maquinaria de Hostelería</a></li>
+                            <li><a href="ventilacion-extraccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de ventilación y extracción">Ventilación - Extracción</a></li>
+                            <li><a href="soporte-tecnico.html" class="dropdown-link" aria-label="Más información sobre soporte técnico y mantenimiento">Soporte Técnico</a></li>
                         </ul>
                     </li>
-                    <li><a href="#about" class="nav-link">Nosotros</a></li>
-                    <li><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                        <a href="#about" class="nav-link" aria-expanded="false">Nosotros</a>
+                        <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
+                            <li><a href="descubre-mas.html" class="dropdown-link" aria-label="Conoce más sobre DAClimaTECH, nuestra misión y valores">Descubre Más</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
                 </ul>
-                <button class="menu-toggle" id="menuToggle">☰</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                    <span class="hamburger-icon" aria-hidden="true">☰</span>
+                </button>
             </nav> 
         </header>
-        <main>
+        <main id="main-content">
             <section class="services" id="services">
                 <h1 class="section-title-services">Electricidad</h1>
                 <div class="services">
@@ -118,7 +126,12 @@
             const navMenu = document.getElementById('navMenu');
 
             menuToggle.addEventListener('click', function() {
+                const isExpanded = navMenu.classList.contains('active');
                 navMenu.classList.toggle('active');
+                
+                // Actualizar aria-expanded
+                this.setAttribute('aria-expanded', !isExpanded);
+                this.setAttribute('aria-label', !isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
             });
 
             // Smooth scrolling and active nav

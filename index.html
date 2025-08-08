@@ -69,53 +69,56 @@
 
     <!-- Navigation -->
     <header class="header">
-        <nav class="nav">
-            <p class="logo"><a href="index.html" class="logo">DAClimaTECH</a></p>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link active">Inicio</a></li>
-                <li class="nav-item dropdown">
-                    <a href="#services" class="nav-link">Servicios</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
-                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
-                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
-                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
-                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
-                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
-                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
-                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
-                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
+        <nav class="nav" aria-label="Navegación principal">
+            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+            <p class="logo"><a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">DAClimaTECH</a></p>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="#services" class="nav-link" aria-expanded="false">Servicios</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
+                        <li><a href="asesoria-y-venta.html" class="dropdown-link" aria-label="Más información sobre asesoría y venta de equipos de climatización">Asesoría y Venta</a></li>
+                        <li><a href="aerotermia.html" class="dropdown-link" aria-label="Más información sobre servicios de aerotermia en Mallorca">Aerotermia</a></li>
+                        <li><a href="aire-acondicionado.html" class="dropdown-link" aria-label="Más información sobre instalación de aire acondicionado">Aire Acondicionado</a></li>
+                        <li><a href="calefaccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de calefacción eficientes">Calefacción</a></li>
+                        <li><a href="electricidad.html" class="dropdown-link" aria-label="Más información sobre servicios de electricidad y instalaciones eléctricas">Electricidad</a></li>
+                        <li><a href="frio-comercial.html" class="dropdown-link" aria-label="Más información sobre equipos de frío comercial para hostelería">Frío Comercial</a></li>
+                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link" aria-label="Más información sobre maquinaria profesional de hostelería">Maquinaria de Hostelería</a></li>
+                        <li><a href="ventilacion-extraccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de ventilación y extracción">Ventilación - Extracción</a></li>
+                        <li><a href="soporte-tecnico.html" class="dropdown-link" aria-label="Más información sobre soporte técnico y mantenimiento">Soporte Técnico</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#about" class="nav-link">Nosotros</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="#about" class="nav-link" aria-expanded="false">Nosotros</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
+                        <li><a href="descubre-mas.html" class="dropdown-link" aria-label="Conoce más sobre DAClimaTECH, nuestra misión y valores">Descubre Más</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact" class="nav-link">Contacto</a></li>
+                <li><a href="#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle">☰</button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-icon" aria-hidden="true">☰</span>
+            </button>
         </nav> 
     </header>
 
     <!-- Home Section -->
-    <main>
-        <section class="home" id="home">
+    <main id="main-content">
+        <section class="home" id="home" aria-label="Presentación principal de DAClimaTECH">
             <div class="home-content">
                 <picture class="home-logo">
                     <source srcset="daclimatech-portada  (650 x 448 px).webp" type="image/webp">
                     <source srcset="daclimatech-portada  (650 x 448 px).png" type="image/png">
-                    <img class="home-logo" data-src="img/daclimatech-portada  (650 x 448 px).png" alt="Logo DAClimaTECH">
+                    <img class="home-logo" data-src="img/daclimatech-portada  (650 x 448 px).png" alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Mallorca">
                 </picture>
                 <h1 class="home-title">Expertos en Climatización</h1>
                 <p class="home-subtitle">Soluciones integrales para tu hogar, oficina o comercio.</p>
-                <a href="#contact" class="cta-button">Solicita tu Presupuesto Gratis</a>
+                <a href="#contact" class="cta-button" aria-label="Solicitar presupuesto gratuito para servicios de climatización">Solicita tu Presupuesto Gratis</a>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section class="services" id="services">
+        <section class="services" id="services" aria-label="Servicios de climatización que ofrecemos">
             <h2 class="section-title fade-in">Nuestros Servicios</h2>
             <div class="services-grid">
                 <div class="service-card fade-in">
@@ -167,7 +170,7 @@
         </section>
 
         <!-- About Section -->
-        <section class="about" id="about">
+        <section class="about" id="about" aria-label="Información sobre nuestra empresa">
             <div class="about-content">
                 <div class="about-text">
                     <h2 class="section-title">Nosotros</h2>
@@ -207,7 +210,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section class="contact" id="contact">
+        <section class="contact" id="contact" aria-label="Información de contacto">
             <div class="contact-content">
                 <h2 class="section-title fade-in">¿Hablamos?</h2>
                 <div class="contact-info">
@@ -215,14 +218,14 @@
                         <div class="contact-icon">📞</div>
                         <h3 class="contact-title">Teléfono</h3>
                         <p class="contact-details">
-                            <a href="tel:+34600039668" class="contact-link">+34 600 039 668</a>
+                            <a href="tel:+34600039668" class="contact-link" aria-label="Llamar por teléfono al +34 600 039 668">+34 600 039 668</a>
                         </p>
                     </div>
                     <div class="contact-card fade-in">
                         <div class="contact-icon">✉️</div>
                         <h3 class="contact-title">Email</h3>
                         <p class="contact-details">
-                            <a href="mailto:info@daclimatech.com" class="contact-link">info@daclimatech.com</a>
+                            <a href="mailto:info@daclimatech.com" class="contact-link" aria-label="Enviar email a info@daclimatech.com">info@daclimatech.com</a>
                         </p>
                     </div>
                     <div class="contact-card fade-in">
@@ -296,7 +299,12 @@
         const navMenu = document.getElementById('navMenu');
 
         menuToggle.addEventListener('click', function() {
+            const isExpanded = navMenu.classList.contains('active');
             navMenu.classList.toggle('active');
+            
+            // Actualizar aria-expanded
+            this.setAttribute('aria-expanded', !isExpanded);
+            this.setAttribute('aria-label', !isExpanded ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
         });
 
         // Smooth scrolling and active nav

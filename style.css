@@ -41,6 +41,26 @@ body {
     }
 
 /* Container utility */
+/* Skip Link para accesibilidad */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #005C98;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    font-weight: 600;
+    z-index: 9999;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -915,4 +935,37 @@ body {
     .contact-card {
         border: 2px solid #000;
     }
+}
+
+/* Mejoras de accesibilidad - Focus visible */
+*:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Asegurar que el focus es visible en elementos interactivos */
+.nav-link:focus,
+.dropdown-link:focus,
+.contact-link:focus,
+.cta-button:focus,
+.menu-toggle:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+/* Mejorar contraste en elementos hover */
+.nav-link:hover,
+.dropdown-link:hover {
+    background-color: rgba(0, 92, 152, 0.1);
+    border-radius: 4px;
+}
+
+/* Skip link visible cuando tiene foco */
+.skip-link:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: absolute;
+    width: auto;
 }
