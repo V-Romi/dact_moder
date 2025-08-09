@@ -219,7 +219,6 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
-
 .menu-toggle:hover {
     background-color: rgba(0, 92, 152, 0.1);
 }
@@ -263,8 +262,10 @@ body {
 }
 
 .dropdown-link:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+    color: white; 
+    transform: translateX(8px); 
+    box-shadow: 0 4px 12px rgba(0, 92, 152, 0.3);
 }
 
 /* Mostrar el submenú al pasar el cursor */
@@ -451,7 +452,6 @@ body {
     transform: scaleX(1);
 }
 
-
 .service-icon {
     width: 60px;
     height: 60px;
@@ -477,7 +477,6 @@ body {
     font-size: 2.5rem;
     font-weight: 600;
     margin-top: 3rem;
-
 }
 
 .section-subtitle {
@@ -599,12 +598,10 @@ body {
     color: var(--primary-color);
 }
 
-
 .contact-details {
     color: var(--text-light);
     font-size: 1.1rem;
 }
-
 
 .contact-link {
     color: var(--primary-color);
@@ -723,12 +720,26 @@ body {
 }
 
 .dropdown-menu {
-    position: static;
-    display: block;
-    box-shadow: none;
-    background: rgba(0, 92, 152, 0.05);
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    z-index: 1000;
     border-radius: 8px;
-    margin-top: 0.5rem;
+    min-width: 200px;
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-link:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+    color: white; 
+    transform: translateX(8px); 
+    box-shadow: 0 4px 12px rgba(0, 92, 152, 0.3);
 }
 
 .nav-item:hover .dropdown-menu {
@@ -759,6 +770,10 @@ body {
 .home-logo {
     width: 100%;
     max-width: 300px;
+}
+
+.section-title-services {
+    font-size: 2.0rem;
 }
 
 .contact-info {
