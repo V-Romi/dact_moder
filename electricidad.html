@@ -111,8 +111,20 @@
             </nav> 
         </header>
         <main id="main-content">
-            <section class="services" id="services">
-                <h1 class="section-title-services">Electricidad</h1>
+            <!-- Breadcrumbs Navigation -->
+            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#services">Servicios</a></li>
+                    <li aria-current="page">Electricidad</li>
+                </ol>
+            </nav>
+        
+            <section class="services" id="services" itemscope itemtype="https://schema.org/Service">
+                <h1 class="section-title-services" itemprop="name">Servicios de Electricidad en Mallorca</h1>
+                <div itemprop="provider" itemscope itemtype="https://schema.org/LocalBusiness">
+                    <meta itemprop="name" content="DAClimaTECH">
+                </div>
                 <div class="services">
                     <h2 class="section-subtitle">Tu seguridad eléctrica, nuestra prioridad</h2>
                     <p class="service-description">En DAClimaTECH entendemos que una instalación eléctrica segura y eficiente es la base del confort y la tranquilidad en tu hogar o negocio. Por eso, nuestro equipo especializado en servicios eléctricos domiciliarios y comerciales en Mallorca te ofrece soluciones integrales con la máxima garantía de calidad y seguridad.</p>

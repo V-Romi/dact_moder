@@ -122,10 +122,26 @@
             </nav> 
         </header>
         <main id="main-content">
-            <section class="services" id="services">
-                <h1 class="section-title-services">Aire Acondicionado</h1>
+            <!-- Breadcrumbs Navigation -->
+            <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#services">Servicios</a></li>
+                    <li aria-current="page">Aire Acondicionado</li>
+                </ol>
+            </nav>
+        
+            <section class="services" id="services" itemscope itemtype="https://schema.org/Service">
+                <h1 class="section-title-services" itemprop="name">Instalación de Aire Acondicionado en Mallorca</h1>
                 <div class="services">
                     <h2 class="section-subtitle">El confort perfecto en cada rincón de tu hogar</h2>
+                    <div itemprop="provider" itemscope itemtype="https://schema.org/LocalBusiness">
+                        <meta itemprop="name" content="DAClimaTECH">
+                        <meta itemprop="telephone" content="+34600039668">
+                    </div>
+                    <div itemprop="areaServed" itemscope itemtype="https://schema.org/Place">
+                        <meta itemprop="name" content="Mallorca">
+                    </div>
                     <p class="service-description">En Mallorca sabemos lo importante que es mantener una temperatura agradable durante los calurosos veranos mediterráneos. En DAClimaTECH te ofrecemos las mejores soluciones de aire acondicionado, adaptadas a las necesidades específicas de tu hogar o negocio, con la garantía de calidad y eficiencia que nos caracteriza.</p>
                     <h3 class="section-subtitle">Sistemas de aire acondicionado que se adaptan a ti</h3>
                     <p class="service-description"><strong>Aire acondicionado Split:</strong> Perfecto para climatizar una habitación específica. El sistema Split consiste en una unidad interior mural para una unidad exterior, ofreciendo una instalación sencilla y un control preciso de la temperatura en el espacio deseado.</p>
