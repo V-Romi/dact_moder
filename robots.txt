@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://daclimatech.com/sitemap.xml
+
+# No indexar archivos privados
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+
+# Archivos de configuración - accesibles pero no prioritarios
+Allow: /cookie-banner.html
+
+# Información del sitio
+# Empresa: DAClimaTECH - Climatización Mallorca
+# Contacto: info@daclimatech.com
+
+# Páginas legales - accesibles pero no prioritarias
+Allow: /aviso-legal.html
+Allow: /politica-cookies.html
+Allow: /politica-privacidad.html

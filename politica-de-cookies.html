@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies | DAClimaTech - Información sobre Cookies y Seguimiento</title>
+    <meta name="description" content="Política de cookies de DAClimaTech. Información sobre tipos de cookies, finalidades, gestión y configuración. Cumplimiento normativa de protección de datos.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="política cookies, cookies técnicas, cookies analíticas, seguimiento web, configuración cookies, privacidad">
+    <link rel="canonical" href="https://daclimatech.com/politica-de-cookies.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos específicos para política de cookies */
+        .cookies-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cookies-header {
+            background: linear-gradient(135deg, #005C98, #00A4E4);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .cookies-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cookies-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cookies-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #005C98;
+            margin: 2.5rem 0 1.2rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #4CAF50;
+        }
+        
+        .subsection-title {
+            font-size: 1.3rem;
+            color: #374151;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+        
+        .cookies-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #4a5568;
+        }
+        
+        .company-info {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #005C98;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .info-value {
+            color: #6b7280;
+        }
+        
+        .highlight-box {
+            background: #ecfdf5;
+            padding: 1.5rem;
+            border-left: 4px solid #10b981;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .cookies-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookies-table th {
+            background: linear-gradient(135deg, #005C98, #00A4E4);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .cookies-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+        }
+        
+        .cookies-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .cookies-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .cookie-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .cookie-technical {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .cookie-analytical {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .cookie-functional {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .cookie-advertising {
+            background: #fce7f3;
+            color: #be185d;
+        }
+        
+        .cookies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .cookie-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .cookie-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .cookie-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .cookie-technical-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .cookie-analytical-icon {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        
+        .cookie-functional-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .cookie-advertising-icon {
+            background: linear-gradient(135deg, #ec4899, #be185d);
+        }
+        
+        .cookie-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cookie-card-description {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .cookie-card-details {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1rem;
+        }
+        
+        .settings-section {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .settings-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .browser-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .browser-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .browser-card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .browser-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .browser-name {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .browser-link {
+            color: #005C98;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .browser-link:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-section {
+            background: #ecfdf5;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-link {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .contact-link:hover {
+            border-bottom-color: #059669;
+        }
+        
+        .cookies-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .cookies-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .cookies-list li::before {
+            content: '🍪';
+            position: absolute;
+            left: 0;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .toc-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #005C98;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .toc-link:hover {
+            color: #00A4E4;
+        }
+        
+        .last-updated {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .cookies-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .cookies-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .cookies-text {
+                text-align: left;
+            }
+            
+            .cookies-table {
+                font-size: 0.9rem;
+            }
+            
+            .cookies-table th,
+            .cookies-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            
+            .cookies-grid,
+            .browser-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cookies-table {
+                font-size: 0.8rem;
+            }
+            
+            .cookie-type {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Schema para SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Política de Cookies - DAClimaTech",
+        "description": "Política de cookies y información sobre el uso de cookies en el sitio web de DAClimaTech",
+        "url": "https://daclimatech.com/politica-de-cookies.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "DAClimaTech",
+            "url": "https://daclimatech.com"
+        },
+        "about": {
+            "@type": "LocalBusiness",
+            "name": "DAClimaTech",
+            "url": "https://daclimatech.com",
+            "email": "info@daclimatech.com",
+            "telephone": "+34600039668"
+        },
+        "dateModified": "2024-12-19",
+        "inLanguage": "es-ES",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Usuarios del sitio web"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav" aria-label="Navegación principal">
+            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+            <p class="logo"><a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">DAClimaTECH</a></p>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li><a href="index.html" class="nav-link" aria-label="Ir a página de inicio">Inicio</a></li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="index.html#services" class="nav-link" aria-expanded="false">Servicios</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
+                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
+                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
+                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
+                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
+                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
+                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
+                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
+                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
+                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="index.html#about" class="nav-link" aria-expanded="false">Nosotros</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
+                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-icon" aria-hidden="true">☰</span>
+            </button>
+        </nav> 
+    </header>
+
+    <main id="main-content">
+        <!-- Breadcrumbs Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Inicio</a></li>
+                <li aria-current="page">Política de Cookies</li>
+            </ol>
+        </nav>
+
+        <!-- Header Section -->
+        <section class="cookies-header">
+            <div class="container">
+                <h1 class="cookies-title">Política de Cookies</h1>
+                <p class="cookies-subtitle">Información transparente sobre el uso de cookies en nuestro sitio web. Conozca qué datos recopilamos y cómo puede gestionarlos.</p>
+            </div>
+        </section>
+
+        <!-- Cookies Content -->
+        <div class="cookies-container">
+            <!-- Índice de contenidos -->
+            <nav class="toc" aria-label="Índice de contenidos">
+                <h2 class="toc-title">🍪 Índice de Contenidos</h2>
+                <ul class="toc-list">
+                    <li><a href="#que-son" class="toc-link">¿Qué son las cookies?</a></li>
+                    <li><a href="#tipos" class="toc-link">Tipos de cookies que utilizamos</a></li>
+                    <li><a href="#finalidad" class="toc-link">Finalidad de las cookies</a></li>
+                    <li><a href="#detalle" class="toc-link">Detalle de cookies utilizadas</a></li>
+                    <li><a href="#gestion" class="toc-link">Gestión de cookies</a></li>
+                    <li><a href="#actualizaciones" class="toc-link">Actualizaciones</a></li>
+                </ul>
+            </nav>
+
+            <!-- ¿Qué son las cookies? -->
+            <section id="que-son" class="cookies-section">
+                <h2 class="section-title">¿Qué son las cookies?</h2>
+                <p class="cookies-text">Las cookies son pequeños archivos de texto que se almacenan en su dispositivo (ordenador, tablet o móvil) cuando visita un sitio web. Estas cookies permiten que el sitio web recuerde sus acciones y preferencias durante un período de tiempo, para que no tenga que volver a configurarlas cada vez que regrese al sitio o navegue por sus páginas.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>¿Para qué sirven?</strong> Las cookies nos ayudan a mejorar la funcionalidad y el rendimiento de nuestro sitio web, así como a proporcionarle una experiencia de navegación más personalizada y eficiente.</p>
+                </div>
+                
+                <p class="cookies-text">En cumplimiento de la normativa vigente en materia de protección de datos, le informamos detalladamente sobre el uso que hacemos de las cookies en nuestro sitio web <a href="https://daclimatech.com" class="contact-link">https://daclimatech.com</a>.</p>
+            </section>
+
+            <!-- Tipos de cookies -->
+            <section id="tipos" class="cookies-section">
+                <h2 class="section-title">Tipos de Cookies que Utilizamos</h2>
+                <p class="cookies-text">Según diferentes criterios, las cookies se pueden clasificar de la siguiente manera:</p>
+                
+                <div class="cookies-grid">
+                    <div class="cookie-card">
+                        <div class="cookie-card-header">
+                            <div class="cookie-icon cookie-technical-icon">⚙️</div>
+                            <span class="cookie-type cookie-technical">Técnicas</span>
+                        </div>
+                        <h3 class="cookie-card-title">Cookies Técnicas</h3>
+                        <p class="cookie-card-description">Son imprescindibles para el correcto funcionamiento del sitio web. Permiten la navegación y el uso de las diferentes opciones o servicios que ofrece la web.</p>
+                        <div class="cookie-card-details">
+                            <strong>Duración:</strong> Sesión<br>
+                            <strong>Propósito:</strong> Funcionamiento básico
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-card">
+                        <div class="cookie-card-header">
+                            <div class="cookie-icon cookie-analytical-icon">📊</div>
+                            <span class="cookie-type cookie-analytical">Analíticas</span>
+                        </div>
+                        <h3 class="cookie-card-title">Cookies Analíticas</h3>
+                        <p class="cookie-card-description">Permiten el seguimiento y análisis del comportamiento de los usuarios. La información recogida se utiliza para la medición de la actividad del sitio web.</p>
+                        <div class="cookie-card-details">
+                            <strong>Duración:</strong> Hasta 2 años<br>
+                            <strong>Propósito:</strong> Estadísticas de uso
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-card">
+                        <div class="cookie-card-header">
+                            <div class="cookie-icon cookie-functional-icon">🔧</div>
+                            <span class="cookie-type cookie-functional">Funcionales</span>
+                        </div>
+                        <h3 class="cookie-card-title">Cookies Funcionales</h3>
+                        <p class="cookie-card-description">Permiten recordar información para que el usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia.</p>
+                        <div class="cookie-card-details">
+                            <strong>Duración:</strong> Variable<br>
+                            <strong>Propósito:</strong> Personalización
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="subsection-title">Clasificación por Titularidad</h3>
+                <ul class="cookies-list">
+                    <li><strong>Cookies propias:</strong> Son enviadas a su dispositivo desde nuestros servidores o dominio.</li>
+                    <li><strong>Cookies de terceros:</strong> Son enviadas a su dispositivo desde un dominio o servidor que no es gestionado directamente por nosotros, sino por otra entidad que trata los datos obtenidos através de las cookies.</li>
+                </ul>
+                
+                <h3 class="subsection-title">Clasificación por Duración</h3>
+                <ul class="cookies-list">
+                    <li><strong>Cookies de sesión:</strong> Diseñadas para recabar y almacenar datos mientras el usuario accede a una página web. Se eliminan al cerrar el navegador.</li>
+                    <li><strong>Cookies persistentes:</strong> Los datos siguen almacenados en el terminal y pueden ser accedidos y tratados durante un período definido por el responsable de la cookie.</li>
+                </ul>
+            </section>
+
+            <!-- Finalidad -->
+            <section id="finalidad" class="cookies-section">
+                <h2 class="section-title">Finalidad de las Cookies</h2>
+                <p class="cookies-text">Las cookies que utilizamos en nuestro sitio web tienen las siguientes finalidades:</p>
+                
+                <ul class="cookies-list">
+                    <li><strong>Cookies técnicas:</strong> Permiten la navegación y el uso de las diferentes opciones o servicios que existen en la web como identificar la sesión, acceder a partes de acceso restringido, recordar los elementos que integran un pedido, realizar el proceso de compra de un pedido, gestionar el pago, controlar el fraude vinculado a la seguridad del servicio, realizar la solicitud de inscripción o participación en un evento, utilizar elementos de seguridad durante la navegación, almacenar contenidos para la difusión de vídeos o sonido, habilitar contenidos dinámicos o compartir contenidos a través de redes sociales.</li>
+                    <li><strong>Cookies de análisis:</strong> Permiten cuantificar el número de usuarios y así realizar la medición y análisis estadístico de la utilización que hacen los usuarios del sitio web.</li>
+                    <li><strong>Cookies de funcionalidad:</strong> Permiten recordar información para que el usuario acceda al servicio con determinadas características que pueden diferenciar su experiencia de la de otros usuarios, como, por ejemplo, el idioma, el número de resultados a mostrar cuando el usuario realiza una búsqueda, el aspecto o contenido del servicio en función del tipo de navegador a través del cual el usuario accede al servicio o de la región desde la que accede al servicio, etc.</li>
+                </ul>
+            </section>
+
+            <!-- Detalle de cookies -->
+            <section id="detalle" class="cookies-section">
+                <h2 class="section-title">Detalle de Cookies Utilizadas</h2>
+                <p class="cookies-text">A continuación se detallan las cookies que pueden ser utilizadas en nuestro sitio web:</p>
+                
+                <div style="overflow-x: auto;">
+                    <table class="cookies-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Duración</th>
+                                <th>Finalidad</th>
+                                <th>Proveedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PHPSESSID</strong></td>
+                                <td><span class="cookie-type cookie-technical">Técnica</span></td>
+                                <td>Sesión</td>
+                                <td>Mantiene la sesión del usuario durante la navegación</td>
+                                <td>DAClimaTech (Propia)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>cookie_consent</strong></td>
+                                <td><span class="cookie-type cookie-technical">Técnica</span></td>
+                                <td>1 año</td>
+                                <td>Almacena las preferencias de consentimiento de cookies</td>
+                                <td>DAClimaTech (Propia)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>_ga</strong></td>
+                                <td><span class="cookie-type cookie-analytical">Analítica</span></td>
+                                <td>2 años</td>
+                                <td>Distingue a los usuarios para estadísticas de Google Analytics</td>
+                                <td>Google (Terceros)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>_ga_[ID]</strong></td>
+                                <td><span class="cookie-type cookie-analytical">Analítica</span></td>
+                                <td>2 años</td>
+                                <td>Utilizada por Google Analytics para mantener el estado de la sesión</td>
+                                <td>Google (Terceros)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>preferences</strong></td>
+                                <td><span class="cookie-type cookie-functional">Funcional</span></td>
+                                <td>6 meses</td>
+                                <td>Guarda las preferencias de configuración del usuario</td>
+                                <td>DAClimaTech (Propia)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>Nota importante:</strong> Esta tabla puede actualizarse según evolucionen las necesidades técnicas del sitio web. Le recomendamos revisar periódicamente esta política.</p>
+                </div>
+            </section>
+
+            <!-- Gestión de cookies -->
+            <section id="gestion" class="cookies-section">
+                <h2 class="section-title">Gestión y Configuración de Cookies</h2>
+                <p class="cookies-text">Usted puede gestionar y/o eliminar las cookies como desee. Puede eliminar todas las cookies que ya están en su dispositivo y puede configurar la mayoría de navegadores para evitar que se instalen.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Su consentimiento:</strong> Al continuar navegando por nuestro sitio web sin modificar la configuración de las cookies, entendemos que acepta el uso de las cookies anteriormente enumeradas y en las condiciones contenidas en la presente Política de Cookies.</p>
+                </div>
+                
+                <h3 class="subsection-title">Opciones de Gestión</h3>
+                <ul class="cookies-list">
+                    <li><strong>Aceptar todas las cookies:</strong> Permite el funcionamiento completo del sitio web con todas las funcionalidades.</li>
+                    <li><strong>Aceptar solo cookies técnicas:</strong> Permite la navegación básica pero puede limitar algunas funcionalidades.</li>
+                    <li><strong>Rechazar cookies no esenciales:</strong> Solo se utilizarán las cookies imprescindibles para el funcionamiento del sitio.</li>
+                    <li><strong>Personalizar configuración:</strong> Puede elegir qué tipos de cookies acepta según sus preferencias.</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <p><strong>Importante:</strong> Si decide deshabilitar las cookies, es posible que no pueda utilizar todas las funcionalidades del sitio web de manera óptima.</p>
+                </div>
+            </section>
+
+            <!-- Cookies de terceros -->
+            <section class="cookies-section">
+                <h2 class="section-title">Cookies de Terceros</h2>
+                <p class="cookies-text">Nuestro sitio web puede utilizar servicios de terceros que instalan sus propias cookies. Estos servicios incluyen:</p>
+                
+                <div class="cookies-grid">
+                    <div class="cookie-card">
+                        <div class="cookie-card-header">
+                            <div class="cookie-icon cookie-analytical-icon">📈</div>
+                        </div>
+                        <h3 class="cookie-card-title">Google Analytics</h3>
+                        <p class="cookie-card-description">Servicio de análisis web que nos ayuda a entender cómo los usuarios interactúan con nuestro sitio web.</p>
+                        <div class="cookie-card-details">
+                            <strong>Más información:</strong> <a href="https://policies.google.com/privacy" class="contact-link" target="_blank" rel="noopener">Política de Google</a><br>
+                            <strong>Opt-out:</strong> <a href="https://tools.google.com/dlpage/gaoptout" class="contact-link" target="_blank" rel="noopener">Deshabilitar Analytics</a>
+                        </div>
+                    </div>
+                    
+                    <div class="cookie-card">
+                        <div class="cookie-card-header">
+                            <div class="cookie-icon cookie-functional-icon">🗺️</div>
+                        </div>
+                        <h3 class="cookie-card-title">Google Maps</h3>
+                        <p class="cookie-card-description">Servicio de mapas integrado para mostrar nuestra ubicación y facilitar la navegación.</p>
+                        <div class="cookie-card-details">
+                            <strong>Más información:</strong> <a href="https://policies.google.com/privacy" class="contact-link" target="_blank" rel="noopener">Política de Google</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>Nota importante:</strong> DAClimaTech no tiene control sobre las cookies instaladas por terceros. Le recomendamos revisar las políticas de privacidad de estos servicios para obtener más información sobre sus prácticas de cookies.</p>
+                </div>
+            </section>
+
+            <!-- Derechos del usuario -->
+            <section class="cookies-section">
+                <h2 class="section-title">Sus Derechos</h2>
+                <p class="cookies-text">En relación con el tratamiento de datos a través de cookies, usted tiene los siguientes derechos:</p>
+                
+                <ul class="cookies-list">
+                    <li><strong>Derecho de acceso:</strong> Puede solicitar información sobre qué cookies utilizamos y con qué finalidad.</li>
+                    <li><strong>Derecho de rectificación:</strong> Puede solicitar que corrijamos cualquier información inexacta.</li>
+                    <li><strong>Derecho de supresión:</strong> Puede solicitar que eliminemos sus datos cuando ya no sean necesarios.</li>
+                    <li><strong>Derecho de oposición:</strong> Puede oponerse al tratamiento de sus datos para determinadas finalidades.</li>
+                    <li><strong>Derecho de limitación:</strong> Puede solicitar que limitemos el tratamiento de sus datos.</li>
+                </ul>
+                
+                <p class="cookies-text">Para ejercer cualquiera de estos derechos, puede contactar con nosotros a través de los medios indicados en la sección de contacto.</p>
+            </section>
+
+            <!-- Actualizaciones -->
+            <section id="actualizaciones" class="cookies-section">
+                <h2 class="section-title">Actualizaciones de la Política</h2>
+                <p class="cookies-text">Esta Política de Cookies puede ser actualizada en función de exigencias legales, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Recomendación:</strong> Le recomendamos que revise periódicamente esta página para estar informado de cualquier cambio en nuestra Política de Cookies.</p>
+                </div>
+                
+                <p class="cookies-text">Cuando se produzcan cambios significativos en esta Política de Cookies, se lo comunicaremos mediante:</p>
+                <ul class="cookies-list">
+                    <li>Un aviso destacado en nuestro sitio web</li>
+                    <li>Una notificación por correo electrónico (si tiene una cuenta registrada)</li>
+                    <li>Mediante el banner de cookies al acceder al sitio</li>
+                </ul>
+            </section>
+
+            <!-- Información adicional -->
+            <section class="cookies-section">
+                <h2 class="section-title">Información Adicional</h2>
+                <h3 class="subsection-title">Normativa Aplicable</h3>
+                <p class="cookies-text">Esta Política de Cookies se rige por la normativa española y europea vigente en materia de protección de datos y cookies:</p>
+                <ul class="cookies-list">
+                    <li>Reglamento (UE) 2016/679 del Parlamento Europeo (RGPD)</li>
+                    <li>Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPD GDD)</li>
+                    <li>Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE)</li>
+                </ul>
+            </section>
+
+            <div class="last-updated">
+                <p>🍪 Última actualización: Diciembre 2024</p>
+                <p>Esta Política de Cookies ha sido redactada conforme a la normativa vigente en materia de protección de datos y uso de cookies.</p>
+                <p style="margin-top: 1rem; font-size: 0.8rem;">Versión 1.0 - Documento válido y vigente</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <nav class="footer-nav">
+                <a href="aviso-legal.html" class="footer-link">Aviso Legal</a>
+                <a href="politica-de-cookies.html" class="footer-link">Política de Cookies</a>
+                <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a>
+            </nav>
+            <p class="copyright">© 2024 DAClimaTECH. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+
+    <script>
+    // SCRIPT CORREGIDO PARA CARGAR EL BANNER DE COOKIES
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar el banner de cookies
+        fetch('cookie-banner.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insertar el contenido del banner al final del body
+                document.body.insertAdjacentHTML('beforeend', html);
+                console.log('✅ Banner de cookies cargado correctamente');
+            })
+            .catch(error => {
+                console.error('❌ Error cargando el banner de cookies:', error);
+                // Fallback: mostrar un banner básico
+                showFallbackCookieBanner();
+            });
+    });
+
+    // Banner de respaldo en caso de error
+    function showFallbackCookieBanner() {
+        const fallbackBanner = `
+            <div id="cookieBannerFallback" style="
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #005C98;
+                color: white;
+                padding: 1rem 2rem;
+                z-index: 10000;
+                text-align: center;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            ">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <p style="margin: 0 0 1rem 0; font-size: 0.95rem;">
+                        🍪 Utilizamos cookies para mejorar su experiencia de navegación. 
+                        <a href="politica-de-cookies.html" style="color: #4CAF50; text-decoration: underline;">Más información</a>
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
+                            background: #ef4444;
+                            color: white;
+                            border: none;
+                            padding: 0.5rem 1.5rem;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            Rechazar
+                        </button>
+                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
+                            background: #4CAF50;
+                            color: white;
+                            border: none;
+                            padding: 0.5rem 1.5rem;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            Aceptar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', fallbackBanner);
+    }
+    </script>
+</body>
+</html>

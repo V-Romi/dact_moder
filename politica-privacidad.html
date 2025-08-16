@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | DAClimaTECH - Protección de Datos RGPD</title>
+    <meta name="description" content="Política de privacidad de DAClimaTECH. Tratamiento y protección de datos personales conforme RGPD y LOPD. Derechos del usuario y seguridad de datos.">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="política privacidad, protección datos, RGPD, LOPD, derechos usuario, tratamiento datos personales">
+    <link rel="canonical" href="https://daclimatech.com/politica-privacidad.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos específicos para política de privacidad */
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .privacy-header {
+            background: linear-gradient(135deg, #005C98, #00A4E4);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .privacy-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .privacy-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #005C98;
+            margin: 2.5rem 0 1.2rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #4CAF50;
+        }
+        
+        .subsection-title {
+            font-size: 1.3rem;
+            color: #374151;
+            margin: 2rem 0 1rem 0;
+            font-weight: 600;
+        }
+        
+        .privacy-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #4a5568;
+        }
+        
+        .company-info {
+            background: #f0f9ff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border-left: 4px solid #005C98;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0.5rem 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .info-value {
+            color: #6b7280;
+        }
+        
+        .highlight-box {
+            background: #ecfdf5;
+            padding: 1.5rem;
+            border-left: 4px solid #10b981;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            padding: 1.5rem;
+            border-left: 4px solid #f59e0b;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .rights-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .rights-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .rights-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #005C98, #00A4E4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .rights-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rights-description {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .privacy-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .privacy-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .privacy-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .principle-card {
+            background: #fafafa;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid #005C98;
+        }
+        
+        .principle-title {
+            font-weight: 600;
+            color: #005C98;
+            margin-bottom: 0.5rem;
+        }
+        
+        .principle-text {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        .last-updated {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 2rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .toc {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .toc-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+        
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .toc-link {
+            color: #005C98;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .toc-link:hover {
+            color: #00A4E4;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .privacy-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .privacy-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .privacy-text {
+                text-align: left;
+            }
+            
+            .rights-grid,
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <!-- JSON-LD Schema para SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Política de Privacidad - DAClimaTECH",
+        "description": "Política de privacidad y protección de datos personales de DAClimaTECH conforme RGPD y LOPD",
+        "url": "https://daclimatech.com/politica-privacidad.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "DAClimaTECH",
+            "url": "https://daclimatech.com"
+        },
+        "about": {
+            "@type": "LocalBusiness",
+            "name": "DAClimaTECH",
+            "url": "https://daclimatech.com",
+            "email": "info@daclimatech.com",
+            "telephone": "+34600039668",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "ES",
+                "addressLocality": "España"
+            }
+        },
+        "dateModified": "2024-12-19",
+        "inLanguage": "es-ES",
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Usuarios del sitio web"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav" aria-label="Navegación principal">
+            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+            <p class="logo"><a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">DAClimaTECH</a></p>
+            <ul class="nav-menu" id="navMenu" role="menubar">
+                <li><a href="index.html" class="nav-link" aria-label="Ir a página de inicio">Inicio</a></li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="index.html#services" class="nav-link" aria-expanded="false">Servicios</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
+                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
+                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
+                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
+                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
+                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
+                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
+                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
+                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
+                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
+                    <a href="index.html#about" class="nav-link" aria-expanded="false">Nosotros</a>
+                    <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
+                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+                <span class="hamburger-icon" aria-hidden="true">☰</span>
+            </button>
+        </nav> 
+    </header>
+
+    <main id="main-content">
+        <!-- Breadcrumbs Navigation -->
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Inicio</a></li>
+                <li aria-current="page">Política de Privacidad</li>
+            </ol>
+        </nav>
+
+        <!-- Header Section -->
+        <section class="privacy-header">
+            <div class="container">
+                <h1 class="privacy-title">Política de Privacidad</h1>
+                <p class="privacy-subtitle">Tratamiento y protección de datos personales conforme al RGPD y LOPD. Transparencia total en el manejo de su información.</p>
+            </div>
+        </section>
+
+        <!-- Privacy Content -->
+        <div class="privacy-container">
+            <!-- Índice de contenidos -->
+            <nav class="toc" aria-label="Índice de contenidos">
+                <h2 class="toc-title">Índice de Contenidos</h2>
+                <ul class="toc-list">
+                    <li><a href="#intro" class="toc-link">Introducción</a></li>
+                    <li><a href="#responsable" class="toc-link">Identidad del Responsable</a></li>
+                    <li><a href="#principios" class="toc-link">Principios del Tratamiento</a></li>
+                    <li><a href="#obtencion" class="toc-link">Obtención de Datos</a></li>
+                    <li><a href="#derechos" class="toc-link">Sus Derechos</a></li>
+                    <li><a href="#finalidad" class="toc-link">Finalidad del Tratamiento</a></li>
+                    <li><a href="#seguridad" class="toc-link">Seguridad de Datos</a></li>
+                    <li><a href="#conservacion" class="toc-link">Conservación de Datos</a></li>
+                </ul>
+            </nav>
+
+            <!-- Introducción -->
+            <section id="intro" class="privacy-section">
+                <h2 class="section-title">Introducción</h2>
+                <p class="privacy-text">El Titular le informa sobre su Política de Privacidad respecto del tratamiento y protección de los datos de carácter personal de los usuarios que puedan ser recabados durante la navegación a través del Sitio Web: <a href="https://daclimatech.com" class="contact-link">https://daclimatech.com</a></p>
+                
+                <div class="highlight-box">
+                    <p><strong>Cumplimiento normativo:</strong> El Titular garantiza el cumplimiento de la normativa vigente en materia de protección de datos personales, reflejada en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y de Garantía de Derechos Digitales (LOPD GDD). Cumple también con el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 relativo a la protección de las personas físicas (RGPD).</p>
+                </div>
+                
+                <p class="privacy-text">El uso de sitio Web implica la aceptación de esta Política de Privacidad así como las condiciones incluidas en el <a href="aviso-legal.html" class="contact-link">Aviso Legal</a>.</p>
+            </section>
+
+            <!-- Identidad del Responsable -->
+            <section id="responsable" class="privacy-section">
+                <h2 class="section-title">Identidad del Responsable</h2>
+                <div class="company-info">
+                    <div class="info-grid">
+                        <span class="info-label">Responsable:</span>
+                        <span class="info-value">DAClimaTECH</span>
+                        
+                        <span class="info-label">Domicilio:</span>
+                        <span class="info-value">España</span>
+                        
+                        <span class="info-label">Correo electrónico:</span>
+                        <span class="info-value"><a href="mailto:info@daclimatech.com" class="contact-link">info@daclimatech.com</a></span>
+                        
+                        <span class="info-label">Sitio Web:</span>
+                        <span class="info-value"><a href="https://daclimatech.com" class="contact-link">https://daclimatech.com</a></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Principios aplicados -->
+            <section id="principios" class="privacy-section">
+                <h2 class="section-title">Principios Aplicados en el Tratamiento de Datos</h2>
+                <p class="privacy-text">En el tratamiento de sus datos personales, el Titular aplicará los siguientes principios que se ajustan a las exigencias del nuevo reglamento europeo de protección de datos (RGPD):</p>
+                
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <h3 class="principle-title">🔒 Licitud, Lealtad y Transparencia</h3>
+                        <p class="principle-text">El Titular siempre requerirá el consentimiento para el tratamiento de los datos personales que puede ser para uno o varios fines específicos sobre los que el Titular informará al Usuario previamente con absoluta transparencia.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <h3 class="principle-title">📊 Minimización de Datos</h3>
+                        <p class="principle-text">El Titular solicitará solo los datos estrictamente necesarios para el fin o los fines que los solicita.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <h3 class="principle-title">⏰ Limitación del Plazo</h3>
+                        <p class="principle-text">El Titular mantendrá los datos personales recabados durante el tiempo estrictamente necesario para el fin o los fines del tratamiento. El Titular informará al Usuario del plazo de conservación correspondiente según la finalidad.</p>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <h3 class="principle-title">🛡️ Integridad y Confidencialidad</h3>
+                        <p class="principle-text">Los datos personales recabados serán tratados de tal manera que su seguridad, confidencialidad e integridad está garantizada. El Titular toma las precauciones necesarias para evitar el acceso no autorizado o uso indebido de los datos de sus usuarios por parte de terceros.</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>Revisión periódica:</strong> En el caso de suscripciones, el Titular revisará periódicamente las listas y eliminará aquellos registros inactivos durante un tiempo considerable.</p>
+                </div>
+            </section>
+
+            <!-- Obtención de datos -->
+            <section id="obtencion" class="privacy-section">
+                <h2 class="section-title">Obtención de Datos Personales</h2>
+                <div class="highlight-box">
+                    <p><strong>Navegación libre:</strong> Para navegar por el sitio Web no es necesario que facilite ningún dato personal.</p>
+                </div>
+            </section>
+
+            <!-- Derechos -->
+            <section id="derechos" class="privacy-section">
+                <h2 class="section-title">Sus Derechos como Usuario</h2>
+                <p class="privacy-text">El Titular le informa que sobre sus datos personales tiene derecho a:</p>
+                
+                <div class="rights-grid">
+                    <div class="rights-card">
+                        <div class="rights-icon">📋</div>
+                        <h3 class="rights-title">Derecho de Acceso</h3>
+                        <p class="rights-description">Solicitar el acceso a los datos almacenados sobre usted.</p>
+                    </div>
+                    
+                    <div class="rights-card">
+                        <div class="rights-icon">✏️</div>
+                        <h3 class="rights-title">Derecho de Rectificación</h3>
+                        <p class="rights-description">Solicitar una rectificación de sus datos personales.</p>
+                    </div>
+                    
+                    <div class="rights-card">
+                        <div class="rights-icon">🗑️</div>
+                        <h3 class="rights-title">Derecho de Supresión</h3>
+                        <p class="rights-description">Solicitar la eliminación de sus datos personales.</p>
+                    </div>
+                    
+                    <div class="rights-card">
+                        <div class="rights-icon">⏸️</div>
+                        <h3 class="rights-title">Derecho de Limitación</h3>
+                        <p class="rights-description">Solicitar la limitación del tratamiento de sus datos.</p>
+                    </div>
+                    
+                    <div class="rights-card">
+                        <div class="rights-icon">❌</div>
+                        <h3 class="rights-title">Derecho de Oposición</h3>
+                        <p class="rights-description">Oponerse al tratamiento de sus datos personales.</p>
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <p><strong>Ejercicio de derechos:</strong> Para ejercitar sus derechos tiene que enviar su petición junto con una fotocopia del Documento Nacional de Identidad o equivalente a la dirección de correo electrónico: <a href="mailto:info@daclimatech.com" class="contact-link">info@daclimatech.com</a></p>
+                    <p><strong>Nota importante:</strong> No puede ejercitar el derecho a la portabilidad de los datos.</p>
+                </div>
+                
+                <p class="privacy-text">El ejercicio de estos derechos es personal y por tanto debe ser ejercido directamente por el interesado, solicitándolo directamente al Titular. El ejercicio de estos derechos no incluye ningún dato que el Titular esté obligado a conservar con fines administrativos, legales o de seguridad.</p>
+            </section>
+
+            <!-- Finalidad del tratamiento -->
+            <section id="finalidad" class="privacy-section">
+                <h2 class="section-title">Finalidad del Tratamiento de Datos Personales</h2>
+                <p class="privacy-text">Cuando usted se conecta al Sitio Web para mandar un correo al Titular, se suscribe a su boletín está facilitando información de carácter personal de la que el responsable es el Titular. Esta información puede incluir datos de carácter personal como pueden ser su dirección IP, nombre y apellidos, dirección física, dirección de correo electrónico, número de teléfono, y otra información.</p>
+                
+                <p class="privacy-text">Al facilitar esta información, da su consentimiento para que su información sea recopilada, utilizada, gestionada y almacenada por DAClimaTECH sólo como se describe en las páginas:</p>
+                
+                <ul class="privacy-list">
+                    <li><a href="aviso-legal.html" class="contact-link">Aviso Legal</a></li>
+                    <li><a href="politica-privacidad.html" class="contact-link">Política de Privacidad</a></li>
+                </ul>
+                
+                <h3 class="subsection-title">Otras Finalidades del Tratamiento</h3>
+                <ul class="privacy-list">
+                    <li>Para garantizar el cumplimiento de las condiciones recogidas en la página de Aviso Legal y de la ley aplicable</li>
+                    <li>Para el desarrollo de herramientas y algoritmos que ayuden al Sitio Web a garantizar la confidencialidad de los datos personales</li>
+                    <li>Para apoyar y mejorar los servicios que ofrece este Sitio Web</li>
+                </ul>
+            </section>
+
+            <!-- Seguridad -->
+            <section id="seguridad" class="privacy-section">
+                <h2 class="section-title">Seguridad de los Datos Personales</h2>
+                <p class="privacy-text">Para proteger sus datos personales, el Titular toma todas las precauciones razonables y sigue las mejores prácticas de la industria para evitar su pérdida, mal uso, acceso indebido, divulgación, alteración o destrucción de los mismos.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>Garantía de seguridad:</strong> Sus datos podrán ser incorporados a un fichero de lista de correo, del cual el Titular es responsable de su gestión y tratamiento. La seguridad de sus datos está garantizada, ya que el Titular toma todas las medidas de seguridad necesarias y le garantiza que los datos personales sólo se usarán para las finalidades dadas.</p>
+                </div>
+                
+                <p class="privacy-text">El Titular informa al Usuario de que sus datos personales no serán cedidos a terceras organizaciones, con la salvedad de que dicha cesión de datos esté amparada en una obligación legal o cuando la prestación de un servicio implique la necesidad de una relación contractual con un encargado de tratamiento.</p>
+                
+                <p class="privacy-text">Sin embargo, en algunos casos se pueden realizar colaboraciones con otros profesionales, en esos casos, se requerirá consentimiento al Usuario informando sobre la identidad del colaborador y la finalidad de la colaboración. Siempre se realizará con los más estrictos estándares de seguridad.</p>
+            </section>
+
+            <!-- Contenido de otros sitios -->
+            <section class="privacy-section">
+                <h2 class="section-title">Contenido de Otros Sitios Web</h2>
+                <p class="privacy-text">Las páginas de este sitio Web pueden incluir contenido incrustado (por ejemplo, vídeos, imágenes, artículos, etc.). El contenido incrustado de otras web se comporta exactamente de la misma manera que si hubiera visitado la otra web.</p>
+                
+                <div class="warning-box">
+                    <p><strong>Importante:</strong> Estos sitios Web pueden recopilar datos sobre usted, utilizar cookies, incrustar un código de seguimiento adicional de terceros, y supervisar su interacción usando este código.</p>
+                </div>
+            </section>
+
+            <!-- Política de Cookies -->
+            <section class="privacy-section">
+                <h2 class="section-title">Política de Cookies</h2>
+                <p class="privacy-text">Para que este sitio Web funcione correctamente necesita utilizar cookies, que es una información que se almacena en su navegador web.</p>
+                <p class="privacy-text">Para más información consulte nuestra <a href="politica-de-cookies.html" class="contact-link">Política de Cookies</a> completa.</p>
+            </section>
+
+            <!-- Legitimación -->
+            <section class="privacy-section">
+                <h2 class="section-title">Legitimación para el Tratamiento de Datos</h2>
+                <div class="highlight-box">
+                    <p><strong>Base legal:</strong> La base legal para el tratamiento de sus datos es el consentimiento del interesado.</p>
+                </div>
+            </section>
+
+            <!-- Categorías de datos -->
+            <section class="privacy-section">
+                <h2 class="section-title">Categorías de Datos Personales</h2>
+                <p class="privacy-text">Las categorías de datos personales que trata el Titular son:</p>
+                <ul class="privacy-list">
+                    <li>Datos identificativos</li>
+                </ul>
+                <p class="privacy-text"><strong>Importante:</strong> No se tratan categorías de datos especialmente protegidos.</p>
+            </section>
+
+            <!-- Conservación -->
+            <section id="conservacion" class="privacy-section">
+                <h2 class="section-title">Conservación de Datos Personales</h2>
+                <p class="privacy-text">Los datos personales proporcionados al Titular se conservarán hasta que solicite su supresión.</p>
+            </section>
+
+            <!-- Navegación Web -->
+            <section class="privacy-section">
+                <h2 class="section-title">Navegación Web</h2>
+                <p class="privacy-text">Al navegar por el Sitio Web se pueden recoger datos no identificativos, que pueden incluir, la dirección IP, geolocalización, un registro de cómo se utilizan los servicios y sitios, hábitos de navegación y otros datos que no pueden ser utilizados para identificarle.</p>
+                
+                <p class="privacy-text">El Titular utiliza la información obtenida para obtener datos estadísticos, analizar tendencias, administrar el sitio, estudiar patrones de navegación y para recopilar información demográfica.</p>
+                
+                <div class="warning-box">
+                    <p><strong>Limitación de responsabilidad:</strong> El Titular no se hace responsable del tratamiento de los datos personales que realicen las páginas web a las que pueda acceder a través de los distintos enlaces que contiene el Sitio Web.</p>
+                </div>
+            </section>
+
+            <!-- Exactitud de datos -->
+            <section class="privacy-section">
+                <h2 class="section-title">Exactitud y Veracidad de los Datos Personales</h2>
+                <p class="privacy-text">Usted se compromete a que los datos facilitados al Titular sean correctos, completos, exactos y vigentes, así como a mantenerlos debidamente actualizados.</p>
+                
+                <p class="privacy-text">Como Usuario del Sitio Web es el único responsable de la veracidad y corrección de los datos remitidos al Sitio Web exonerando al Titular de cualquier responsabilidad al respecto.</p>
+            </section>
+
+            <!-- Aceptación y consentimiento -->
+            <section class="privacy-section">
+                <h2 class="section-title">Aceptación y Consentimiento</h2>
+                <div class="highlight-box">
+                    <p><strong>Consentimiento informado:</strong> Como Usuario del Sitio Web declara haber sido informado de las condiciones sobre protección de datos de carácter personal, acepta y consiente el tratamiento de los mismos por parte del Titular en la forma y para las finalidades indicadas en esta Política de Privacidad.</p>
+                </div>
+                
+                <p class="privacy-text">Para contactar con el Titular, suscribirse a un boletín o realizar comentarios en este sitio Web tiene que aceptar la presente Política de Privacidad.</p>
+            </section>
+
+            <!-- Cambios en la política -->
+            <section class="privacy-section">
+                <h2 class="section-title">Cambios en la Política de Privacidad</h2>
+                <p class="privacy-text">El Titular se reserva el derecho a modificar la presente Política de Privacidad para adaptarla a novedades legislativas o jurisprudenciales, así como a prácticas de la industria.</p>
+                
+                <p class="privacy-text">Estas políticas estarán vigentes hasta que sean modificadas por otras debidamente publicadas.</p>
+                
+                <div class="warning-box">
+                    <p><strong>Notificación de cambios:</strong> Cualquier modificación será comunicada a través del sitio web y, cuando proceda, por correo electrónico a los usuarios registrados.</p>
+                </div>
+            </section>
+
+            <div class="last-updated">
+                <p>📅 Última actualización: Diciembre 2024</p>
+                <p>Esta Política de Privacidad ha sido redactada conforme a la normativa vigente en materia de protección de datos.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <nav class="footer-nav">
+                <a href="aviso-legal.html" class="footer-link">Aviso Legal</a>
+                <a href="politica-de-cookies.html" class="footer-link">Política de Cookies</a>
+                <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a>
+            </nav>
+            <p class="copyright">© 2024 DAClimaTECH. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="navigation.js"></script>
+
+    <script>
+    // SCRIPT CORREGIDO PARA CARGAR EL BANNER DE COOKIES
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar el banner de cookies
+        fetch('cookie-banner.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insertar el contenido del banner al final del body
+                document.body.insertAdjacentHTML('beforeend', html);
+                console.log('✅ Banner de cookies cargado correctamente');
+            })
+            .catch(error => {
+                console.error('❌ Error cargando el banner de cookies:', error);
+                // Fallback: mostrar un banner básico
+                showFallbackCookieBanner();
+            });
+    });
+
+    // Banner de respaldo en caso de error
+    function showFallbackCookieBanner() {
+        const fallbackBanner = `
+            <div id="cookieBannerFallback" style="
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: #005C98;
+                color: white;
+                padding: 1rem 2rem;
+                z-index: 10000;
+                text-align: center;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            ">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <p style="margin: 0 0 1rem 0; font-size: 0.95rem;">
+                        🍪 Utilizamos cookies para mejorar su experiencia de navegación. 
+                        <a href="politica-de-cookies.html" style="color: #4CAF50; text-decoration: underline;">Más información</a>
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
+                            background: #ef4444;
+                            color: white;
+                            border: none;
+                            padding: 0.5rem 1.5rem;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            Rechazar
+                        </button>
+                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
+                            background: #4CAF50;
+                            color: white;
+                            border: none;
+                            padding: 0.5rem 1.5rem;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">
+                            Aceptar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', fallbackBanner);
+    }
+    </script>
+
+</body>
+</html>
