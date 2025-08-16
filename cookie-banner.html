@@ -1,4 +1,4 @@
-<!-- Banner de Cookies - SOLO EL CONTENIDO SIN HTML WRAPPER -->
+<!-- Banner de Cookies - VERSIÓN FINAL CON BOTONES VISIBLES -->
 <style>
 /* ====================================================
         BANNER DE COOKIES - ESTILOS COMPLETOS
@@ -150,18 +150,24 @@
             left: 100%;
         }
         
-        /* Botón configurar */
+        /* Botón configurar - MEJORADO PARA VISIBILIDAD */
         .cookie-btn-config {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.7);
             order: 1;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
         }
         
         .cookie-btn-config:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
         
         /* Botón rechazar */
@@ -194,29 +200,41 @@
             box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
         }
         
-        /* Botón cerrar */
+        /* Botón cerrar - MEJORADO PARA VISIBILIDAD */
         .cookie-close {
             position: absolute;
             top: 1rem;
             right: 1.5rem;
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            width: 30px;
-            height: 30px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
         }
         
         .cookie-close:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.8);
             color: white;
-            transform: rotate(90deg);
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .cookie-close:focus {
+            outline: 2px solid #4CAF50;
+            outline-offset: 2px;
         }
         
         /* Modal de configuración */
@@ -454,9 +472,21 @@
                 min-width: 90px;
             }
             
+            /* Mejorar visibilidad del botón configurar en móviles */
+            .cookie-btn-config {
+                background: rgba(255, 255, 255, 0.25);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                font-weight: 700;
+            }
+            
             .cookie-close {
                 top: 0.5rem;
                 right: 1rem;
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+                background: rgba(255, 255, 255, 0.25);
+                border: 2px solid rgba(255, 255, 255, 0.6);
             }
             
             .cookie-modal-content {
@@ -509,11 +539,47 @@
             
             .cookie-btn-config {
                 order: 3;
+                background: rgba(255, 255, 255, 0.3);
+                border: 3px solid rgba(255, 255, 255, 0.9);
             }
             
             .cookie-links {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+        }
+        
+        /* Mejoras adicionales para alta resolución */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .cookie-btn-config,
+            .cookie-close {
+                border-width: 3px;
+            }
+        }
+        
+        /* Modo alto contraste */
+        @media (prefers-contrast: high) {
+            .cookie-btn-config {
+                background: rgba(255, 255, 255, 0.4);
+                border: 3px solid white;
+                color: white;
+            }
+            
+            .cookie-close {
+                background: rgba(255, 255, 255, 0.4);
+                border: 3px solid white;
+                color: white;
+            }
+        }
+        
+        /* Para navegadores que no soportan backdrop-filter */
+        @supports not (backdrop-filter: blur(10px)) {
+            .cookie-btn-config {
+                background: rgba(255, 255, 255, 0.3);
+            }
+            
+            .cookie-close {
+                background: rgba(255, 255, 255, 0.3);
             }
         }
 </style>
@@ -640,7 +706,7 @@
 
 <script>
 // ====================================================
-// JAVASCRIPT PARA GESTIÓN DE COOKIES - CORREGIDO
+// JAVASCRIPT PARA GESTIÓN DE COOKIES - VERSIÓN FINAL
 // ====================================================
 
 // Esperar a que el DOM esté listo
@@ -688,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const banner = document.getElementById('cookieBanner');
         if (banner) {
             banner.classList.add('show');
+            console.log('🍪 Banner de cookies mostrado');
             // Foco en el primer botón para accesibilidad
             setTimeout(() => {
                 const firstBtn = banner.querySelector('.cookie-btn');
@@ -719,6 +786,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         saveCookieConsent();
         hideCookieBanner();
+        console.log('🍪 Banner cerrado - Solo cookies técnicas');
     }
 
     // Aceptar todas las cookies
@@ -736,6 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mostrar confirmación
         showNotification('✅ Configuración guardada. Todas las cookies han sido aceptadas.', 'success');
+        console.log('✅ Todas las cookies aceptadas');
     }
 
     // Rechazar cookies no esenciales
@@ -753,6 +822,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mostrar confirmación
         showNotification('ℹ️ Solo se utilizarán las cookies técnicas necesarias.', 'info');
+        console.log('❌ Cookies no esenciales rechazadas');
     }
 
     // Abrir modal de configuración
@@ -765,6 +835,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('functional-cookies').checked = cookieState.functional;
             
             modal.classList.add('show');
+            console.log('⚙️ Modal de configuración abierto');
             
             // Foco en el primer elemento interactivo
             setTimeout(() => {
@@ -783,6 +854,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal) {
             modal.classList.remove('show');
             document.body.style.overflow = '';
+            console.log('⚙️ Modal de configuración cerrado');
         }
     }
 
@@ -803,6 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Mostrar confirmación
         showNotification('✅ Tu configuración de cookies ha sido guardada correctamente.', 'success');
+        console.log('💾 Configuración personalizada guardada:', cookieState);
     }
 
     // Guardar consentimiento en cookie
@@ -875,7 +948,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Habilitar cookies funcionales
     function enableFunctionalCookies() {
-        console.log('Cookies funcionales habilitadas');
+        console.log('🔧 Cookies funcionales habilitadas');
     }
 
     // Deshabilitar cookies funcionales
@@ -886,7 +959,7 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteCookie('theme');
         deleteCookie('language');
         
-        console.log('Cookies funcionales deshabilitadas');
+        console.log('🔧 Cookies funcionales deshabilitadas');
     }
 
     // Utilidades para manejo de cookies
@@ -1059,5 +1132,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar el banner
     initializeCookieBanner();
+    
+    // Log de inicialización
+    console.log('🍪 Sistema de cookies DAClimaTECH inicializado correctamente');
 });
 </script>
