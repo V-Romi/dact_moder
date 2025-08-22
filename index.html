@@ -5,11 +5,297 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Mallorca</title>
     <link rel="canonical" href="https://daclimatech.com/">
-    <!-- Preload recursos críticos -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="img/daclimatech-portada-650x448px.webp" as="image" type="image/webp">
-    <link rel="preload" href="img/daclimatech-portada-650x448px.png" as="image" type="image/png">
 
+    <!-- ====================== 
+         CRITICAL CSS INLINE - MÁXIMO PERFORMANCE
+         ====================== -->
+    <style>
+        /* =================================
+           CRITICAL CSS - Above the fold only
+           ================================= */
+
+        /* CSS Variables - Crítico */
+        :root {
+            --primary-color: #005C98;
+            --secondary-color: #00A4E4;
+            --accent-color: #4CAF50;
+            --text-dark: #2d3748;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --third-color: #fafafa;
+        }
+
+        /* Reset crítico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: clamp(14px, 1.5vw, 16px);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* Header crítico */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 92, 152, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: clamp(60px, 8vw, 70px);
+        }
+
+        .logo {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: clamp(1rem, 3vw, 2rem);
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Home Section crítico */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--third-color);
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: clamp(3rem, 8vw, 5rem) 0;
+        }
+
+        .home-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .home-logo {
+            aspect-ratio: 650 / 448;
+            width: min(100%, 600px);
+            margin: 0 auto clamp(1.5rem, 4vw, 2rem);
+            display: block;
+        }
+
+        .home-logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .home-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .home-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Loading crítico */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Skip link para accesibilidad */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #005C98;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 0 0 4px 4px;
+            font-weight: 600;
+            z-index: 9999;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Mobile crítico */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: clamp(60px, 8vw, 70px);
+                left: -100%;
+                width: 100vw;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: clamp(1.5rem, 4vw, 2rem);
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                height: calc(100vh - clamp(60px, 8vw, 70px));
+                overflow-y: auto;
+                align-items: stretch;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                padding: 1rem;
+                text-align: center;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav {
+                padding: 0 1rem;
+            }
+            
+            .home-title {
+                font-size: 2rem;
+            }
+
+            .home-content {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Móviles muy pequeños */
+        @media (max-width: 480px) {
+            .home-logo {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+
+    <!-- ====================== 
+         PRECONNECT CRÍTICO - ANTES DE CARGAR FONTS
+         ====================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ====================== 
+         PRELOAD RECURSOS CRÍTICOS
+         ====================== -->
+    <link rel="preload" href="img/daclimatech-portada-640w.webp" as="image" type="image/webp">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <!-- ====================== 
+         CARGAR CSS NO CRÍTICO DE FORMA ASÍNCRONA
+         ====================== -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Expertos en climatización, electricidad, maquinaria de hostelería y frío industrial en Mallorca. Servicios de instalación, mantenimiento y reparación.">
@@ -26,18 +312,6 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://daclimatech.com">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-    
-    <!-- CSS Reset -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Schema.org para LocalBusiness -->
     <script type="application/ld+json">
         {
@@ -47,12 +321,12 @@
             "alternateName": "DA Clima TECH",
             "description": "Expertos en climatización sostenible, aerotermia, aire acondicionado, calefacción, electricidad, frío comercial y maquinaria de hostelería en Mallorca",
             "url": "https://daclimatech.com",
-            "logo": "https://daclimatech.com/img/daclimatech-portada  (650 x 448 px).png",
-            "image": "https://daclimatech.com/img/daclimatech-portada  (650 x 448 px).png",
+            "logo": "https://daclimatech.com/img/daclimatech-portada-640w.webp",
+            "image": "https://daclimatech.com/img/daclimatech-portada-640w.webp",
             "telephone": "+34600039668",
             "email": "info@daclimatech.com",
             "foundingDate": "2024",
-            "priceRange": "€€",
+            "priceRange": "€€€",
             "paymentAccepted": ["Efectivo", "Transferencia", "Tarjeta"],
             "currenciesAccepted": "EUR",
             "openingHours": [
@@ -60,7 +334,7 @@
             ],
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Mallorca",
+                "@addressLocality": "Mallorca",
                 "addressRegion": "Islas Baleares",
                 "addressCountry": "ES"
             },
@@ -84,52 +358,7 @@
             },
             "sameAs": [
                 "https://www.instagram.com/daclimatech/"
-            ],
-            "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Servicios de Climatización",
-                "itemListElement": [
-                    {
-                        "@type": "OfferCatalog",
-                        "name": "Aerotermia",
-                        "itemListElement": [
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "Instalación de Aerotermia"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "@type": "OfferCatalog", 
-                        "name": "Aire Acondicionado",
-                        "itemListElement": [
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "Instalación Aire Acondicionado"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "@type": "OfferCatalog",
-                        "name": "Calefacción", 
-                        "itemListElement": [
-                            {
-                                "@type": "Offer",
-                                "itemOffered": {
-                                    "@type": "Service",
-                                    "name": "Sistemas de Calefacción"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
+            ]
         }
     </script>
 </head>
@@ -149,21 +378,21 @@
                 <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
                     <a href="index.html#services" class="nav-link" aria-expanded="false">Servicios</a>
                     <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
-                        <li><a href="asesoria-y-venta.html" class="dropdown-link" aria-label="Más información sobre asesoría y venta de equipos de climatización">Asesoría y Venta</a></li>
-                        <li><a href="aerotermia.html" class="dropdown-link" aria-label="Más información sobre servicios de aerotermia en Mallorca">Aerotermia</a></li>
-                        <li><a href="aire-acondicionado.html" class="dropdown-link" aria-label="Más información sobre instalación de aire acondicionado">Aire Acondicionado</a></li>
-                        <li><a href="calefaccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de calefacción eficientes">Calefacción</a></li>
-                        <li><a href="electricidad.html" class="dropdown-link" aria-label="Más información sobre servicios de electricidad y instalaciones eléctricas">Electricidad</a></li>
-                        <li><a href="frio-comercial.html" class="dropdown-link" aria-label="Más información sobre equipos de frío comercial para hostelería">Frío Comercial</a></li>
-                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link" aria-label="Más información sobre maquinaria profesional de hostelería">Maquinaria de Hostelería</a></li>
-                        <li><a href="ventilacion-extraccion.html" class="dropdown-link" aria-label="Más información sobre sistemas de ventilación y extracción">Ventilación - Extracción</a></li>
-                        <li><a href="soporte-tecnico.html" class="dropdown-link" aria-label="Más información sobre soporte técnico y mantenimiento">Soporte Técnico</a></li>
+                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
+                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
+                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
+                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
+                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
+                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
+                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
+                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
+                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
                     <a href="index.html#about" class="nav-link" aria-expanded="false">Nosotros</a>
                     <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
-                        <li><a href="descubre-mas.html" class="dropdown-link" aria-label="Conoce más sobre DAClimaTECH, nuestra misión y valores">Descubre Más</a></li>
+                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
                     </ul>
                 </li>
                 <li><a href="index.html#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
@@ -179,9 +408,36 @@
         <section class="home" id="home" aria-label="Presentación principal de DAClimaTECH" itemscope itemtype="https://schema.org/LocalBusiness">
             <div class="home-content">
                 <picture class="home-logo">
-                    <source srcset="img/daclimatech-portada-650x448px.webp" type="image/webp">
-                    <source srcset="img/daclimatech-portada-650x448px.png" type="image/png">
-                    <img class="home-logo" src="img/daclimatech-portada-650x448px.png" alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Mallorca">
+                    <!-- WebP con múltiples tamaños -->
+                    <source 
+                        srcset="img/daclimatech-portada-320w.webp 320w,
+                                img/daclimatech-portada-640w.webp 640w,
+                                img/daclimatech-portada-1280w.webp 1280w"
+                        sizes="(max-width: 640px) 320px,
+                            (max-width: 1024px) 640px,
+                            1280px"
+                        type="image/webp">
+                    
+                    <!-- JPG fallback con múltiples tamaños -->
+                    <source 
+                        srcset="img/daclimatech-portada-320w.jpg 320w,
+                                img/daclimatech-portada-640w.jpg 640w,
+                                img/daclimatech-portada-1280w.jpg 1280w"
+                        sizes="(max-width: 640px) 320px,
+                            (max-width: 1024px) 640px,
+                            1280px"
+                        type="image/jpeg">
+                    
+                    <!-- Imagen por defecto -->
+                    <img 
+                        class="home-logo" 
+                        src="img/daclimatech-portada-640w.jpg" 
+                        alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Mallorca"
+                        width="640" 
+                        height="441"
+                        loading="eager"
+                        decoding="sync"
+                        fetchpriority="high">
                 </picture>
                 <h1 class="home-title" itemprop="name">Expertos en Climatización</h1>
                 <p class="home-subtitle" itemprop="description">Soluciones integrales de climatización para tu hogar, oficina o comercio en Mallorca.</p>
@@ -347,6 +603,7 @@
             </div>
         </section> 
     </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -359,80 +616,90 @@
         </div>
     </footer>
 
-    <script src="navigation.js"></script>
-    
-    <script>
-    // SCRIPT CORREGIDO PARA CARGAR EL BANNER DE COOKIES
-    document.addEventListener('DOMContentLoaded', function() {
-        // Cargar el banner de cookies
-        fetch('cookie-banner.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.text();
-            })
-            .then(html => {
-                // Insertar el contenido del banner al final del body
-                document.body.insertAdjacentHTML('beforeend', html);
-                console.log('✅ Banner de cookies cargado correctamente');
-            })
-            .catch(error => {
-                console.error('❌ Error cargando el banner de cookies:', error);
-                // Fallback: mostrar un banner básico
-                showFallbackCookieBanner();
-            });
-    });
+    <!-- ====================== 
+     SCRIPTS OPTIMIZADOS - AL FINAL DEL BODY
+     ====================== -->
 
-    // Banner de respaldo en caso de error
-    function showFallbackCookieBanner() {
-        const fallbackBanner = `
-            <div id="cookieBannerFallback" style="
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: #005C98;
-                color: white;
-                padding: 1rem 2rem;
-                z-index: 10000;
-                text-align: center;
-                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-            ">
-                <div style="max-width: 1200px; margin: 0 auto;">
-                    <p style="margin: 0 0 1rem 0; font-size: 0.95rem;">
-                        🍪 Utilizamos cookies para mejorar su experiencia de navegación. 
-                        <a href="politica-de-cookies.html" style="color: #4CAF50; text-decoration: underline;">Más información</a>
-                    </p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
-                            background: #ef4444;
-                            color: white;
-                            border: none;
-                            padding: 0.5rem 1.5rem;
-                            border-radius: 25px;
-                            cursor: pointer;
-                            font-weight: 600;
-                        ">
-                            Rechazar
-                        </button>
-                        <button onclick="this.parentElement.parentElement.parentElement.style.display='none'" style="
-                            background: #4CAF50;
-                            color: white;
-                            border: none;
-                            padding: 0.5rem 1.5rem;
-                            border-radius: 25px;
-                            cursor: pointer;
-                            font-weight: 600;
-                        ">
-                            Aceptar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        document.body.insertAdjacentHTML('beforeend', fallbackBanner);
-    }
+    <!-- Critical JavaScript inline -->
+    <script>
+        // Critical navigation functionality
+        const initCritical = () => {
+            // Loading screen
+            const loading = document.getElementById('loading');
+            if (loading) {
+                const hideLoading = () => {
+                    loading.style.opacity = '0';
+                    setTimeout(() => loading.style.display = 'none', 300);
+                };
+                
+                if (document.readyState === 'complete') {
+                    hideLoading();
+                } else {
+                    window.addEventListener('load', hideLoading);
+                }
+            }
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isActive = navMenu.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', isActive);
+                });
+            }
+            
+            // Skip link functionality
+            const skipLink = document.querySelector('.skip-link');
+            const mainContent = document.getElementById('main-content');
+            if (skipLink && mainContent) {
+                skipLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainContent.focus();
+                    mainContent.scrollIntoView();
+                });
+            }
+        };
+
+        // Execute immediately if DOM ready, otherwise wait
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCritical);
+        } else {
+            initCritical();
+        }
     </script>
+
+    <!-- Non-critical JavaScript with defer -->
+    <script src="navigation.js" defer></script>
+
+    <!-- Cookie banner optimizado - Nueva implementación -->
+    <script src="cookie-loader.js" defer></script>
+
+    <!-- Script de respaldo si cookie-loader.js falla -->
+    <script>
+    // Respaldo de emergencia
+    window.addEventListener('error', function(e) {
+        if (e.filename && e.filename.includes('cookie-loader.js')) {
+            console.warn('⚠️ Cookie loader failed, using emergency fallback');
+            
+            // Banner de emergencia súper básico
+            const emergencyBanner = document.createElement('div');
+            emergencyBanner.innerHTML = `
+                <div style="position:fixed;bottom:0;left:0;right:0;background:#005C98;color:white;padding:1rem;text-align:center;z-index:10000;">
+                    <p style="margin:0 0 1rem 0">🍪 Utilizamos cookies para mejorar su experiencia. 
+                    <a href="politica-de-cookies.html" style="color:#4CAF50">Más información</a></p>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="background:#4CAF50;border:none;padding:0.5rem 1rem;border-radius:4px;color:white;font-weight:600;cursor:pointer">
+                        Entendido
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(emergencyBanner);
+        }
+    });
+    </script>
+
 </body>
 </html>
