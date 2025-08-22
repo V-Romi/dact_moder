@@ -421,6 +421,7 @@ body {
  }
 }
 
+/* Service Cards - VERSIÓN ACTUALIZADA CON ENLACES */
 .service-card {
     background: var(--bg-card);
     border-radius: 15px;
@@ -434,8 +435,12 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
+    
+    /* Nuevos estilos para enlaces */
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
-
 
 .service-card::before {
     content: '';
@@ -449,21 +454,62 @@ body {
     transition: transform 0.3s ease;
 }
  
-/* Hover states mejorados */
-.service-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* Efectos hover mejorados para enlaces */
 .service-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: inherit;
 }
-
 
 .service-card:hover::before {
     transform: scaleX(1);
 }
 
+/* Efectos adicionales para interactividad */
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-title {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Indicador visual de que es clickeable - FLECHA */
+.service-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Focus visible para accesibilidad */
+.service-card:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+    transform: translateY(-4px);
+}
+
+/* Estados activos */
+.service-card:active {
+    transform: translateY(-2px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Mantener estilos existentes de iconos y texto */
 .service-icon {
     width: 60px;
     height: 60px;
@@ -475,6 +521,7 @@ body {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
     color: white;
+    transition: all 0.3s ease;
 }
 
 .service-title {
@@ -482,26 +529,56 @@ body {
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--primary-color);
-}
-
-.section-title-services {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 600;
-    margin-top: 3rem;
-}
-
-.section-subtitle {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 .service-description {
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+    
+    .service-card::after {
+        bottom: 0.75rem;
+        right: 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Para usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .service-card {
+        transition: box-shadow 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: none;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-card:hover .service-icon {
+        transform: none;
+    }
+    
+    .service-card::after {
+        transition: opacity 0.3s ease;
+        transform: none;
+    }
+    
+    .service-card:hover::after {
+        transform: none;
+    }
 }
  
 /* Skeleton loading para mejor UX */
