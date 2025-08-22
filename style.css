@@ -1309,26 +1309,26 @@ body {
 /* H3 - Subtítulos Secundarios */
 h3.section-subtitle,
 .section-subtitle-tertiary {
-    font-size: clamp(1.25rem, 3vw, var(--heading-tertiary));
+    font-size: clamp(1.25rem, 3vw, var(--heading-secondary));
     font-weight: 650;
-    color: var(--text-dark);
+    color: var(--primary-color);
     line-height: var(--leading-snug);
     margin-top: var(--space-lg);
     margin-bottom: var(--space-md);
     position: relative;
-    padding-left: 0;
+    padding-left: var(--space-md);
 }
 
 h3.section-subtitle::before,
 .section-subtitle-tertiary::before {
-    content: '▸';
-    color: var(--accent-color);
-    margin-right: var(--space-xs);
-    font-weight: 700;
-    position: static;
-    width: auto;
-    height: auto;
-    background: none;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 6px;
+    height: 1.5em;
+    background: var(--gradient);
+    border-radius: 3px;
 }
 
 /* H4 - Subtítulos Menores */
@@ -1336,7 +1336,7 @@ h4.section-subtitle,
 .section-subtitle-quaternary {
     font-size: clamp(1.125rem, 2.5vw, var(--heading-quaternary));
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--primary-color);
     line-height: var(--leading-snug);
     margin-top: var(--space-md);
     margin-bottom: var(--space-sm);
@@ -1352,7 +1352,7 @@ h5.section-subtitle,
 .section-subtitle-quinary {
     font-size: var(--heading-quinary);
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--primary-color);
     margin-top: var(--space-md);
     margin-bottom: var(--space-xs);
     padding-left: 0;
@@ -1380,7 +1380,7 @@ h6.section-subtitle::before {
 
 /* ===== PÁRRAFOS Y CONTENIDO ===== */
 .service-description {
-    font-size: var(--body-large);
+    font-size: var(--body-normal);
     line-height: var(--leading-relaxed);
     color: var(--text-light);
     margin-bottom: var(--space-lg);
