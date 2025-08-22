@@ -1135,4 +1135,603 @@ body {
         margin: 0 0.3rem;
     }
 }
-       
+
+/* ===================================================
+   MEJORAS CSS PARA PÁGINAS DE SERVICIOS
+   Añadir al final de style.css o reemplazar secciones existentes
+   =================================================== */
+
+/* ===== VARIABLES TIPOGRÁFICAS MEJORADAS ===== */
+:root {
+    /* Agregar estas nuevas variables a las existentes */
+    
+    /* Escala tipográfica optimizada */
+    --heading-primary: 2.75rem;      /* H1 - 44px */
+    --heading-secondary: 2.25rem;    /* H2 - 36px */
+    --heading-tertiary: 1.875rem;    /* H3 - 30px */
+    --heading-quaternary: 1.5rem;    /* H4 - 24px */
+    --heading-quinary: 1.25rem;      /* H5 - 20px */
+    --heading-senary: 1.125rem;      /* H6 - 18px */
+    --body-large: 1.125rem;          /* 18px */
+    --body-normal: 1rem;             /* 16px */
+    --body-small: 0.875rem;          /* 14px */
+    
+    /* Espaciado consistente */
+    --space-xs: 0.5rem;    /* 8px */
+    --space-sm: 1rem;      /* 16px */
+    --space-md: 1.5rem;    /* 24px */
+    --space-lg: 2rem;      /* 32px */
+    --space-xl: 3rem;      /* 48px */
+    --space-2xl: 4rem;     /* 64px */
+    
+    /* Line heights optimizados */
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.625;
+    --leading-loose: 1.75;
+}
+
+/* ===== BREADCRUMBS MEJORADOS ===== */
+.breadcrumb-nav {
+    background: linear-gradient(135deg, rgba(0, 92, 152, 0.03), rgba(0, 164, 228, 0.03));
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--space-xl);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.breadcrumb {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    font-size: var(--body-small);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '›';
+    margin: 0 var(--space-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+    background-color: rgba(0, 92, 152, 0.05);
+}
+
+.breadcrumb [aria-current="page"] {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+/* ===== LAYOUT DE SERVICIOS MEJORADO ===== */
+.services {
+    padding: var(--space-xl) var(--container-padding);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.services .services {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--space-md);
+}
+
+.services .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient); 
+}
+
+
+/* ===== TIPOGRAFÍA MEJORADA PARA SERVICIOS ===== */
+
+/* H1 - Título Principal de Página */
+.section-title-services {
+    font-size: clamp(2rem, 5vw, var(--heading-primary));
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+    position: relative;
+    letter-spacing: -0.02em;
+}
+
+.section-title-services::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* H2 - Subtítulos Principales */
+.section-subtitle {
+    font-size: clamp(1.5rem, 4vw, var(--heading-secondary));
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: var(--leading-snug);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-lg);
+    position: relative;
+    padding-left: var(--space-md);
+}
+
+.section-subtitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    width: 6px;
+    height: 1.5em;
+    background: var(--gradient);
+    border-radius: 3px;
+}
+
+/* H3 - Subtítulos Secundarios */
+h3.section-subtitle,
+.section-subtitle-tertiary {
+    font-size: clamp(1.25rem, 3vw, var(--heading-tertiary));
+    font-weight: 650;
+    color: var(--text-dark);
+    line-height: var(--leading-snug);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-left: 0;
+}
+
+h3.section-subtitle::before,
+.section-subtitle-tertiary::before {
+    content: '▸';
+    color: var(--accent-color);
+    margin-right: var(--space-xs);
+    font-weight: 700;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+}
+
+/* H4 - Subtítulos Menores */
+h4.section-subtitle,
+.section-subtitle-quaternary {
+    font-size: clamp(1.125rem, 2.5vw, var(--heading-quaternary));
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: var(--leading-snug);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+    padding-left: 0;
+}
+
+h4.section-subtitle::before {
+    display: none;
+}
+
+/* H5 y H6 */
+h5.section-subtitle,
+.section-subtitle-quinary {
+    font-size: var(--heading-quinary);
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    padding-left: 0;
+}
+
+h5.section-subtitle::before {
+    display: none;
+}
+
+h6.section-subtitle,
+.section-subtitle-senary {
+    font-size: var(--heading-senary);
+    font-weight: 600;
+    color: var(--text-light);
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-left: 0;
+}
+
+h6.section-subtitle::before {
+    display: none;
+}
+
+/* ===== PÁRRAFOS Y CONTENIDO ===== */
+.service-description {
+    font-size: var(--body-large);
+    line-height: var(--leading-relaxed);
+    color: var(--text-light);
+    margin-bottom: var(--space-lg);
+    
+}
+
+/* Primer párrafo destacado */
+.services .service-description:first-of-type {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: var(--leading-relaxed);
+}
+
+/* ===== ELEMENTOS DESTACADOS ===== */
+.service-description strong {
+    color: var(--primary-color);
+    font-weight: 700;
+    position: relative;
+}
+
+/* Caja destacada para información importante */
+.highlight-box {
+    background: linear-gradient(135deg, rgba(0, 92, 152, 0.05), rgba(0, 164, 228, 0.05));
+    border-left: 4px solid var(--accent-color);
+    padding: var(--space-lg);
+    margin: var(--space-xl) 0;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+}
+
+.highlight-box::before {
+    content: '💡';
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    font-size: 1.5rem;
+    opacity: 0.3;
+}
+
+/* ===== CTA FINAL MEJORADO ===== */
+.cta-section {
+    background: var(--gradient);
+    color: white;
+    padding: var(--space-xl);
+    border-radius: 16px;
+    margin-top: var(--space-2xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+    background-size: 30px 30px;
+}
+
+.cta-section p {
+    font-size: var(--body-large);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+/* ===== LISTAS MEJORADAS ===== */
+.services ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-lg) 0;
+}
+
+.services ul li {
+    position: relative;
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--text-light);
+    line-height: var(--leading-relaxed);
+}
+
+.services ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* ===== TABLAS MEJORADAS ===== */
+.services table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-xl) 0;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.services table th,
+.services table td {
+    padding: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.services table th {
+    background: var(--gradient);
+    color: white;
+    font-weight: 600;
+    font-size: var(--body-normal);
+}
+
+.services table tr:last-child td {
+    border-bottom: none;
+}
+
+.services table tr:hover {
+    background: rgba(0, 92, 152, 0.02);
+}
+
+/* ===== RESPONSIVE DESIGN MEJORADO ===== */
+@media (max-width: 768px) {
+    :root {
+        --heading-primary: 2rem;
+        --heading-secondary: 1.75rem;
+        --heading-tertiary: 1.5rem;
+        --heading-quaternary: 1.25rem;
+        --space-lg: 1rem;
+        --space-xl: 2rem;
+        --space-2xl: 2.5rem;
+    }
+
+    .services .services {
+        padding: var(--space-xl);
+        border-radius: 16px;
+    }
+
+    .breadcrumb {
+        padding: 0 var(--space-sm);
+    }
+
+    .service-description {
+        text-align: left;
+        font-size: var(--body-normal);
+    }
+
+    .section-subtitle {
+        padding-left: var(--space-sm);
+    }
+
+    .section-subtitle::before {
+        width: 4px;
+        height: 1.2em;
+    }
+
+    .highlight-box {
+        padding: var(--space-md);
+        margin: var(--space-lg) 0;
+    }
+
+    .cta-section {
+        padding: var(--space-lg);
+    }
+
+    /* Tablas responsive */
+    .services table {
+        font-size: var(--body-small);
+    }
+
+    .services table th,
+    .services table td {
+        padding: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .services {
+        padding: var(--space-lg) var(--space-sm);
+    }
+
+    .services .services {
+        padding: var(--space-lg);
+        margin: 0;
+    }
+
+    .section-title-services {
+        font-size: 1.75rem;
+        margin-bottom: var(--space-lg);
+    }
+
+    .section-subtitle {
+        font-size: 1.5rem;
+        margin-top: var(--space-lg);
+        margin-bottom: var(--space-md);
+    }
+
+    .service-description {
+        font-size: var(--body-normal);
+        margin-bottom: var(--space-md);
+    }
+
+    .services .service-description:first-of-type {
+        font-size: 1.125rem;
+    }
+
+    /* Forzar scroll horizontal en tablas muy pequeñas */
+    .services table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ===== ANIMACIONES MEJORADAS ===== */
+.services .services {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-subtitle,
+.section-subtitle-tertiary {
+    transition: all 0.3s ease;
+}
+
+.section-subtitle:hover,
+.section-subtitle-tertiary:hover {
+    transform: translateX(4px);
+}
+
+/* ===== MEJORAS DE ACCESIBILIDAD ===== */
+.section-title-services:focus,
+.section-subtitle:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Mejor contraste para usuarios con necesidades especiales */
+@media (prefers-contrast: high) {
+    .service-description {
+        color: var(--text-dark);
+    }
+    
+    .section-subtitle::before {
+        background: var(--text-dark);
+    }
+    
+    .highlight-box {
+        border-left-width: 6px;
+        background: rgba(0, 92, 152, 0.1);
+    }
+}
+
+/* Reducir animaciones para usuarios sensibles al movimiento */
+@media (prefers-reduced-motion: reduce) {
+    .services .services {
+        animation: none;
+    }
+    
+    .section-subtitle:hover,
+    .section-subtitle-tertiary:hover {
+        transform: none;
+    }
+    
+    .section-subtitle,
+    .section-subtitle-tertiary {
+        transition: none;
+    }
+}
+
+/* ===== UTILIDADES ADICIONALES ===== */
+
+/* Espaciado extra para secciones importantes */
+.section-important {
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+}
+
+/* Texto centrado para CTAs */
+.text-center {
+    text-align: center;
+}
+
+/* Contenedor para elementos en línea */
+.inline-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+/* Separador visual */
+.section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    margin: var(--space-2xl) 0;
+}
+
+/* Badge o etiqueta destacada */
+.badge {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: var(--body-small);
+    font-weight: 600;
+    margin-left: var(--space-xs);
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    .services .services {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+    
+    .section-title-services,
+    .section-subtitle {
+        page-break-after: avoid;
+    }
+    
+    .highlight-box {
+        border: 1px solid #ccc;
+        background: #f9f9f9;
+    }
+    
+    .cta-section {
+        background: #f0f0f0;
+        color: #000;
+    }
+}
+
