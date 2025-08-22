@@ -1271,18 +1271,6 @@ body {
     letter-spacing: -0.02em;
 }
 
-.section-title-services::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    width: 80px;
-    height: 4px;
-    background: var(--gradient);
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
 /* H2 - Subtítulos Principales */
 .section-subtitle {
     font-size: clamp(1.5rem, 4vw, var(--heading-secondary));
@@ -1389,7 +1377,7 @@ h6.section-subtitle::before {
 
 /* Primer párrafo destacado */
 .services .service-description:first-of-type {
-    font-size: 1rem;
+    font-size: var(--body-normal);
     font-weight: 400;
     color: var(--text-dark);
     line-height: var(--leading-relaxed);
