@@ -2,26 +2,6 @@
 // NAVIGATION.JS - Script universal para todas las páginas
 // ===========================================
 
-// ⚠️ VERIFICACIÓN PARA EVITAR CONFLICTOS CON INDEX.HTML
-if (window.skipNavigationInit) {
-    console.log('🚫 Saltando inicialización de navigation.js - manejado por página principal');
-    // Crear funciones dummy para evitar errores si otros scripts las necesitan
-    window.showNotification = function(message, type = 'info') {
-        console.log(`Notification: ${message}`);
-    };
-    window.prefersReducedMotion = function() {
-        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    };
-    window.loadImageProgressively = function(img) {
-        if (img.dataset.src) {
-            img.src = img.dataset.src;
-            img.classList.add('loaded');
-        }
-    };
-    // Salir del script completamente
-    return;
-}
-
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     

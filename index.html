@@ -9,12 +9,12 @@
     <!-- ====================== 
          CRITICAL CSS INLINE - MÁXIMO PERFORMANCE
          ====================== -->
-    <style>
+    <style> 
         /* =================================
            CRITICAL CSS - Above the fold only
            ================================= */
 
-        /* CSS Variables - Crítico */
+        /* CSS Variables - Crítico */ 
         :root {
             --primary-color: #005C98;
             --secondary-color: #00A4E4;
@@ -368,14 +368,210 @@
             }
         }
 
+        /* ===== SERVICES SECTION - CSS CRÍTICO ===== */
+        .services {
+            padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 2rem);
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: clamp(2rem, 6vw, 4rem);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Services Grid - Mobile First */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(1.5rem, 4vw, 2rem);
+            margin-top: clamp(2rem, 6vw, 4rem);
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-title {
+            color: var(--primary-color);
+        }
+
+        .service-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        /* Indicador visual de clickeable */
+        .service-card::after {
+            content: '→';
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Focus para accesibilidad */
+        .service-card:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
+            transform: translateY(-4px);
+        }
+
+        /* Responsive móvil */
+        @media (max-width: 768px) {
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .service-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .service-card::after {
+                bottom: 0.75rem;
+                right: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Reducir animaciones si el usuario lo prefiere */
+        @media (prefers-reduced-motion: reduce) {
+            .service-card {
+                transition: box-shadow 0.3s ease;
+            }
+            
+            .service-card:hover {
+                transform: none;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+            
+            .service-card:hover .service-icon {
+                transform: none;
+            }
+            
+            .service-card::after {
+                transition: opacity 0.3s ease;
+                transform: none;
+            }
+            
+            .service-card:hover::after {
+                transform: none;
+            }
+        }
+
         /* Móviles muy pequeños */
         @media (max-width: 480px) {
             .home-logo {
                 width: 100%;
                 max-width: 280px;
             }
-        }
+        } 
     </style>
+    
 
     <!-- ====================== 
          PRECONNECT CRÍTICO - ANTES DE CARGAR FONTS
@@ -394,7 +590,20 @@
          CARGAR CSS NO CRÍTICO DE FORMA ASÍNCRONA
          ====================== -->
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+<noscript><link rel="stylesheet" href="style.css"></noscript>
+<!-- Fallback inmediato para servicios -->
+<script>
+// Asegurar que style.css se carga inmediatamente si hay problemas
+setTimeout(function() {
+    if (!document.querySelector('link[href="style.css"]')) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'style.css';
+        document.head.appendChild(link);
+        console.log('📎 Style.css cargado como fallback');
+    }
+}, 100);
+</script>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
@@ -721,216 +930,99 @@
     <!-- ====================== 
      SCRIPTS OPTIMIZADOS - AL FINAL DEL BODY
      ====================== -->
-
-    <!-- SOLUCIÓN JAVASCRIPT MEJORADA -->
-    <script>
-        // MOBILE MENU SOLUTION - VERSIÓN CORREGIDA Y ROBUSTA
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Inicializando menú móvil...');
-            
-            // === LOADING SCREEN ===
-            const loading = document.getElementById('loading');
-            const hideLoading = () => {
-                if (loading) {
-                    loading.style.opacity = '0';
-                    setTimeout(() => {
-                        loading.style.display = 'none';
-                        console.log('✅ Loading screen oculto');
-                    }, 300);
-                }
-            };
-            
-            if (document.readyState === 'complete') {
-                hideLoading();
-            } else {
-                window.addEventListener('load', hideLoading);
-            }
-            
-            // === MOBILE MENU FUNCTIONALITY ===
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-            
-            console.log('🔍 Elementos encontrados:', { 
-                menuToggle: !!menuToggle, 
-                navMenu: !!navMenu,
-                menuToggleClasses: menuToggle?.className,
-                navMenuClasses: navMenu?.className
-            });
-            
-            if (!menuToggle || !navMenu) {
-                console.error('❌ Elementos del menú no encontrados');
-                return;
-            }
-            
-            // Función principal para alternar menú
-            function toggleMenu() {
-                const isActive = navMenu.classList.contains('active');
-                console.log('🔄 Alternando menú. Estado actual:', isActive ? 'ABIERTO' : 'CERRADO');
-                
-                if (isActive) {
-                    // Cerrar menú
-                    navMenu.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
-                    document.body.style.overflow = '';
-                    console.log('📱 Menú CERRADO');
-                } else {
-                    // Abrir menú
-                    navMenu.classList.add('active');
-                    menuToggle.setAttribute('aria-expanded', 'true');
-                    menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
-                    document.body.style.overflow = 'hidden';
-                    console.log('📱 Menú ABIERTO');
-                }
-            }
-            
-            // Event listener principal - CON PREVENCIÓN DE PROPAGACIÓN
-            menuToggle.addEventListener('click', function(e) {
-                console.log('🖱️ Click en menu toggle detectado');
-                e.preventDefault();
-                e.stopPropagation();
-                toggleMenu();
-            });
-            
-            // Event listener adicional por si el anterior falla
-            menuToggle.addEventListener('touchstart', function(e) {
-                console.log('👆 Touch en menu toggle detectado');
-                e.preventDefault();
-                toggleMenu();
-            }, { passive: false });
-            
-            // === DROPDOWN FUNCTIONALITY PARA MÓVIL ===
-            const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
-            console.log('🔽 Dropdowns encontrados:', dropdownToggles.length);
-            
-            dropdownToggles.forEach((toggle, index) => {
-                toggle.addEventListener('click', function(e) {
-                    console.log(`🔽 Click en dropdown ${index}, ancho ventana:`, window.innerWidth);
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        const dropdown = this.nextElementSibling;
-                        if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-                            const isShowing = dropdown.classList.contains('show');
-                            
-                            // Cerrar otros dropdowns
-                            document.querySelectorAll('.dropdown-menu.show').forEach(dd => {
-                                dd.classList.remove('show');
-                            });
-                            
-                            if (!isShowing) {
-                                dropdown.classList.add('show');
-                                this.setAttribute('aria-expanded', 'true');
-                                console.log('📂 Dropdown abierto');
-                            } else {
-                                dropdown.classList.remove('show');
-                                this.setAttribute('aria-expanded', 'false');
-                                console.log('📁 Dropdown cerrado');
-                            }
-                        }
-                    }
-                });
-            });
-            
-            // === CERRAR MENÚ AL HACER CLICK FUERA ===
-            document.addEventListener('click', function(e) {
-                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
-                    if (navMenu.classList.contains('active')) {
-                        console.log('🖱️ Click fuera del menú - cerrando');
-                        navMenu.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
-                        document.body.style.overflow = '';
-                    }
-                }
-            });
-            
-            // === CERRAR MENÚ CON ESCAPE ===
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-                    console.log('⌨️ Escape presionado - cerrando menú');
-                    navMenu.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                    menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
-                    menuToggle.focus();
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // === CERRAR MENÚ AL HACER CLICK EN ENLACES ===
-            const navLinks = navMenu.querySelectorAll('.nav-link, .dropdown-link');
-            navLinks.forEach((link, index) => {
-                link.addEventListener('click', function() {
-                    console.log(`🔗 Click en enlace ${index} - cerrando menú`);
-                    if (navMenu.classList.contains('active')) {
-                        setTimeout(() => {
-                            navMenu.classList.remove('active');
-                            menuToggle.setAttribute('aria-expanded', 'false');
-                            menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
-                            document.body.style.overflow = '';
-                        }, 100);
-                    }
-                });
-            });
-            
-            // === MANEJAR REDIMENSIÓN DE VENTANA ===
-            let resizeTimeout;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    console.log('📏 Ventana redimensionada:', window.innerWidth);
-                    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-                        console.log('🖥️ Cambiando a desktop - cerrando menú móvil');
-                        navMenu.classList.remove('active');
-                        menuToggle.setAttribute('aria-expanded', 'false');
-                        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
-                        document.body.style.overflow = '';
-                        
-                        // Ocultar todos los dropdowns móviles
-                        const dropdowns = document.querySelectorAll('.dropdown-menu.show');
-                        dropdowns.forEach(dropdown => {
-                            dropdown.classList.remove('show');
-                        });
-                    }
-                }, 100);
-            });
-            
-            // === SKIP LINK FUNCTIONALITY ===
-            const skipLink = document.querySelector('.skip-link');
-            const mainContent = document.getElementById('main-content');
-            if (skipLink && mainContent) {
-                skipLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    mainContent.scrollIntoView();
-                    mainContent.focus();
-                });
-            }
-            
-            console.log('✅ Menú móvil inicializado correctamente');
-            
-            // === DEBUG INFO ===
-            window.debugMobileMenu = function() {
-                console.log('🐛 DEBUG INFO:');
-                console.log('- Menu toggle existe:', !!menuToggle);
-                console.log('- Nav menu existe:', !!navMenu);
-                console.log('- Menu activo:', navMenu?.classList.contains('active'));
-                console.log('- Ancho ventana:', window.innerWidth);
-                console.log('- Aria-expanded:', menuToggle?.getAttribute('aria-expanded'));
-                console.log('- Nav menu classes:', navMenu?.className);
-            };
-        });
-    </script>
+<!-- ==============================================
+     JAVASCRIPT SIMPLIFICADO PARA INDEX.HTML
+     ============================================== -->
 
 <script>
-// Prevenir conflictos con navigation.js en la página principal
-window.skipNavigationInit = true;
-console.log('🏠 Index.html manejará su propio menú móvil');
+// === SOLO FUNCIONALIDADES ESPECÍFICAS DE INDEX.HTML ===
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🏠 Inicializando página principal...');
+    
+    // === LOADING SCREEN ===
+    const loading = document.getElementById('loading');
+    const hideLoading = () => {
+        if (loading) {
+            loading.style.opacity = '0';
+            setTimeout(() => {
+                loading.style.display = 'none';
+                console.log('✅ Loading screen oculto');
+            }, 300);
+        }
+    };
+    
+    if (document.readyState === 'complete') {
+        hideLoading();
+    } else {
+        window.addEventListener('load', hideLoading);
+    }
+    
+    // === SMOOTH SCROLLING PARA INDEX ===
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    }
+    
+    // === SCROLL ANIMATIONS PARA INDEX ===
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observar elementos con animación fade-in
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    fadeInElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    console.log('✅ Página principal inicializada correctamente');
+});
+
+// === SCRIPT DE RESPALDO PARA COOKIES ===
+window.addEventListener('error', function(e) {
+    if (e.filename && e.filename.includes('cookie-loader.js')) {
+        console.warn('⚠️ Cookie loader failed, using emergency fallback');
+        
+        // Banner de emergencia súper básico
+        const emergencyBanner = document.createElement('div');
+        emergencyBanner.innerHTML = `
+            <div style="position:fixed;bottom:0;left:0;right:0;background:#005C98;color:white;padding:1rem;text-align:center;z-index:10000;">
+                <p style="margin:0 0 1rem 0">🍪 Utilizamos cookies para mejorar su experiencia. 
+                <a href="politica-de-cookies.html" style="color:#4CAF50">Más información</a></p>
+                <button onclick="this.parentElement.parentElement.remove()" 
+                        style="background:#4CAF50;border:none;padding:0.5rem 1rem;border-radius:4px;color:white;font-weight:600;cursor:pointer">
+                    Entendido
+                </button>
+            </div>
+        `;
+        document.body.appendChild(emergencyBanner);
+    }
+});
 </script>
-
-
+   
     <!-- Non-critical JavaScript with defer -->
-    <script src="navigation.js" defer data-skip-mobile-menu="true"></script>
+    <script src="navigation.js" defer></script>
 
     <!-- Cookie banner optimizado - Nueva implementación -->
     <script src="cookie-loader.js" defer></script>
