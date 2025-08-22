@@ -101,6 +101,55 @@
             color: var(--primary-color);
             padding: 0.5rem;
             border-radius: 4px;
+            z-index: 1001;
+        }
+
+/* DROPDOWN MENUS */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            z-index: 1000;
+            border-radius: 12px;
+            min-width: 220px;
+            border: 1px solid rgba(0, 92, 152, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            border-radius: 8px;
+            margin: 0.2rem 0.5rem;
+        }
+
+        .dropdown-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+            color: white; 
+            transform: translateX(8px); 
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         /* Home Section crítico */
@@ -221,42 +270,95 @@
             top: 0;
         }
 
-        /* Mobile crítico */
+        /* Mobile crítico - CORREGIDO */
         @media (max-width: 768px) {
             .nav-menu {
                 position: fixed;
                 top: clamp(60px, 8vw, 70px);
                 left: -100%;
                 width: 100vw;
+                height: calc(100vh - clamp(60px, 8vw, 70px));
                 background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: clamp(1.5rem, 4vw, 2rem);
-                transition: all 0.3s ease;
+                transition: left 0.3s ease-in-out;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                height: calc(100vh - clamp(60px, 8vw, 70px));
                 overflow-y: auto;
                 align-items: stretch;
+                justify-content: flex-start;
+                z-index: 999;
+                list-style: none;
             }
 
+            /* CRÍTICO: Estado activo del menú */
             .nav-menu.active {
-                left: 0;
+                left: 0 !important;
+                transform: translateX(0) !important;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
 
             .nav-link {
                 padding: 1rem;
                 text-align: center;
                 border-bottom: 1px solid #e2e8f0;
+                border-radius: 0;
+                width: 100%;
+                display: block;
+            }
+
+            .nav-link:last-child {
+                border-bottom: none;
             }
 
             .menu-toggle {
                 display: block;
+                position: relative;
+                z-index: 1001;
             }
             
-            .nav {
-                padding: 0 1rem;
+            /* Dropdown en móvil - CORREGIDO */
+            .dropdown-menu {
+                position: static;
+                display: none;
+                background: rgba(0, 92, 152, 0.05);
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: none;
+                min-width: auto;
+                width: 100%;
             }
-            
+
+            .dropdown-menu.show {
+                display: block !important;
+            }
+
+            .dropdown-link {
+                padding: 0.75rem 2rem;
+                margin: 0;
+                border-radius: 0;
+                border-bottom: 1px solid rgba(0, 92, 152, 0.1);
+            }
+
+            .dropdown-link:hover {
+                background: rgba(0, 92, 152, 0.1);
+                color: var(--primary-color);
+                transform: none;
+            }
+
+            /* Desactivar hover en móvil */
+            .nav-item:hover .dropdown-menu {
+                display: none;
+            }
+
             .home-title {
                 font-size: 2rem;
             }
@@ -376,7 +478,7 @@
             <ul class="nav-menu" id="navMenu" role="menubar">
                 <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
                 <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
-                    <a href="index.html#services" class="nav-link" aria-expanded="false">Servicios</a>
+                    <a href="index.html#services" class="nav-link" aria-expanded="false" data-dropdown-toggle>Servicios</a>
                     <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
                         <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
                         <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
@@ -390,7 +492,7 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
-                    <a href="index.html#about" class="nav-link" aria-expanded="false">Nosotros</a>
+                    <a href="index.html#about" class="nav-link" aria-expanded="false" data-dropdown-toggle>Nosotros</a>
                     <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
                         <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
                     </ul>
@@ -620,59 +722,213 @@
      SCRIPTS OPTIMIZADOS - AL FINAL DEL BODY
      ====================== -->
 
-    <!-- Critical JavaScript inline -->
+    <!-- SOLUCIÓN JAVASCRIPT MEJORADA -->
     <script>
-        // Critical navigation functionality
-        const initCritical = () => {
-            // Loading screen
+        // MOBILE MENU SOLUTION - VERSIÓN CORREGIDA Y ROBUSTA
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Inicializando menú móvil...');
+            
+            // === LOADING SCREEN ===
             const loading = document.getElementById('loading');
-            if (loading) {
-                const hideLoading = () => {
+            const hideLoading = () => {
+                if (loading) {
                     loading.style.opacity = '0';
-                    setTimeout(() => loading.style.display = 'none', 300);
-                };
-                
-                if (document.readyState === 'complete') {
-                    hideLoading();
-                } else {
-                    window.addEventListener('load', hideLoading);
+                    setTimeout(() => {
+                        loading.style.display = 'none';
+                        console.log('✅ Loading screen oculto');
+                    }, 300);
                 }
+            };
+            
+            if (document.readyState === 'complete') {
+                hideLoading();
+            } else {
+                window.addEventListener('load', hideLoading);
             }
             
-            // Mobile menu toggle
+            // === MOBILE MENU FUNCTIONALITY ===
             const menuToggle = document.getElementById('menuToggle');
             const navMenu = document.getElementById('navMenu');
             
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const isActive = navMenu.classList.toggle('active');
-                    menuToggle.setAttribute('aria-expanded', isActive);
-                });
+            console.log('🔍 Elementos encontrados:', { 
+                menuToggle: !!menuToggle, 
+                navMenu: !!navMenu,
+                menuToggleClasses: menuToggle?.className,
+                navMenuClasses: navMenu?.className
+            });
+            
+            if (!menuToggle || !navMenu) {
+                console.error('❌ Elementos del menú no encontrados');
+                return;
             }
             
-            // Skip link functionality
+            // Función principal para alternar menú
+            function toggleMenu() {
+                const isActive = navMenu.classList.contains('active');
+                console.log('🔄 Alternando menú. Estado actual:', isActive ? 'ABIERTO' : 'CERRADO');
+                
+                if (isActive) {
+                    // Cerrar menú
+                    navMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+                    document.body.style.overflow = '';
+                    console.log('📱 Menú CERRADO');
+                } else {
+                    // Abrir menú
+                    navMenu.classList.add('active');
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                    menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+                    document.body.style.overflow = 'hidden';
+                    console.log('📱 Menú ABIERTO');
+                }
+            }
+            
+            // Event listener principal - CON PREVENCIÓN DE PROPAGACIÓN
+            menuToggle.addEventListener('click', function(e) {
+                console.log('🖱️ Click en menu toggle detectado');
+                e.preventDefault();
+                e.stopPropagation();
+                toggleMenu();
+            });
+            
+            // Event listener adicional por si el anterior falla
+            menuToggle.addEventListener('touchstart', function(e) {
+                console.log('👆 Touch en menu toggle detectado');
+                e.preventDefault();
+                toggleMenu();
+            }, { passive: false });
+            
+            // === DROPDOWN FUNCTIONALITY PARA MÓVIL ===
+            const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+            console.log('🔽 Dropdowns encontrados:', dropdownToggles.length);
+            
+            dropdownToggles.forEach((toggle, index) => {
+                toggle.addEventListener('click', function(e) {
+                    console.log(`🔽 Click en dropdown ${index}, ancho ventana:`, window.innerWidth);
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const dropdown = this.nextElementSibling;
+                        if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                            const isShowing = dropdown.classList.contains('show');
+                            
+                            // Cerrar otros dropdowns
+                            document.querySelectorAll('.dropdown-menu.show').forEach(dd => {
+                                dd.classList.remove('show');
+                            });
+                            
+                            if (!isShowing) {
+                                dropdown.classList.add('show');
+                                this.setAttribute('aria-expanded', 'true');
+                                console.log('📂 Dropdown abierto');
+                            } else {
+                                dropdown.classList.remove('show');
+                                this.setAttribute('aria-expanded', 'false');
+                                console.log('📁 Dropdown cerrado');
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // === CERRAR MENÚ AL HACER CLICK FUERA ===
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                    if (navMenu.classList.contains('active')) {
+                        console.log('🖱️ Click fuera del menú - cerrando');
+                        navMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+            
+            // === CERRAR MENÚ CON ESCAPE ===
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                    console.log('⌨️ Escape presionado - cerrando menú');
+                    navMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+                    menuToggle.focus();
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            // === CERRAR MENÚ AL HACER CLICK EN ENLACES ===
+            const navLinks = navMenu.querySelectorAll('.nav-link, .dropdown-link');
+            navLinks.forEach((link, index) => {
+                link.addEventListener('click', function() {
+                    console.log(`🔗 Click en enlace ${index} - cerrando menú`);
+                    if (navMenu.classList.contains('active')) {
+                        setTimeout(() => {
+                            navMenu.classList.remove('active');
+                            menuToggle.setAttribute('aria-expanded', 'false');
+                            menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+                            document.body.style.overflow = '';
+                        }, 100);
+                    }
+                });
+            });
+            
+            // === MANEJAR REDIMENSIÓN DE VENTANA ===
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    console.log('📏 Ventana redimensionada:', window.innerWidth);
+                    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                        console.log('🖥️ Cambiando a desktop - cerrando menú móvil');
+                        navMenu.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+                        document.body.style.overflow = '';
+                        
+                        // Ocultar todos los dropdowns móviles
+                        const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+                        dropdowns.forEach(dropdown => {
+                            dropdown.classList.remove('show');
+                        });
+                    }
+                }, 100);
+            });
+            
+            // === SKIP LINK FUNCTIONALITY ===
             const skipLink = document.querySelector('.skip-link');
             const mainContent = document.getElementById('main-content');
             if (skipLink && mainContent) {
-                skipLink.addEventListener('click', (e) => {
+                skipLink.addEventListener('click', function(e) {
                     e.preventDefault();
-                    mainContent.focus();
                     mainContent.scrollIntoView();
+                    mainContent.focus();
                 });
             }
-        };
-
-        // Execute immediately if DOM ready, otherwise wait
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCritical);
-        } else {
-            initCritical();
-        }
+            
+            console.log('✅ Menú móvil inicializado correctamente');
+            
+            // === DEBUG INFO ===
+            window.debugMobileMenu = function() {
+                console.log('🐛 DEBUG INFO:');
+                console.log('- Menu toggle existe:', !!menuToggle);
+                console.log('- Nav menu existe:', !!navMenu);
+                console.log('- Menu activo:', navMenu?.classList.contains('active'));
+                console.log('- Ancho ventana:', window.innerWidth);
+                console.log('- Aria-expanded:', menuToggle?.getAttribute('aria-expanded'));
+                console.log('- Nav menu classes:', navMenu?.className);
+            };
+        });
     </script>
 
+<script>
+// Prevenir conflictos con navigation.js en la página principal
+window.skipNavigationInit = true;
+</script>
+
     <!-- Non-critical JavaScript with defer -->
-    <script src="navigation.js" defer></script>
+    <script src="navigation.js" defer data-skip-mobile-menu="true"></script>
 
     <!-- Cookie banner optimizado - Nueva implementación -->
     <script src="cookie-loader.js" defer></script>
