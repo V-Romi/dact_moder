@@ -1140,13 +1140,10 @@ body {
 
 /* ===================================================
    MEJORAS CSS PARA PÁGINAS DE SERVICIOS
-   Añadir al final de style.css o reemplazar secciones existentes
    =================================================== */
 
 /* ===== VARIABLES TIPOGRÁFICAS MEJORADAS ===== */
 :root {
-    /* Agregar estas nuevas variables a las existentes */
-    
     /* Escala tipográfica optimizada */
     --heading-primary: 2.75rem;      /* H1 - 44px */
     --heading-secondary: 2.25rem;    /* H2 - 36px */
