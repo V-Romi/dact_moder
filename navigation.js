@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const contactLinks = document.querySelectorAll('.contact-link');
         contactLinks.forEach(link => {
             link.addEventListener('click', function() {
-                // Aquí puedes agregar analytics o tracking
+                // Analytics tracking (ya manejado en initAnalyticsEvents)
                 console.log('Contact method clicked:', this.textContent.trim());
             });
         });
@@ -574,6 +574,87 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(style);
     }
+
+    // ===========================================
+    // GOOGLE ANALYTICS EVENTS
+    // ===========================================
+    function initAnalyticsEvents() {
+        // Solo ejecutar si Analytics está disponible y hay consentimiento
+        function trackEvent(eventName, category, label) {
+            if (typeof gtag !== 'undefined' && window.DAClimaTechCookies && window.DAClimaTechCookies.hasConsent('analytical')) {
+                gtag('event', eventName, {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+        }
+
+        // Rastrear clics en servicios (solo en página principal)
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const serviceTitle = this.querySelector('.service-title');
+                if (serviceTitle) {
+                    trackEvent('service_click', 'engagement', serviceTitle.textContent);
+                    console.log('Analytics: Service clicked -', serviceTitle.textContent);
+                }
+            });
+        });
+
+        // Rastrear clics en contacto
+        const contactLinks = document.querySelectorAll('.contact-link');
+        contactLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                trackEvent('contact_click', 'conversion', this.textContent.trim());
+                console.log('Analytics: Contact clicked -', this.textContent.trim());
+            });
+        });
+
+        // Rastrear CTA button
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function() {
+                trackEvent('cta_click', 'conversion', 'Solicita tu Presupuesto Gratis');
+                console.log('Analytics: CTA clicked');
+            });
+        }
+
+        // Rastrear enlaces del footer
+        const footerLinks = document.querySelectorAll('.footer-link');
+        footerLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                trackEvent('footer_link_click', 'navigation', this.textContent);
+            });
+        });
+
+        // Rastrear navegación por breadcrumbs
+        const breadcrumbLinks = document.querySelectorAll('.breadcrumb a');
+        breadcrumbLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                trackEvent('breadcrumb_click', 'navigation', this.textContent);
+            });
+        });
+
+        // Rastrear scroll profundo (90% de la página)
+        let scrollTracked = false;
+        window.addEventListener('scroll', function() {
+            if (!scrollTracked) {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                if (scrollPercent > 90) {
+                    trackEvent('scroll_deep', 'engagement', '90_percent');
+                    scrollTracked = true;
+                }
+            }
+        });
+
+        // Rastrear tiempo en página (usuarios que permanecen más de 30 segundos)
+        setTimeout(() => {
+            trackEvent('time_on_page', 'engagement', '30_seconds');
+        }, 30000);
+
+        console.log('📊 Analytics events initialized');
+    }
+
     function initializeNavigation() {
         try {
             initLoadingScreen();
@@ -588,6 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initKeyboardNavigation();
             initPerformanceOptimizations();
             initAccessibilityFeatures();
+            initAnalyticsEvents();
             
             console.log('✅ Navigation.js initialized successfully');
         } catch (error) {

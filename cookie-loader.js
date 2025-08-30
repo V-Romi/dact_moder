@@ -91,18 +91,25 @@ class CookieBannerLoader {
     }
 
     acceptCookies() {
-        const consentData = {
-            technical: true,
-            analytical: true,
-            functional: true,
-            consentGiven: true,
-            timestamp: new Date().toISOString()
+    const consentData = {
+        technical: true,
+        analytical: true,
+        functional: true,
+        consentGiven: true,
+        timestamp: new Date().toISOString()
         };
-        
+    
         this.saveConsent(consentData);
         this.applyCookieSettings();
         this.hideBanner();
         this.showNotification('✅ Cookies aceptadas correctamente');
+        
+        // Activar Analytics inmediatamente
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+        }
     }
 
     rejectCookies() {
@@ -154,9 +161,17 @@ class CookieBannerLoader {
     }
 
     enableAnalytics() {
-        // Aquí cargar Google Analytics si está configurado
+    const consent = this.getConsentStatus();
+    if (consent && consent.analytical) {
+        // Activar Google Analytics solo si hay consentimiento
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+        }
         console.log('📊 Analytics enabled');
     }
+}
 
     enableFunctional() {
         // Aquí activar cookies funcionales
