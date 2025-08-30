@@ -653,6 +653,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 30000);
 
         console.log('📊 Analytics events initialized');
+
+        // Tracking para botón WhatsApp
+        const whatsappButton = document.querySelector('.whatsapp-float');
+        if (whatsappButton) {
+            whatsappButton.addEventListener('click', function() {
+                trackEvent('whatsapp_click', 'contact', 'whatsapp_float_button');
+                console.log('Analytics: WhatsApp button clicked');
+            });
+        }
     }
 
     function initializeNavigation() {
