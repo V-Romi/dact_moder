@@ -1850,15 +1850,25 @@ h6.section-subtitle::before {
 }
 
 /* ===== SECCIÓN FAQ ULTRA SIMPLIFICADA ===== */
-.faq-section {
+.faq-section { 
     background: var(--bg-card);
     border-radius: 20px;
     padding: var(--space-xl);
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
+    max-width: 800px; /* Ancho fijo más pequeño */
+    width: 100%; /* Asegurar que use el ancho disponible */
+    margin: var(--space-xl) auto; /* Centrado consistente */
+    box-sizing: border-box; /* Incluir padding en el ancho */
+}
+
+/* Contenedor padre para controlar el ancho total */
+.faq-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: var(--space-xl);
+    padding: 0 var(--container-padding);
+    display: flex;
+    justify-content: center;
 }
 
 /* H2 - Título principal SIN barras decorativas */
@@ -1968,16 +1978,16 @@ h6.section-subtitle::before {
     }
     to {
         opacity: 1;
-        max-height: 200px;
+        max-height: 300px;
     }
 }
 
 /* Responsive FAQ */
 @media (max-width: 768px) {
     .faq-section {
+        max-width: none; /* Usar todo el ancho en móviles */
         padding: var(--space-lg);
-        margin: var(--space-sm);
-        margin-top: var(--space-xl);
+        margin: var(--space-xl) var(--space-sm);
     }
     
     .faq-question {
@@ -1999,5 +2009,33 @@ h6.section-subtitle::before {
         width: 22px;
         height: 22px;
         font-size: 12px;
+    }
+}
+/* Estilos para listas en las respuestas FAQ */
+.faq-answer ul {
+    margin: var(--space-sm) 0 0 var(--space-md);
+    padding-left: 0;
+}
+
+.faq-answer li {
+    margin-bottom: var(--space-xs);
+    line-height: 1.6;
+    list-style-type: none;
+    position: relative;
+    padding-left: var(--space-md);
+}
+
+.faq-answer li::before {
+    content: '•';
+    color: var(--secondary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+@media (max-width: 768px) {
+    .faq-answer ul {
+        margin-left: var(--space-sm);
     }
 }
