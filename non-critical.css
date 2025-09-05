@@ -574,7 +574,8 @@
         width: 100%;
     }
 
-    .dropdown-menu.show {
+    /* NUEVA CLASE PARA JAVASCRIPT */
+    .dropdown-menu.mobile-show {
         display: block !important;
     }
 

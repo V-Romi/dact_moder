@@ -383,18 +383,21 @@ window.addEventListener('load', function() {
             navLink.addEventListener('click', function(e) {
                 if (window.innerWidth <= 768 && this.getAttribute('href').includes('#')) {
                     e.preventDefault();
-                    const isExpanded = dropdownMenu.style.display === 'block';
+                    const isExpanded = dropdownMenu.classList.contains('mobile-show');
                     
                     // Cerrar todos los dropdowns
                     document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                        menu.style.display = 'none';
+                        menu.classList.remove('mobile-show');
+                    });
+                    
+                    // Actualizar aria-expanded para todos los nav-links
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.setAttribute('aria-expanded', 'false');
                     });
                     
                     if (!isExpanded) {
-                        dropdownMenu.style.display = 'block';
+                        dropdownMenu.classList.add('mobile-show');
                         this.setAttribute('aria-expanded', 'true');
-                    } else {
-                        this.setAttribute('aria-expanded', 'false');
                     }
                 }
             });
@@ -402,7 +405,7 @@ window.addEventListener('load', function() {
             // Cerrar dropdown al hacer click en link
             dropdownMenu.addEventListener('click', function(e) {
                 if (e.target.classList.contains('dropdown-link')) {
-                    dropdownMenu.style.display = 'none';
+                    dropdownMenu.classList.remove('mobile-show');
                     navLink.setAttribute('aria-expanded', 'false');
                 }
             });
@@ -412,7 +415,12 @@ window.addEventListener('load', function() {
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('mobile-show');
                     menu.style.display = '';
+                });
+                // Reset aria-expanded
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.setAttribute('aria-expanded', 'false');
                 });
             }
         });
