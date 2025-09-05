@@ -349,7 +349,7 @@ window.addEventListener('load', function() {
     }
 
     // ========================================
-    // DROPDOWNS - NO CRÍTICO
+    // DROPDOWNS CORREGIDO - NO CRÍTICO
     // ========================================
     function initDropdownMenus() {
         const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
@@ -360,7 +360,7 @@ window.addEventListener('load', function() {
             
             if (!dropdownMenu || !navLink) return;
 
-            // Desktop hover
+            // Desktop hover - solo funciona en pantallas grandes
             item.addEventListener('mouseenter', function() {
                 if (window.innerWidth > 768) {
                     dropdownMenu.style.opacity = '1';
@@ -379,13 +379,16 @@ window.addEventListener('load', function() {
                 }
             });
 
-            // Mobile click
+            // Mobile click - CORRECCIÓN PRINCIPAL
             navLink.addEventListener('click', function(e) {
+                // Solo prevenir default en móviles Y si el link tiene dropdown
                 if (window.innerWidth <= 768 && this.getAttribute('href').includes('#')) {
                     e.preventDefault();
+                    e.stopPropagation(); // Evitar que se cierre el menú principal
+                    
                     const isExpanded = dropdownMenu.classList.contains('mobile-show');
                     
-                    // Cerrar todos los dropdowns
+                    // Cerrar todos los dropdowns primero
                     document.querySelectorAll('.dropdown-menu').forEach(menu => {
                         menu.classList.remove('mobile-show');
                     });
@@ -395,6 +398,7 @@ window.addEventListener('load', function() {
                         link.setAttribute('aria-expanded', 'false');
                     });
                     
+                    // Abrir este dropdown si no estaba abierto
                     if (!isExpanded) {
                         dropdownMenu.classList.add('mobile-show');
                         this.setAttribute('aria-expanded', 'true');
@@ -402,11 +406,27 @@ window.addEventListener('load', function() {
                 }
             });
 
-            // Cerrar dropdown al hacer click en link
+            // Cerrar dropdown al hacer click en un link del submenu
             dropdownMenu.addEventListener('click', function(e) {
                 if (e.target.classList.contains('dropdown-link')) {
-                    dropdownMenu.classList.remove('mobile-show');
-                    navLink.setAttribute('aria-expanded', 'false');
+                    // En móvil, cerrar el dropdown después de un pequeño delay
+                    if (window.innerWidth <= 768) {
+                        setTimeout(() => {
+                            dropdownMenu.classList.remove('mobile-show');
+                            navLink.setAttribute('aria-expanded', 'false');
+                            
+                            // También cerrar el menú principal
+                            const navMenu = document.getElementById('navMenu');
+                            if (navMenu) {
+                                navMenu.classList.remove('active');
+                                const menuToggle = document.getElementById('menuToggle');
+                                if (menuToggle) {
+                                    menuToggle.setAttribute('aria-expanded', 'false');
+                                }
+                                document.body.style.overflow = '';
+                            }
+                        }, 100);
+                    }
                 }
             });
         });
@@ -414,14 +434,36 @@ window.addEventListener('load', function() {
         // Reset dropdowns en resize
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
+                // En desktop, limpiar clases móviles
                 document.querySelectorAll('.dropdown-menu').forEach(menu => {
                     menu.classList.remove('mobile-show');
                     menu.style.display = '';
                 });
-                // Reset aria-expanded
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.setAttribute('aria-expanded', 'false');
                 });
+            } else {
+                // En móvil, limpiar estilos desktop
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.opacity = '';
+                    menu.style.visibility = '';
+                    menu.style.transform = '';
+                });
+            }
+        });
+
+        // Cerrar dropdowns al hacer click fuera (solo móvil)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                const isClickInsideDropdown = e.target.closest('.nav-item.dropdown');
+                if (!isClickInsideDropdown) {
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        menu.classList.remove('mobile-show');
+                    });
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.setAttribute('aria-expanded', 'false');
+                    });
+                }
             }
         });
     }

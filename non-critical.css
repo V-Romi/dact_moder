@@ -577,6 +577,18 @@
     /* NUEVA CLASE PARA JAVASCRIPT */
     .dropdown-menu.mobile-show {
         display: block !important;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            max-height: 0;
+        }
+        to {
+            opacity: 1;
+            max-height: 500px;
+        }
     }
 
     .dropdown-link {
@@ -584,16 +596,19 @@
         margin: 0;
         border-radius: 0;
         border-bottom: 1px solid rgba(0, 92, 152, 0.1);
+        font-size: 0.9rem;
     }
 
     .dropdown-link:hover {
         background: rgba(0, 92, 152, 0.1);
         color: var(--primary-color);
         transform: none;
+        box-shadow: none;
     }
 
+    /* DESACTIVAR HOVER EN MÓVIL */
     .nav-item:hover .dropdown-menu {
-        display: none;
+        display: none; /* Mantener oculto en hover móvil */
     }
 
     .about-content {
