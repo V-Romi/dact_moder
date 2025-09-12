@@ -7,6 +7,89 @@
     <meta name="description" content="Política de privacidad de DAClimaTECH. Tratamiento y protección de datos personales conforme RGPD y LOPD. Derechos del usuario y seguridad de datos.">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="política privacidad, protección datos, RGPD, LOPD, derechos usuario, tratamiento datos personales">
+    <!-- Headers de seguridad vía meta tags (añadir en el <head> de todas las páginas HTML) -->
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' 'unsafe-eval'
+            https://www.googletagmanager.com
+            https://www.google-analytics.com
+            https://cdnjs.cloudflare.com
+            https://fonts.googleapis.com;
+        style-src 'self' 'unsafe-inline'
+            https://fonts.googleapis.com
+            https://fonts.gstatic.com;
+        img-src 'self' data:
+            https://www.google-analytics.com
+            https://*.google-analytics.com
+            https://maps.googleapis.com
+            https://maps.gstatic.com;
+        font-src 'self'
+            https://fonts.gstatic.com
+            https://fonts.googleapis.com;
+        connect-src 'self'
+            https://www.google-analytics.com
+            https://*.google-analytics.com
+            https://api.whatsapp.com;
+        frame-src 'self'
+            https://www.google.com
+            https://maps.google.com;
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self' https://wa.me;
+        upgrade-insecure-requests;
+        block-all-mixed-content">
+
+    <!-- Prevenir clickjacking -->
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+
+    <!-- Prevenir MIME sniffing -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <!-- XSS Protection -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+
+    <!-- Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Permissions Policy -->
+    <meta http-equiv="Permissions-Policy" content="
+        geolocation=(),
+        microphone=(),
+        camera=(),
+        magnetometer=(),
+        gyroscope=(),
+        speaker=(),
+        vibrate=(),
+        fullscreen=(self),
+        payment=()">
+
+    <!-- DNS Prefetch Control -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <!-- Viewport para seguridad adicional -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+    <!-- Formato de detección de número de teléfono -->
+    <meta name="format-detection" content="telephone=yes">
+
+    <!-- Theme color para seguridad del navegador -->
+    <meta name="theme-color" content="#005C98">
+
+    <!-- Manifest para PWA (crear archivo separado) -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Canonical siempre presente -->
+    <link rel="canonical" href="https://daclimatech.com/">
+
+    <!-- Preconnect solo a dominios necesarios -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <!-- No permitir traducción automática de ciertos elementos -->
+    <meta name="google" content="notranslate">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://daclimatech.com/politica-privacidad.html">
     
     <!-- Favicon -->
