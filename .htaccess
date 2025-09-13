@@ -223,6 +223,9 @@ AddType image/webp .webp
 AddType application/font-woff2 .woff2
 AddType application/manifest+json .webmanifest
 
+# Forzar UTF-8 para todo el sitio
+AddDefaultCharset UTF-8
+
 # =====================================
 # LOGS DE SEGURIDAD (Opcional)
 # =====================================
