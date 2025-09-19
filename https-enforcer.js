@@ -7,11 +7,11 @@
     // Configuración del enforcement HTTPS
     const HTTPS_CONFIG = {
         enabled: true,
-        forceRedirect: true,
-        showWarnings: true,
+        forceRedirect: false,
+        showWarnings: false,
         excludeLocalhost: true,
         allowedInsecureHosts: ['localhost', '127.0.0.1', '192.168.', '10.0.', '172.16.'],
-        strictMode: true, // Bloquea contenido mixto agresivamente
+        strictMode: false, // Bloquea contenido mixto agresivamente
         upgradeInsecureRequests: true
     };
 
