@@ -38,32 +38,6 @@
             upgrade-insecure-requests;
             block-all-mixed-content">
 
-        <!-- Prevenir clickjacking -->
-        <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-
-        <!-- Prevenir MIME sniffing -->
-        <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-        <!-- XSS Protection -->
-        <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-
-        <!-- Referrer Policy -->
-        <meta name="referrer" content="strict-origin-when-cross-origin">
-
-        <!-- Permissions Policy -->
-        <meta http-equiv="Permissions-Policy" content="
-            geolocation=(),
-            microphone=(),
-            camera=(),
-            magnetometer=(),
-            gyroscope=(),
-            speaker=(),
-            vibrate=(),
-            fullscreen=(self),
-            payment=()">
-
-        <!-- DNS Prefetch Control -->
-        <meta http-equiv="x-dns-prefetch-control" content="on">
 
         <!-- Viewport para seguridad adicional -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">

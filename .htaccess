@@ -1,133 +1,121 @@
-# .htaccess - Headers de Seguridad para DAClimaTECH
-# Coloca este archivo en la raíz de tu sitio web
-
 # =====================================
-# CONTENT SECURITY POLICY (CSP)
+# VERIFICACIÓN DE MÓDULOS REQUERIDOS
 # =====================================
 
-# CSP Principal - Política estricta pero funcional
-Header always set Content-Security-Policy "\
-    default-src 'self'; \
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' \
-        https://www.googletagmanager.com \
-        https://www.google-analytics.com \
-        https://cdnjs.cloudflare.com \
-        https://fonts.googleapis.com; \
-    style-src 'self' 'unsafe-inline' \
-        https://fonts.googleapis.com \
-        https://fonts.gstatic.com; \
-    img-src 'self' data: \
-        https://www.google-analytics.com \
-        https://*.google-analytics.com \
-        https://maps.googleapis.com \
-        https://maps.gstatic.com; \
-    font-src 'self' \
-        https://fonts.gstatic.com \
-        https://fonts.googleapis.com; \
-    connect-src 'self' \
-        https://www.google-analytics.com \
-        https://*.google-analytics.com \
-        https://api.whatsapp.com; \
-    frame-src 'self' \
-        https://www.google.com \
-        https://maps.google.com; \
-    object-src 'none'; \
-    base-uri 'self'; \
-    form-action 'self' \
-        https://wa.me; \
-    upgrade-insecure-requests; \
-    block-all-mixed-content"
-
-# CSP de respaldo para navegadores que no soportan la versión completa
-Header always set Content-Security-Policy-Report-Only "\
-    default-src 'self'; \
-    report-uri /csp-report"
+# Verificar que mod_headers esté disponible
+<IfModule !mod_headers.c>
+    # Si mod_headers no está disponible, mostrar mensaje de error
+    ErrorDocument 500 "mod_headers no está habilitado en el servidor"
+</IfModule>
 
 # =====================================
 # HEADERS DE SEGURIDAD PRINCIPALES  
 # =====================================
 
-# Prevenir ataques de clickjacking
-Header always set X-Frame-Options "SAMEORIGIN"
+<IfModule mod_headers.c>
+    # Prevenir ataques de clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
 
-# Prevenir sniffing de tipo MIME
-Header always set X-Content-Type-Options "nosniff"
+    # Prevenir sniffing de tipo MIME
+    Header always set X-Content-Type-Options "nosniff"
 
-# Habilitar protección XSS del navegador
-Header always set X-XSS-Protection "1; mode=block"
+    # Forzar HTTPS (HSTS) - 1 año
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-# Forzar HTTPS (HSTS) - 1 año
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    # Política de referrer - balance entre privacidad y funcionalidad
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
-# Política de referrer - balance entre privacidad y funcionalidad
-Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    # Política de permisos - Controlar APIs del navegador (sintaxis moderna)
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=(), vibrate=(), fullscreen=(self), payment=()"
 
-# Política de permisos - Controlar APIs del navegador
-Header always set Permissions-Policy "\
-    geolocation=(), \
-    microphone=(), \
-    camera=(), \
-    magnetometer=(), \
-    gyroscope=(), \
-    speaker=(), \
-    vibrate=(), \
-    fullscreen=(self), \
-    payment=()"
+    # CSP básica - Ajusta según tus necesidades específicas
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://maps.googleapis.com https://maps.gstatic.com; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://api.whatsapp.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests; block-all-mixed-content"
+
+    # Header de test para verificar que .htaccess funciona
+    Header always set X-Test-Header "htaccess-funcionando"
+</IfModule>
+
+# =====================================
+# CONFIGURACIÓN DE REWRITE
+# =====================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Forzar HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirigir www a no-www (ajustar según tu preferencia)
+    RewriteCond %{HTTP_HOST} ^www\.daclimatech\.com [NC]
+    RewriteRule ^(.*)$ https://daclimatech.com/$1 [L,R=301]
+
+    # OPTIMIZACIÓN DE IMÁGENES AUTOMÁTICA - WebP
+    # Servir WebP automáticamente si está disponible
+    RewriteCond %{HTTP_ACCEPT} image/webp
+    RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
+    RewriteCond %{REQUEST_FILENAME}\.webp -f
+    RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,E=accept:1,L]
+</IfModule>
 
 # =====================================
 # HEADERS DE RENDIMIENTO Y CACHÉ
 # =====================================
 
-# Cache HTML por poco tiempo
-<FilesMatch "\.(html|htm)$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-</FilesMatch>
+<IfModule mod_headers.c>
+    # Cache HTML por poco tiempo
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
 
-# Cache CSS y JS por 30 días
-<FilesMatch "\.(css|js)$">
-    Header set Cache-Control "public, max-age=2592000"
-    Header unset Pragma
-    Header unset Expires
-</FilesMatch>
+    # Cache CSS y JS por 30 días
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000"
+        Header unset Pragma
+        Header unset Expires
+    </FilesMatch>
 
-# Cache imágenes por 1 año
-<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-    Header unset Pragma
-    Header unset Expires
-</FilesMatch>
+    # Cache imágenes por 1 año
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header unset Pragma
+        Header unset Expires
+    </FilesMatch>
 
-# Cache fuentes por 1 año
-<FilesMatch "\.(woff|woff2|ttf|eot)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-    Header unset Pragma
-    Header unset Expires
-</FilesMatch>
+    # Cache fuentes por 1 año
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header unset Pragma
+        Header unset Expires
+    </FilesMatch>
 
-# Service Worker - Sin caché
-<Files "service-worker.js">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires "0"
-    Header set Service-Worker-Allowed "/"
-</Files>
+    # Cache más agresivo para archivos que no cambian
+    <FilesMatch "\.(pdf|doc|docx|xls|xlsx)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+
+    # Service Worker - Sin caché
+    <Files "service-worker.js">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header set Service-Worker-Allowed "/"
+    </Files>
+
+    # Vary header para mejor caché
+    Header append Vary: Accept-Encoding
+    Header append Vary: Accept
+</IfModule>
 
 # =====================================
-# PROTECCIÓN DE ARCHIVOS SENSIBLES
+# PROTECCIÓN DE ARCHIVOS SENSIBLES (Apache 2.4+)
 # =====================================
 
-# Denegar acceso a archivos de configuración
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|conf|config)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
-# Proteger archivos de desarrollo
-<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp)$">
-    Order Allow,Deny
-    Deny from all
+# Denegar acceso a archivos sensibles - Sintaxis Apache 2.4+
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|sql|conf|config|bak|backup|old|orig|save|swp|tmp)$">
+    Require all denied
 </FilesMatch>
 
 # =====================================
@@ -158,6 +146,15 @@ Header always set Permissions-Policy "\
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/xml
     
+    # Añadir tipos MIME adicionales
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/ld+json
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE application/geo+json
+    
+    # No comprimir archivos ya comprimidos
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|woff2?|zip|gz|rar|bz2|7z)$ no-gzip
+    
     # Remover ETag para archivos comprimidos
     <FilesMatch "\.(js|css|xml|gz|html|htm)$">
         FileETag None
@@ -165,49 +162,55 @@ Header always set Permissions-Policy "\
 </IfModule>
 
 # =====================================
-# REDIRECTS HTTPS
+# MEJORA DE COMPRESIÓN BROTLI (si disponible)
 # =====================================
 
-# Forzar HTTPS
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Redirigir www a no-www (ajustar según tu preferencia)
-RewriteCond %{HTTP_HOST} ^www\.daclimatech\.com [NC]
-RewriteRule ^(.*)$ https://daclimatech.com/$1 [L,R=301]
+<IfModule mod_brotli.c>
+    # Comprimir con Brotli (mejor que Gzip)
+    SetOutputFilter BROTLI_COMPRESS
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|woff2?)$ no-brotli
+</IfModule>
 
 # =====================================
 # CONFIGURACIÓN DE ERRORES PERSONALIZADOS
 # =====================================
 
-# Páginas de error personalizadas
-ErrorDocument 404 /404.html
-ErrorDocument 403 /403.html
-ErrorDocument 500 /500.html
+# IMPORTANTE: Crea estos archivos en tu directorio raíz antes de usar
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html  
+# ErrorDocument 500 /500.html
+
+# Descomenta las siguientes líneas SOLO si has creado los archivos HTML correspondientes:
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
 
 # =====================================
 # CORS (Cross-Origin Resource Sharing)
 # =====================================
 
-# Permitir CORS para fuentes
-<FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
-    Header set Access-Control-Allow-Origin "*"
-</FilesMatch>
+<IfModule mod_headers.c>
+    # Permitir CORS para fuentes
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
 
 # =====================================
 # BLOQUEOS DE SEGURIDAD ADICIONALES
 # =====================================
 
-# Bloquear bots maliciosos conocidos
-<RequireAll>
-    Require all granted
-    Require not env bad-bot
-</RequireAll>
+# Bloquear bots maliciosos conocidos (requiere mod_setenvif)
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase User-Agent "BadBot|MalwareBot|Spam" bad-bot
+    
+    <RequireAll>
+        Require all granted
+        Require not env bad-bot
+    </RequireAll>
+</IfModule>
 
-SetEnvIfNoCase User-Agent "BadBot|MalwareBot|Spam" bad-bot
-
-# Limitar métodos HTTP
+# Limitar métodos HTTP permitidos
 <RequireAll>
     Require method GET POST HEAD
 </RequireAll>
@@ -225,15 +228,3 @@ AddType application/manifest+json .webmanifest
 
 # Forzar UTF-8 para todo el sitio
 AddDefaultCharset UTF-8
-
-# =====================================
-# LOGS DE SEGURIDAD (Opcional)
-# =====================================
-
-# Crear log personalizado para eventos de seguridad (comentado por defecto)
-# CustomLog logs/security.log combined env=suspicious
-
-# Detectar actividad sospechosa
-# SetEnvIf Request_URI "\.\./\.\." suspicious
-# SetEnvIf Request_URI "\/proc\/self\/environ" suspicious
-# SetEnvIf Request_URI "\/etc\/passwd" suspicious
