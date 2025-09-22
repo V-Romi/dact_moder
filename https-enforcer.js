@@ -308,7 +308,7 @@
         console.log('[HTTPS Enforcer] Initializing HTTPS enforcement...');
 
         // 1. Redirigir a HTTPS inmediatamente si es necesario
-        enforceHTTPS();
+        // enforceHTTPS(); //
 
         // 2. Si estamos en HTTPS, configurar el resto
         if (window.location.protocol === 'https:') {
@@ -351,18 +351,18 @@
     // Ejecutar enforcement inmediatamente (crítico para redirecciones)
     if (document.readyState === 'loading') {
         // Si aún se está cargando, aplicar enforcement inmediatamente
-        enforceHTTPS();
-        document.addEventListener('DOMContentLoaded', initHTTPSEnforcement);
+        // enforceHTTPS(); //
+        document.addEventListener('DOMContentLoaded', () => setTimeout(initHTTPSEnforcement, 50));
     } else {
         // Si ya está cargado, inicializar todo inmediatamente
-        initHTTPSEnforcement();
+        setTimeout(initHTTPSEnforcement, 50);  // Con delay
     }
 
     // También ejecutar en window.load como respaldo
     window.addEventListener('load', () => {
         if (window.location.protocol === 'https:') {
             upgradeInsecureResources();
-            checkSecurityState();
+            // checkSecurityState(); // comentado para mejor performance
         }
     });
 

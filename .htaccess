@@ -44,7 +44,7 @@
     
     # Forzar HTTPS
     RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
 
     # Redirigir www a no-www (ajustar según tu preferencia)
     RewriteCond %{HTTP_HOST} ^www\.daclimatech\.com [NC]
@@ -63,16 +63,16 @@
 # =====================================
 
 <IfModule mod_headers.c>
-    # Cache HTML por poco tiempo
+    # Cache HTML por 1 hora
     <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
-        Header set Pragma "no-cache"
-        Header set Expires "0"
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+        Header set Pragma "public"
+        Header unset Expires
     </FilesMatch>
 
-    # Cache CSS y JS por 30 días
+    # Cache CSS y JS por 1 año
     <FilesMatch "\.(css|js)$">
-        Header set Cache-Control "public, max-age=2592000"
+        Header set Cache-Control "public, max-age=31536000, immutable"
         Header unset Pragma
         Header unset Expires
     </FilesMatch>
