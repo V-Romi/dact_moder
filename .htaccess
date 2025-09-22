@@ -43,8 +43,8 @@
     RewriteEngine On
     
     # Forzar HTTPS
-    RewriteCond %{HTTPS} off
-    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
 
     # Redirigir www a no-www (ajustar según tu preferencia)
     RewriteCond %{HTTP_HOST} ^www\.daclimatech\.com [NC]
