@@ -446,6 +446,17 @@
             }
         }
 
+        /* Optimización específica para LCP móvil */
+        @media (max-width: 768px) {
+            .home-logo {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+
         /* Móviles muy pequeños */
         @media (max-width: 480px) {
             .home-logo {
@@ -465,7 +476,17 @@
     <!-- ====================== 
          PRELOAD RECURSOS CRÍTICOS
          ====================== -->
-    <link rel="preload" href="img/daclimatech-portada-640w.webp" as="image" type="image/webp">
+    <!-- Preload optimizado para móvil -->
+    <link rel="preload" 
+        href="img/daclimatech-portada-480w.webp" 
+        as="image" 
+        type="image/webp"
+        media="(max-width: 768px)">
+    <link rel="preload" 
+        href="img/daclimatech-portada-640w.webp" 
+        as="image" 
+        type="image/webp"
+        media="(min-width: 769px)">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
     
@@ -621,33 +642,40 @@
         <section class="home" id="home" aria-label="Presentación principal de DAClimaTECH" itemscope itemtype="https://schema.org/LocalBusiness">
             <div class="home-content">
                 <picture class="home-logo">
-                    <!-- WebP con múltiples tamaños -->
-                    <source 
-                        srcset="img/daclimatech-portada-320w.webp 320w,
-                                img/daclimatech-portada-640w.webp 640w,
-                                img/daclimatech-portada-1280w.webp 1280w"
-                        sizes="(max-width: 640px) 320px,
-                            (max-width: 1024px) 640px,
-                            1280px"
-                        type="image/webp">
+                    <!-- Móvil - Imágenes más pequeñas y optimizadas -->
+                    <source media="(max-width: 768px)" 
+                            srcset="img/daclimatech-portada-320w.webp 320w,
+                                    img/daclimatech-portada-480w.webp 480w"
+                            sizes="(max-width: 480px) 280px, 400px"
+                            type="image/webp">
                     
-                    <!-- JPG fallback con múltiples tamaños -->
-                    <source 
-                        srcset="img/daclimatech-portada-320w.jpg 320w,
-                                img/daclimatech-portada-640w.jpg 640w,
-                                img/daclimatech-portada-1280w.jpg 1280w"
-                        sizes="(max-width: 640px) 320px,
-                            (max-width: 1024px) 640px,
-                            1280px"
-                        type="image/jpeg">
+                    <!-- Móvil fallback JPG -->
+                    <source media="(max-width: 768px)" 
+                            srcset="img/daclimatech-portada-320w.jpg 320w,
+                                    img/daclimatech-portada-480w.jpg 480w"
+                            sizes="(max-width: 480px) 280px, 400px"
+                            type="image/jpeg">
                     
-                    <!-- Imagen por defecto -->
-                    <img 
-                        class="home-logo" 
-                        src="img/daclimatech-portada-640w.jpg" 
+                    <!-- Desktop - Imágenes de calidad más alta -->
+                    <source media="(min-width: 769px)" 
+                            srcset="img/daclimatech-portada-640w.webp 640w,
+                                    img/daclimatech-portada-1280w.webp 1280w"
+                            sizes="(max-width: 1024px) 640px, 1280px"
+                            type="image/webp">
+                    
+                    <!-- Desktop fallback JPG -->
+                    <source media="(min-width: 769px)" 
+                            srcset="img/daclimatech-portada-640w.jpg 640w,
+                                    img/daclimatech-portada-1280w.jpg 1280w"
+                            sizes="(max-width: 1024px) 640px, 1280px"
+                            type="image/jpeg">
+                    
+                    <!-- Imagen por defecto optimizada para móvil -->
+                    <img class="home-logo" 
+                        src="img/daclimatech-portada-480w.webp" 
                         alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Mallorca"
-                        width="640" 
-                        height="441"
+                        width="400" 
+                        height="276"
                         loading="eager"
                         decoding="sync"
                         fetchpriority="high">
