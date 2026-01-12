@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Córdoba Argentina</title>
     <!-- Headers de seguridad vía meta tags (añadir en el <head> de todas las páginas HTML) -->
     <!-- Content Security Policy -->
@@ -37,10 +37,6 @@
         upgrade-insecure-requests;
         block-all-mixed-content">
 
-
-    <!-- Viewport para seguridad adicional -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
     <!-- Formato de detección de número de teléfono -->
     <meta name="format-detection" content="telephone=yes">
 
@@ -71,7 +67,6 @@
     <meta name="google" content="notranslate">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     
-    <link rel="canonical" href="https://daclimatech.com/">
     <!-- HTTPS Enforcement - Añadir aquí -->
     <script src="https-enforcer.js"></script>
     
@@ -888,30 +883,6 @@ window.addEventListener('error', function(e) {
 
     <!-- Cookie banner optimizado - Nueva implementación -->
     <script src="cookie-loader.js" defer></script>
-
-    <!-- Script de respaldo si cookie-loader.js falla -->
-    <script>
-    // Respaldo de emergencia
-    window.addEventListener('error', function(e) {
-        if (e.filename && e.filename.includes('cookie-loader.js')) {
-            console.warn('⚠️ Cookie loader failed, using emergency fallback');
-            
-            // Banner de emergencia súper básico
-            const emergencyBanner = document.createElement('div');
-            emergencyBanner.innerHTML = `
-                <div style="position:fixed;bottom:0;left:0;right:0;background:#005C98;color:white;padding:1rem;text-align:center;z-index:10000;">
-                    <p style="margin:0 0 1rem 0">🍪 Utilizamos cookies para mejorar su experiencia. 
-                    <a href="politica-de-cookies.html" style="color:#4CAF50">Más información</a></p>
-                    <button onclick="this.parentElement.parentElement.remove()" 
-                            style="background:#4CAF50;border:none;padding:0.5rem 1rem;border-radius:4px;color:white;font-weight:600;cursor:pointer">
-                        Entendido
-                    </button>
-                </div>
-            `;
-            document.body.appendChild(emergencyBanner);
-        }
-    });
-    </script>
 
     <!-- Botón WhatsApp Flotante -->
     <a href="https://wa.me/5493534089909?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización" 

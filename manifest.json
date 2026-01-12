@@ -1,7 +1,7 @@
 {
   "name": "DAClimaTECH - Climatización Mallorca",
   "short_name": "DAClimaTECH",
-  "description": "Expertos en climatización, aerotermia, aire acondicionado y calefacción en Mallorca. Servicios profesionales de instalación y mantenimiento.",
+  "description": "Expertos en climatización, aerotermia, aire acondicionado y calefacción en Villa Maria, Córdoba. Servicios profesionales de instalación y mantenimiento.",
   "version": "1.0.0",
   "start_url": "/",
   "scope": "/",
@@ -52,7 +52,7 @@
       "name": "WhatsApp",
       "short_name": "WhatsApp",
       "description": "Contactar directamente por WhatsApp",
-      "url": "https://wa.me/34600039668?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización",
+      "url": "https://wa.me/5493534089909?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización",
       "icons": [
         {
           "src": "/img/shortcut-whatsapp.png",
