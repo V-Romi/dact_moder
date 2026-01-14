@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Córdoba Argentina</title>
+    <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Villa Maria, Córdoba, Argentina</title>
     
     <!-- Formato de detección de número de teléfono -->
     <meta name="format-detection" content="telephone=yes">
@@ -774,79 +774,6 @@
     <!-- ====================== 
      SCRIPTS OPTIMIZADOS - AL FINAL DEL BODY
      ====================== -->
-<!-- ==============================================
-     JAVASCRIPT SIMPLIFICADO PARA INDEX.HTML
-     ============================================== -->
-
-<script>
-// === SOLO FUNCIONALIDADES ESPECÍFICAS DE INDEX.HTML ===
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🏠 Inicializando página principal...');
-    
-    
-    // === SMOOTH SCROLLING PARA INDEX ===
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-    }
-    
-    // === SCROLL ANIMATIONS PARA INDEX ===
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    // Observar elementos con animación fade-in
-    const fadeInElements = document.querySelectorAll('.fade-in');
-    fadeInElements.forEach(element => {
-        observer.observe(element);
-    });
-    
-    console.log('✅ Página principal inicializada correctamente');
-});
-
-// === SCRIPT DE RESPALDO PARA COOKIES ===
-window.addEventListener('error', function(e) {
-    if (e.filename && e.filename.includes('cookie-loader.js')) {
-        console.warn('⚠️ Cookie loader failed, using emergency fallback');
-        
-        // Banner de emergencia súper básico
-        const emergencyBanner = document.createElement('div');
-        emergencyBanner.innerHTML = `
-            <div style="position:fixed;bottom:0;left:0;right:0;background:#005C98;color:white;padding:1rem;text-align:center;z-index:10000;">
-                <p style="margin:0 0 1rem 0">🍪 Utilizamos cookies para mejorar su experiencia. 
-                <a href="politica-de-cookies.html" style="color:#4CAF50">Más información</a></p>
-                <button onclick="this.parentElement.parentElement.remove()" 
-                        style="background:#4CAF50;border:none;padding:0.5rem 1rem;border-radius:4px;color:white;font-weight:600;cursor:pointer">
-                    Entendido
-                </button>
-            </div>
-        `;
-        document.body.appendChild(emergencyBanner);
-    }
-});
-</script>
 
     <!-- HTTPS Enforcement - Añadir aquí -->
     <script src="https-enforcer.js" defer></script>
@@ -855,17 +782,11 @@ window.addEventListener('error', function(e) {
     <link rel="preload" href="https-security.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https-security.css"></noscript>
 
-    <!-- Non-critical JavaScript with defer -->
-    <script src="navigation.js" defer></script>
-
-    <!-- Cookie banner optimizado - Nueva implementación -->
-    <script src="cookie-loader.js" defer></script>
-
     <!-- Botón WhatsApp Flotante -->
     <a href="https://wa.me/5493535690667?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización" 
        class="whatsapp-float" 
        target="_blank" 
-       rel="noopener"
+       rel="noopener noreferrer"
        aria-label="Contactar por WhatsApp"
        title="Contactar por WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -873,27 +794,68 @@ window.addEventListener('error', function(e) {
         </svg>
     </a>
 
-    <!-- Service Worker Registration -->
-    <script src="sw-register.js" defer></script>
+    <!-- ====================== 
+     TODOS LOS SCRIPTS CON DEFER - CARGAN DESPUÉS DEL HTML
+     ====================== -->
     
-    <!-- Fallback para Service Worker -->
-    <script>
-    window.addEventListener('error', function(e) {
-        if (e.filename && e.filename.includes('sw-register.js')) {
-            console.warn('⚠️ SW Register failed, using basic registration');
-            
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('✅ Service Worker registrado básicamente:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('❌ Error registrando Service Worker:', error);
-                    });
-            }
+    <!-- CSS No Crítico - Carga diferida -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <!-- JavaScript Principal - TODO con defer -->
+    <script defer>
+    // === FUNCIONALIDADES ESPECÍFICAS DE INDEX.HTML ===
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🏠 Inicializando página principal...');
+        
+        // === SMOOTH SCROLLING ===
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
         }
+        
+        // === SCROLL ANIMATIONS ===
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos con animación fade-in
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        fadeInElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        console.log('✅ Página principal inicializada correctamente');
     });
     </script>
+
+    <!-- Scripts externos - TODOS con defer -->
+    <script src="navigation.js" defer></script>
+    <script src="cookie-loader.js" defer onerror="console.warn('Cookie loader no disponible')"></script>
+    <script src="sw-register.js" defer onerror="console.warn('Service Worker no disponible')"></script>
+    <script src="https-enforcer.js" defer onerror="console.warn('HTTPS enforcer no disponible')"></script>
 
 </body>
 </html>
