@@ -6,37 +6,7 @@
     <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Córdoba Argentina</title>
     <!-- Headers de seguridad vía meta tags (añadir en el <head> de todas las páginas HTML) -->
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval'
-            https://www.googletagmanager.com
-            https://www.google-analytics.com
-            https://cdnjs.cloudflare.com
-            https://fonts.googleapis.com;
-        style-src 'self' 'unsafe-inline'
-            https://fonts.googleapis.com
-            https://fonts.gstatic.com;
-        img-src 'self' data:
-            https://www.google-analytics.com
-            https://*.google-analytics.com
-            https://maps.googleapis.com
-            https://maps.gstatic.com;
-        font-src 'self'
-            https://fonts.gstatic.com
-            https://fonts.googleapis.com;
-        connect-src 'self'
-            https://www.google-analytics.com
-            https://*.google-analytics.com
-            https://api.whatsapp.com;
-        frame-src 'self'
-            https://www.google.com
-            https://maps.google.com;
-        object-src 'none';
-        base-uri 'self';
-        form-action 'self' https://wa.me;
-        upgrade-insecure-requests;
-        block-all-mixed-content">
-
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://api.whatsapp.com; frame-src 'self' https://www.google.com; object-src 'none';">
     <!-- Formato de detección de número de teléfono -->
     <meta name="format-detection" content="telephone=yes">
 
@@ -62,16 +32,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.google-analytics.com">
+    
+    <!-- Google Fonts - Carga asíncrona de Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" 
+      rel="stylesheet" 
+      media="print" 
+      onload="this.media='all'">
+    <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
 
     <!-- No permitir traducción automática de ciertos elementos -->
     <meta name="google" content="notranslate">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    
-    <!-- HTTPS Enforcement - Añadir aquí -->
-    <script src="https-enforcer.js"></script>
-    
-    <!-- CSS de seguridad (si es archivo separado) -->
-    <link rel="stylesheet" href="https-security.css">
 
     <!-- ====================== 
          CRITICAL CSS INLINE - MÁXIMO PERFORMANCE
@@ -426,7 +399,6 @@
         } 
     </style>
     
-
     <!-- ====================== 
          PRECONNECT CRÍTICO - ANTES DE CARGAR FONTS
          ====================== -->
@@ -754,7 +726,7 @@
                         <div class="contact-icon">📞</div>
                         <h3 class="contact-title">Teléfono</h3>
                         <p class="contact-details">
-                            <a href="tel:+5493534089909" class="contact-link" aria-label="Llamar por teléfono al +54 9 353 4089909">353 4089909</a>
+                            <a href="tel:+5493535690667" class="contact-link" aria-label="Llamar por teléfono al +54 9 353 5690667">353 5690667</a>
                         </p>
                     </div>
                     <div class="contact-card fade-in">
@@ -877,7 +849,14 @@ window.addEventListener('error', function(e) {
     }
 });
 </script>
-   
+
+    <!-- HTTPS Enforcement - Añadir aquí -->
+    <script src="https-enforcer.js" defer></script>
+    
+    <!-- CSS de seguridad (si es archivo separado) -->
+    <link rel="preload" href="https-security.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https-security.css"></noscript>
+
     <!-- Non-critical JavaScript with defer -->
     <script src="navigation.js" defer></script>
 
@@ -885,7 +864,7 @@ window.addEventListener('error', function(e) {
     <script src="cookie-loader.js" defer></script>
 
     <!-- Botón WhatsApp Flotante -->
-    <a href="https://wa.me/5493534089909?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización" 
+    <a href="https://wa.me/5493535690667?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización" 
        class="whatsapp-float" 
        target="_blank" 
        rel="noopener"
