@@ -599,8 +599,8 @@ body {
 }
 
 .section-title-w {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 400;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
@@ -614,10 +614,8 @@ body {
 
 .about-highlight {
     grid-column: span 2;
-    background: rgba(0, 92, 152, 0.1);
     padding: 1.5rem;
     border-radius: 10px;
-    border-left: 4px solid var(--primary-color);
     margin: 2rem 0;
 }
 
@@ -697,7 +695,7 @@ body {
  
 /* Footer */
 .footer {
-    background: var(--primary-color);
+    background: var(--text-dark);
     color: white;
     padding: 2rem;
     text-align: center;
@@ -1327,7 +1325,7 @@ h6.section-subtitle::before {
 /* Caja destacada para información importante */
 .highlight-box {
     background: linear-gradient(135deg, rgba(0, 92, 152, 0.05), rgba(0, 164, 228, 0.05));
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--third-color);
     padding: var(--space-lg);
     margin: var(--space-xl) 0;
     border-radius: 0 12px 12px 0;
@@ -1554,7 +1552,7 @@ h6.section-subtitle::before {
 /* ===== MEJORAS DE ACCESIBILIDAD ===== */
 .section-title-services:focus,
 .section-subtitle:focus {
-    outline: 2px solid var(--accent-color);
+    outline: 2px solid var(--third-color);
     outline-offset: 4px;
     border-radius: 4px;
 }

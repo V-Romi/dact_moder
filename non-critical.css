@@ -257,8 +257,8 @@
 }
 
 .section-title-w {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    font-weight: 450;
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
@@ -272,10 +272,8 @@
 
 .about-highlight {
     grid-column: span 2;
-    background: rgba(0, 92, 152, 0.1);
     padding: 1.5rem;
     border-radius: 10px;
-    border-left: 4px solid var(--primary-color);
     margin: 2rem 0;
 }
 
@@ -356,7 +354,7 @@
 
 /* FOOTER */
 .footer {
-    background: var(--primary-color);
+    background: var(--text-dark);
     color: white;
     padding: 2rem;
     text-align: center;
