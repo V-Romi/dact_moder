@@ -319,7 +319,7 @@
             implementHSTS();
             checkSSLInfo();
             secureForms();
-            monitorDOMChanges();
+           // monitorDOMChanges(); //
         }
 
         console.log('[HTTPS Enforcer] HTTPS enforcement initialized successfully');
@@ -350,21 +350,18 @@
 
     // Ejecutar enforcement inmediatamente (crítico para redirecciones)
     if (document.readyState === 'loading') {
-        // Si aún se está cargando, aplicar enforcement inmediatamente
-        // enforceHTTPS(); //
-        document.addEventListener('DOMContentLoaded', () => setTimeout(initHTTPSEnforcement, 50));
-    } else {
-        // Si ya está cargado, inicializar todo inmediatamente
-        setTimeout(initHTTPSEnforcement, 50);  // Con delay
-    }
+    document.addEventListener('DOMContentLoaded', initHTTPSEnforcement);
+} else {
+    initHTTPSEnforcement();
+}
 
     // También ejecutar en window.load como respaldo
-    window.addEventListener('load', () => {
-        if (window.location.protocol === 'https:') {
-            upgradeInsecureResources();
-            // checkSecurityState(); // comentado para mejor performance
-        }
-    });
+window.addEventListener('load', () => {
+    if (window.location.protocol === 'https:') {
+        upgradeInsecureResources();
+        monitorDOMChanges(); // Iniciar DESPUÉS del load completo
+    }
+});
 
     console.log('[HTTPS Enforcer] Script loaded successfully');
 
