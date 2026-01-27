@@ -508,24 +508,36 @@
     </script>
 
     <!-- Google Consent Mode -->
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied'
-        });
-        </script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'wait_for_update': 500
+  });
+</script>
 
-    <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YMR75F5Q9"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-8YMR75F5Q9');
-        </script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8YMR75F5Q9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8YMR75F5Q9', {
+    'send_page_view': false
+  });
+  
+  // Enviar pageview después de que la página cargue
+  if (document.readyState === 'complete') {
+    gtag('event', 'page_view');
+  } else {
+    window.addEventListener('load', function() {
+      gtag('event', 'page_view');
+    });
+  }
+</script>
 
 </head>
 <body>
@@ -798,8 +810,8 @@
      ====================== -->
     
     <!-- CSS No Crítico - Carga diferida -->
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
     
     <!-- JavaScript Principal - TODO con defer -->
     <script defer>
