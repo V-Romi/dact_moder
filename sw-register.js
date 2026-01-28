@@ -8,7 +8,7 @@
     const SW_CONFIG = {
         swPath: '/service-worker.js',
         scope: '/',
-        checkInterval: 60000, // Verificar actualizaciones cada minuto
+        checkInterval: null, // Desactivar verificación automática
         showNotifications: true,
         enableAutoUpdate: true
     };
@@ -17,6 +17,10 @@
     let swRegistration = null;
     let isOnline = navigator.onLine;
     let updateAvailable = false;
+
+    // Prevenir verificaciones excesivas con throttling
+    let lastUpdateCheck = 0;
+    const MIN_UPDATE_INTERVAL = 300000; // 5 minutos mínimo entre verificaciones
 
     // Inicializar cuando el DOM esté listo
     if (document.readyState === 'loading') {
@@ -121,11 +125,26 @@
         });
     }
 
-    // Configurar verificación periódica de actualizaciones
+    // Configurar verificación periódica de actualizaciones CON THROTTLING
     function setupUpdateChecking() {
+        // Solo verificar si el intervalo está configurado
+        if (!SW_CONFIG.checkInterval || SW_CONFIG.checkInterval === null) {
+            console.log('[SW Register] Verificación automática desactivada');
+            return;
+        }
+    
+        // Verificar solo cuando la pestaña está visible CON throttling
         setInterval(async () => {
-            if (swRegistration) {
+            const now = Date.now();
+        
+            // Solo verificar si ha pasado el tiempo mínimo Y la pestaña está visible
+            if (swRegistration && 
+                !document.hidden && 
+                (now - lastUpdateCheck) >= MIN_UPDATE_INTERVAL) {
+                
                 try {
+                    console.log('[SW Register] Verificando actualizaciones...');
+                    lastUpdateCheck = now;
                     await swRegistration.update();
                 } catch (error) {
                     console.error('[SW Register] Error verificando actualizaciones:', error);
