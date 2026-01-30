@@ -377,7 +377,6 @@ body {
     left: 50%;
     width: 60px;
     height: 4px;
-    background: var(--accent-color);
     transform: translateX(-50%);
     border-radius: 2px;
 }
@@ -609,7 +608,7 @@ body {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: var(--primary-color);
 }
 
 .about-highlight {
@@ -665,7 +664,7 @@ body {
 }
 
 .contact-details {
-    color: var(--text-light);
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 

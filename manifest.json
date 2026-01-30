@@ -1,17 +1,21 @@
 {
-  "name": "DAClimaTECH - Climatización Mallorca",
+  "name": "DAClimaTECH - Climatización Villa María",
   "short_name": "DAClimaTECH",
-  "description": "Expertos en climatización, aerotermia, aire acondicionado y calefacción en Villa Maria, Córdoba. Servicios profesionales de instalación y mantenimiento.",
-  "version": "1.0.0",
+  "description": "Expertos en climatización, aerotermia, aire acondicionado y calefacción en Villa María, Córdoba. Servicios profesionales de instalación y mantenimiento.",
+  "version": "1.0.1",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#005C98",
   "background_color": "#f8fafc",
-  "categories": ["business", "utilities"],
+  "categories": [
+    "business",
+    "utilities"
+  ],
   "lang": "es",
   "dir": "ltr",
+  "id": "daclimatech-pwa-v1",
   "icons": [
     {
       "src": "/img/favicon-daclimatech.png",
@@ -19,19 +23,21 @@
       "type": "image/png"
     },
     {
-      "src": "/img/pwa-icon-152.png", 
+      "src": "/img/pwa-icon-152.png",
       "sizes": "152x152",
       "type": "image/png"
     },
     {
       "src": "/img/pwa-icon-192.png",
-      "sizes": "192x192", 
-      "type": "image/png"
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/img/pwa-icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "shortcuts": [
@@ -39,119 +45,28 @@
       "name": "Solicitar Presupuesto",
       "short_name": "Presupuesto",
       "description": "Contactar para solicitar presupuesto gratuito",
-      "url": "/#contact",
-      "icons": [
-        {
-          "src": "/img/shortcut-quote.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "WhatsApp",
-      "short_name": "WhatsApp",
-      "description": "Contactar directamente por WhatsApp",
-      "url": "https://wa.me/5493534089909?text=Hola%20DAClimaTECH%2C%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios%20de%20climatización",
-      "icons": [
-        {
-          "src": "/img/shortcut-whatsapp.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "url": "/#contact"
     },
     {
       "name": "Servicios",
       "short_name": "Servicios",
       "description": "Ver todos nuestros servicios de climatización",
-      "url": "/#services",
-      "icons": [
-        {
-          "src": "/img/shortcut-services.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "url": "/#services"
     },
     {
       "name": "Aerotermia",
       "short_name": "Aerotermia",
       "description": "Información sobre sistemas de aerotermia",
-      "url": "/aerotermia.html",
-      "icons": [
-        {
-          "src": "/img/shortcut-aerotermia.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
+      "url": "/aerotermia.html"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/img/screenshot-mobile-1.png",
-      "sizes": "360x640",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Página principal en móvil"
-    },
-    {
-      "src": "/img/screenshot-mobile-2.png",
-      "sizes": "360x640",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Servicios en móvil"
-    },
-    {
-      "src": "/img/screenshot-desktop-1.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Página principal en desktop"
-    },
-    {
-      "src": "/img/screenshot-desktop-2.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Servicios en desktop"
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "web",
-      "url": "https://daclimatech.com"
-    }
-  ],
+  "related_applications": [],
   "prefer_related_applications": false,
-  "protocol_handlers": [
-    {
-      "protocol": "web+daclimatech",
-      "url": "/?action=%s"
-    }
-  ],
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
   "launch_handler": {
     "client_mode": "navigate-existing"
   },
-  "handle_links": "preferred",
-  "display_override": ["window-controls-overlay", "minimal-ui", "browser"],
-  "id": "daclimatech-pwa-v1",
-  "scope_extensions": [
-    {
-      "origin": "https://daclimatech.com"
-    }
-  ],
-  "file_handlers": [
-    {
-      "action": "/",
-      "accept": {
-        "text/plain": [".txt"],
-        "application/pdf": [".pdf"]
-      }
-    }
+  "display_override": [
+    "standalone",
+    "minimal-ui"
   ]
 }

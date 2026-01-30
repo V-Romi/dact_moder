@@ -545,14 +545,37 @@
     <main id="main-content">
         <section class="home" id="home" aria-label="Presentación principal de DAClimaTECH" itemscope itemtype="https://schema.org/LocalBusiness">
             <div class="home-content">
-                <img class="home-logo" 
-                    src="img/daclimatech-portada-640w.webp" 
-                    alt="DAClimaTECH - Expertos en Climatización"
-                    width="650" 
-                    height="448"
-                    fetchpriority="high"
-                    loading="eager"
-                    style="display: block; max-width: 100%; height: auto; margin: 0 auto 2rem;">
+                <picture>
+                    <!-- Móvil pequeño -->
+                    <source media="(max-width: 480px)" 
+                            srcset="img/daclimatech-portada-320w.webp 320w,
+                                    img/daclimatech-portada-480w.webp 480w"
+                            sizes="280px"
+                            type="image/webp">
+                    
+                    <!-- Móvil -->
+                    <source media="(max-width: 768px)" 
+                            srcset="img/daclimatech-portada-480w.webp 480w"
+                            sizes="400px"
+                            type="image/webp">
+                    
+                    <!-- Desktop -->
+                    <source media="(min-width: 769px)" 
+                            srcset="img/daclimatech-portada-640w.webp 640w,
+                                    img/daclimatech-portada-1280w.webp 1280w"
+                            sizes="(max-width: 1024px) 640px, 1280px"
+                            type="image/webp">
+                    
+                    <!-- Imagen por defecto -->
+                    <img class="home-logo" 
+                        src="img/daclimatech-portada-480w.webp" 
+                        alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Villa María, Córdoba"
+                        width="650" 
+                        height="448"
+                        fetchpriority="high"
+                        decoding="async"
+                        loading="eager">
+                </picture>
                 <h1 class="home-title" itemprop="name">Expertos en Climatización</h1>
                 <p class="home-subtitle" itemprop="description">Soluciones integrales de climatización sostenible con tecnología de vanguardia para tu hogar, oficina o comercio en Villa María.</p>
                 <a href="#contact" class="cta-button" aria-label="Solicitar presupuesto gratuito para servicios de climatización">Solicita tu Presupuesto Gratis</a>

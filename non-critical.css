@@ -267,7 +267,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: var(--primary-color);
 }
 
 .about-highlight {
@@ -323,7 +323,7 @@
 }
 
 .contact-details {
-    color: var(--text-light);
+    color: var(--primary-color);
     font-size: 1.1rem;
 }
 
