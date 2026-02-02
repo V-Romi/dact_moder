@@ -13,7 +13,7 @@ Disallow: /*.pdf$
 Allow: /cookie-banner.html
 
 # Información del sitio
-# Empresa: DAClimaTECH - Climatización Mallorca
+# Empresa: DAClimaTECH - Climatización Córdoba
 # Contacto: info@daclimatech.com
 
 # Páginas legales - accesibles pero no prioritarias
