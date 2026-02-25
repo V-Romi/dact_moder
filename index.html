@@ -136,54 +136,110 @@
             z-index: 1001;
         }
 
-        /* Home Section crítico */
-        .home {
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            background: var(--third-color);
-            color: var(--primary-color);
-            text-align: center;
+        /* Hero Carousel crítico */
+        .hero-carousel {
             position: relative;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
             overflow: hidden;
-            padding: clamp(3rem, 8vw, 5rem) 0;
+            margin-top: clamp(60px, 8vw, 70px);
         }
 
-        .home-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .carousel-container {
             position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
             z-index: 2;
         }
 
-        picture {
-            display: block;
-            margin: 0 auto clamp(1.5rem, 4vw, 2rem);
+        .carousel-slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        .home-logo {
-            width: min(100%, 600px);
-            height: auto;
+        .carousel-slide-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,30,60,0.75) 0%, rgba(0,30,60,0.45) 50%, rgba(0,30,60,0.25) 100%);
+            z-index: 1;
+        }
+
+        .carousel-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            padding: 0 clamp(2rem, 6vw, 8rem);
+            max-width: 1400px;
             margin: 0 auto;
-            display: block;
         }
 
-        .home-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .carousel-content--left {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .carousel-content--right {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .carousel-title {
+            font-size: clamp(28px, 4vw, 42px);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            max-width: 620px;
         }
 
-        .home-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .carousel-subtitle {
+            font-size: clamp(16px, 1.8vw, 18px);
+            color: #ffffff;
+            line-height: 1.5;
+            max-width: 520px;
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-cta {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #ffffff;
+            padding: 14px 26px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
         }
 
         .cta-button {
@@ -199,6 +255,21 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             border: none;
             cursor: pointer;
+        }
+
+        /* FIX HERO CUANDO USA PICTURE */
+        .carousel-slide-bg picture{
+            position:absolute;
+            inset:0;
+            width:100%;
+            height:100%;
+            display: block;
+        }
+
+        .carousel-slide-bg picture img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
         }
 
         /* Skip link para accesibilidad */
@@ -352,12 +423,32 @@
                 display: block;
             }
 
-            .home-title {
-                font-size: 2rem;
+            .carousel-title {
+                font-size: 28px;
             }
 
-            .home-content {
-                padding: 0 1rem;
+            .carousel-content {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .carousel-content--left,
+            .carousel-content--right {
+                margin-left: 0;
+                margin-right: 0;
+                align-items: center;
+                text-align: center;
+            }
+
+            .carousel-cta {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .zonas-servicio {
+                text-align: center;
             }
 
             .service-card {
@@ -365,52 +456,35 @@
             }
         }
 
-        /* Optimización específica para LCP móvil */
-        @media (max-width: 768px) {
-            .home-logo {
-                width: 100%;
-                max-width: 400px;
-                height: auto;
-                object-fit: contain;
-                object-position: center;
-            }
-        }
-
         /* Móviles muy pequeños */
         @media (max-width: 480px) {
-            .home-logo {
-                width: 100%;
-                max-width: 280px;
+            .carousel-title {
+                font-size: 24px;
+            }
+            .carousel-cta {
+                padding: 12px 20px;
+                font-size: 0.85rem;
             }
         } 
 
         /* GARANTIZAR CONTENIDO VISIBLE INMEDIATAMENTE */
-        .home {
+        .hero-carousel {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
         }
 
-        .home-content {
+        .carousel-slide.active {
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
         }
 
-        .home-title,
-        .home-subtitle {
+        .carousel-title,
+        .carousel-subtitle {
             display: block !important;
             visibility: visible !important;
-            opacity: 1 !important;
-            color: #005C98 !important;
-        }
-
-        .home-logo {
-            display: block !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            max-width: 100%;
-            height: auto;
+            color: #ffffff !important;
         }
 
         /* Eliminar animaciones durante la carga inicial */
@@ -424,8 +498,8 @@
     <!-- ====================== 
          PRELOAD RECURSOS CRÍTICOS
          ====================== -->
-    <!-- Preload de imagen LCP - UNA SOLA para mejor compatibilidad -->
-    <link rel="preload" as="image" href="img/daclimatech-portada-480w.webp" fetchpriority="high">
+    <!-- Preload de imagen LCP - Primer slide del carrusel -->
+    <link rel="preload" as="image" href="img/slide1-control-remoto.webp" type="image/webp" fetchpriority="high">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
@@ -464,7 +538,7 @@
             "description": "Expertos en climatización sostenible, aerotermia, aire acondicionado, calefacción, electricidad, frío comercial y maquinaria de hostelería en Villa María, Córdoba",
             "url": "https://daclimatech.com",
             "logo": "https://daclimatech.com/img/daclimatech-portada-640w.webp",
-            "image": "https://daclimatech.com/img/daclimatech-portada-640w.webp",
+            "image": "https://daclimatech.com/img/slide1-control-remoto.webp",
             "telephone": "+5493535690667",
             "email": "info@daclimatech.com",
             "foundingDate": "2024",
@@ -541,44 +615,166 @@
         </nav> 
     </header>
 
-    <!-- Home Section -->
+    <!-- HERO CARRUSEL -->
     <main id="main-content">
-        <section class="home" id="home" aria-label="Presentación principal de DAClimaTECH" itemscope itemtype="https://schema.org/LocalBusiness">
-            <div class="home-content">
-                <picture>
-                    <!-- Móvil pequeño -->
-                    <source media="(max-width: 480px)" 
-                            srcset="img/daclimatech-portada-320w.webp 320w,
-                                    img/daclimatech-portada-480w.webp 480w"
-                            sizes="280px"
-                            type="image/webp">
-                    
-                    <!-- Móvil -->
-                    <source media="(max-width: 768px)" 
-                            srcset="img/daclimatech-portada-480w.webp 480w"
-                            sizes="400px"
-                            type="image/webp">
-                    
-                    <!-- Desktop -->
-                    <source media="(min-width: 769px)" 
-                            srcset="img/daclimatech-portada-640w.webp 640w,
-                                    img/daclimatech-portada-1280w.webp 1280w"
-                            sizes="(max-width: 1024px) 640px, 1280px"
-                            type="image/webp">
-                    
-                    <!-- Imagen por defecto -->
-                    <img class="home-logo" 
-                        src="img/daclimatech-portada-480w.webp" 
-                        alt="Logo de DAClimaTECH, empresa especializada en climatización, aerotermia y aire acondicionado en Villa María, Córdoba"
-                        width="650" 
-                        height="448"
-                        fetchpriority="high"
-                        decoding="async"
-                        loading="eager">
-                </picture>
-                <h1 class="home-title" itemprop="name">Expertos en Climatización</h1>
-                <p class="home-subtitle" itemprop="description">Soluciones integrales de climatización sostenible con tecnología de vanguardia para tu hogar, oficina o comercio en Villa María y región de Córdoba.</p>
-                <a href="#contact" class="cta-button" aria-label="Solicitar presupuesto gratuito para servicios de climatización">Solicita tu Presupuesto Gratis</a>
+        <section class="hero-carousel" id="home" aria-label="Presentación principal de DAClimaTECH" itemscope itemtype="https://schema.org/LocalBusiness">
+            <div class="carousel-container">
+                
+                <!-- Slide 1 — Control remoto -->
+                <div class="carousel-slide active" data-slide="0">
+                    <div class="carousel-slide-bg">
+                        <picture>
+                            <source srcset="img/slide1-control-remoto.avif" type="image/avif">
+                            <source srcset="img/slide1-control-remoto.webp" type="image/webp">
+
+                            <img src="img/slide1-control-remoto.png"
+                                alt="Instalación profesional de aire acondicionado en Villa María Córdoba"
+                                width="1600"
+                                height="900"
+                                sizes="100vw"
+                                loading="eager"
+                                fetchpriority="high"
+                                decoding="async">
+                        </picture>
+                    </div>
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content carousel-content--left">
+                        <h1 class="carousel-title" itemprop="name">Instalación de aire acondicionado en Villa María y zona</h1>
+                        <p class="carousel-subtitle" itemprop="description">Lo dejamos instalado, probado y funcionando el mismo día cuando las condiciones lo permiten. Trabajo limpio, sin roturas innecesarias y con terminaciones prolijas.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20pedir%20presupuesto%20para%20instalación%20de%20aire%20acondicionado." 
+                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                           aria-label="Pedir presupuesto por WhatsApp para instalación de aire acondicionado">
+                            PEDIR PRESUPUESTO POR WHATSAPP
+                        </a>
+                        <small class="zonas-servicio">Atendemos Villa María, Villa Nueva, General Cabrera, General Deheza, Bell Ville, Oncativo y Río Tercero.</small>
+                    </div>
+                </div>
+
+                <!-- Slide 2 — Técnico instalando -->
+                <div class="carousel-slide" data-slide="1">
+                    <div class="carousel-slide-bg">
+                        <picture>
+                                <source srcset="img/slide2-tecnico-instalando.avif" type="image/avif">
+                                <source srcset="img/slide2-tecnico-instalando.webp" type="image/webp">
+
+                                <img src="img/slide2-tecnico-instalando.png"
+                                    alt="Técnico instalando un aire acondicionado split en pared"
+                                    width="1600"
+                                    height="900"
+                                    loading="lazy"
+                                    decoding="async">
+                        </picture>
+                    </div>
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content carousel-content--left">
+                        <h2 class="carousel-title">Un equipo real detrás de cada instalación</h2>
+                        <p class="carousel-subtitle">Te acompañamos antes, durante y después del trabajo. Si algo no queda como corresponde, volvemos y lo solucionamos.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20coordinar%20una%20instalación." 
+                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                           aria-label="Coordinar instalación por WhatsApp">
+                            COORDINAR INSTALACIÓN
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 — Técnico con cliente -->
+                <div class="carousel-slide" data-slide="2">
+                    <div class="carousel-slide-bg">
+                        <picture>
+                            <source srcset="img/slide3-tecnico-cliente.avif" type="image/avif">
+                            <source srcset="img/slide3-tecnico-cliente.webp" type="image/webp">
+
+                            <img src="img/slide3-tecnico-cliente.png"
+                                alt="Técnico explicando el uso del aire acondicionado a cliente en su casa"
+                                width="1600"
+                                height="900"
+                                loading="lazy"
+                                decoding="async">
+                        </picture>
+                    </div>
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content carousel-content--left">
+                        <h2 class="carousel-title">Te explicamos todo antes de irnos</h2>
+                        <p class="carousel-subtitle">Probamos el equipo con vos, configuramos el control y te explicamos cómo usarlo paso a paso.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20asesoramiento%20sobre%20climatización." 
+                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                           aria-label="Pedir asesoramiento por WhatsApp">
+                            QUIERO ASESORAMIENTO
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 4 — Cámara frigorífica -->
+                <div class="carousel-slide" data-slide="3">
+                    <div class="carousel-slide-bg">
+                        <picture>
+                            <source srcset="img/slide4-camara-frigorifica.avif" type="image/avif">
+                            <source srcset="img/slide4-camara-frigorifica.webp" type="image/webp">
+
+                            <img src="img/slide4-camara-frigorifica.png"
+                                alt="Cámara frigorífica industrial instalada con control de temperatura"
+                                width="1600"
+                                height="900"
+                                loading="lazy"
+                                decoding="async">
+                        </picture>
+                    </div>
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content carousel-content--right">
+                        <h2 class="carousel-title">Climatización y refrigeración para comercios</h2>
+                        <p class="carousel-subtitle">Cámaras frigoríficas, equipos confiables y dimensionados correctamente. Te asesoramos desde el inicio para que funcione correctamente todos los días.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20visita%20técnica." 
+                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                           aria-label="Solicitar visita técnica por WhatsApp">
+                            SOLICITAR VISITA TÉCNICA
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 5 — Equipos en azotea -->
+                <div class="carousel-slide" data-slide="4">
+                    <div class="carousel-slide-bg">
+                        <picture>
+                            <source srcset="img/slide5-equipos-azotea.avif" type="image/avif">
+                            <source srcset="img/slide5-equipos-azotea.webp" type="image/webp">
+
+                            <img src="img/slide5-equipos-azotea.png"
+                                alt="Equipos de climatización y aire acondicionado instalados en azotea comercial"
+                                width="1600"
+                                height="900"
+                                loading="lazy"
+                                decoding="async">
+                        </picture>
+                    </div>
+                    <div class="carousel-overlay"></div>
+                    <div class="carousel-content carousel-content--left">
+                        <h2 class="carousel-title">Instalaciones que funcionan desde el primer día</h2>
+                        <p class="carousel-subtitle">Planificamos la instalación para evitar fallas. Un equipo bien colocado enfría mejor, consume menos y dura más.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20cotización." 
+                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                           aria-label="Solicitar cotización por WhatsApp">
+                            SOLICITAR COTIZACIÓN
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Controles del carrusel -->
+                <button class="carousel-arrow carousel-arrow--prev" aria-label="Slide anterior">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="carousel-arrow carousel-arrow--next" aria-label="Slide siguiente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+
+                <!-- Indicadores -->
+                <div class="carousel-dots" role="tablist" aria-label="Slides del carrusel">
+                    <button class="carousel-dot active" data-dot="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                    <button class="carousel-dot" data-dot="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                    <button class="carousel-dot" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+                    <button class="carousel-dot" data-dot="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+                    <button class="carousel-dot" data-dot="4" role="tab" aria-selected="false" aria-label="Slide 5"></button>
+                </div>
+
             </div>
         </section>
 
@@ -743,7 +939,7 @@
                 <a href="politica-de-cookies.html" class="footer-link">Política de Cookies</a>
                 <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a>
             </nav>
-            <p class="copyright">© 2027 DAClimaTECH. Todos los derechos reservados.</p>
+            <p class="copyright">© 2026 DAClimaTECH. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -777,33 +973,99 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🏠 Inicializando página principal...');
         
-        // === SMOOTH SCROLLING ===
-        const ctaButton = document.querySelector('.cta-button');
-        if (ctaButton) {
-            ctaButton.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
+        // === HERO CAROUSEL ===
+        (function() {
+            var slides = document.querySelectorAll('.carousel-slide');
+            var dots = document.querySelectorAll('.carousel-dot');
+            var prevBtn = document.querySelector('.carousel-arrow--prev');
+            var nextBtn = document.querySelector('.carousel-arrow--next');
+            var currentSlide = 0;
+            var autoplayInterval;
+            var AUTOPLAY_DELAY = 6000;
+
+            function goToSlide(index) {
+                slides.forEach(function(s) { s.classList.remove('active'); });
+                dots.forEach(function(d) {
+                    d.classList.remove('active');
+                    d.setAttribute('aria-selected', 'false');
+                });
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+                dots[currentSlide].setAttribute('aria-selected', 'true');
+            }
+
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % slides.length);
+            }
+
+            function prevSlide() {
+                goToSlide((currentSlide - 1 + slides.length) % slides.length);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayInterval = setInterval(nextSlide, AUTOPLAY_DELAY);
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) clearInterval(autoplayInterval);
+            }
+
+            // Flechas
+            if (nextBtn) nextBtn.addEventListener('click', function() { nextSlide(); startAutoplay(); });
+            if (prevBtn) prevBtn.addEventListener('click', function() { prevSlide(); startAutoplay(); });
+            
+            // Dots
+            dots.forEach(function(dot) {
+                dot.addEventListener('click', function() {
+                    goToSlide(parseInt(this.dataset.dot));
+                    startAutoplay();
+                });
             });
-        }
-        
+
+            // Touch/Swipe
+            var touchStartX = 0;
+            var carouselEl = document.querySelector('.carousel-container');
+            if (carouselEl) {
+                carouselEl.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                carouselEl.addEventListener('touchend', function(e) {
+                    var diff = touchStartX - e.changedTouches[0].screenX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) nextSlide(); else prevSlide();
+                        startAutoplay();
+                    }
+                }, { passive: true });
+
+                // Pausar autoplay al hover
+                carouselEl.addEventListener('mouseenter', stopAutoplay);
+                carouselEl.addEventListener('mouseleave', startAutoplay);
+            }
+
+            // Teclado
+            document.addEventListener('keydown', function(e) {
+                var carousel = document.querySelector('.hero-carousel');
+                if (!carousel) return;
+                var rect = carousel.getBoundingClientRect();
+                if (rect.top > window.innerHeight || rect.bottom < 0) return;
+                if (e.key === 'ArrowRight') { nextSlide(); startAutoplay(); }
+                if (e.key === 'ArrowLeft') { prevSlide(); startAutoplay(); }
+            });
+
+            // Iniciar
+            startAutoplay();
+        })();
+
         // === SCROLL ANIMATIONS ===
-        const observerOptions = {
+        var observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
@@ -811,8 +1073,8 @@
         }, observerOptions);
 
         // Observar elementos con animación fade-in
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        fadeInElements.forEach(element => {
+        var fadeInElements = document.querySelectorAll('.fade-in');
+        fadeInElements.forEach(function(element) {
             observer.observe(element);
         });
         

@@ -275,62 +275,6 @@ body {
     transform: translateY(0);
 }
 
-/* Home Section */
-.home {
-    min-height: 100vh;
-    min-height: 100dvh; /* Para navegadores modernos */
-    display: flex;
-    align-items: center;
-    background: var(--third-color);
-    color: var(--primary-color);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding: var(--section-padding) 0;
-}
-
-.home::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--third-color);
-    opacity: 0.9;
-}
-
-.home-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 2;
-    animation: fadeInUp 1s ease-out;
-}
-
-.home-logo {
-    width: min(100%, 600px);
-    height: auto;
-    margin: 0 auto var(--gap-md);
-    display: block;
-}
-
-.home-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    margin-bottom:  1.5rem;
-    line-height: 1.2;
-}
-
-.home-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    margin-bottom: 2rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .cta-button {
     display: inline-block;
@@ -401,9 +345,6 @@ body {
   }
 /* Mejores breakpoints */
 @media (max-width: 480px) {
- .home-title {
-    font-size: 1.8rem;
- }
 
  .nav {
    padding: 0 1rem;
@@ -822,22 +763,6 @@ body {
     grid-column: span 1;
 }
 
-.home-content {
-    padding: 0;
-}
-
-.home-title {
-    font-size: 2rem;
-}
-
-.home-subtitle {
-    font-size: 1.2rem;
-}
-
-.home-logo {
-    width: 100%;
-    max-width: 300px;
-}
 
 .section-title-services {
     font-size: 2.0rem;
@@ -896,14 +821,7 @@ body {
 
 /* Landscape phones */
 @media (max-height: 500px) and (orientation: landscape) {
-    .home {
-        min-height: auto;
-        padding: 2rem 0;
-    }
     
-    .home-title {
-        font-size: 2rem;
-    }
     
     .lazy {
         width: 200px;
@@ -920,9 +838,6 @@ body {
         display: none !important;
     }
     
-    .home {
-        page-break-inside: avoid;
-    }
     
     .service-card {
         page-break-inside: avoid;
@@ -939,9 +854,6 @@ body {
     transition-duration: 0.01ms !important;
     }
 
-    .home-content {
-        animation: none;
-    }
     
     .about-text {
         animation: none;
@@ -953,9 +865,6 @@ body {
 }
 
 @media (max-width: 480px) {
-.home-title {
-    font-size: 1.8rem;
-}
 
 .nav {
     padding: 0 1rem;
@@ -1630,6 +1539,404 @@ h6.section-subtitle::before {
     margin-left: var(--space-xs);
 }
 
+
+/* ====================================
+   HERO CAROUSEL
+   ==================================== */
+
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    margin-top: clamp(60px, 8vw, 70px);
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Slides */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    z-index: 1;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+/* Imagen de fondo del slide */
+.carousel-slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.carousel-slide-bg picture {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Overlay oscuro para legibilidad */
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 30, 60, 0.75) 0%,
+        rgba(0, 30, 60, 0.45) 50%,
+        rgba(0, 30, 60, 0.25) 100%
+    );
+    z-index: 1;
+}
+
+/* Contenido del slide */
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 clamp(2rem, 6vw, 8rem);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.carousel-content--left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.carousel-content--right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Título del carrusel */
+.carousel-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    max-width: 620px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.carousel-slide.active .carousel-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+}
+
+/* Subtítulo del carrusel */
+.carousel-subtitle {
+    font-size: clamp(16px, 1.8vw, 18px);
+    color: #ffffff;
+    line-height: 1.5;
+    max-width: 520px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-slide.active .carousel-subtitle {
+    opacity: 0.95;
+    transform: translateY(0);
+    transition: opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s;
+}
+
+/* Botón CTA del carrusel */
+.carousel-cta {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #ffffff;
+    padding: 14px 26px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.carousel-slide.active .carousel-cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease 0.7s, transform 0.6s ease 0.7s, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-cta:hover {
+    background: #43A047;
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+    transform: translateY(-2px);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Zonas de servicio (texto SEO debajo del botón en slide 1) */
+.zonas-servicio {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.85;
+    line-height: 1.4;
+    max-width: 520px;
+}
+
+/* Flechas de navegación */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-arrow--prev {
+    left: clamp(12px, 2vw, 24px);
+}
+
+.carousel-arrow--next {
+    right: clamp(12px, 2vw, 24px);
+}
+
+.carousel-arrow:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Dots / Indicadores */
+.carousel-dots {
+    position: absolute;
+    bottom: clamp(20px, 4vw, 40px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.carousel-dot:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ====================================
+   HERO CAROUSEL - RESPONSIVE
+   ==================================== */
+
+@media (max-width: 768px) {
+    .hero-carousel {
+        min-height: 100vh;
+    }
+
+    .carousel-slide {
+        background-attachment: scroll;
+    }
+
+    .carousel-content {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .carousel-content--left,
+    .carousel-content--right {
+        margin-left: 0;
+        margin-right: 0;
+        align-items: center;
+        text-align: center;
+    }
+
+    .carousel-title {
+        font-size: 28px;
+        margin-bottom: 1rem;
+        max-width: 80%;
+    }
+
+    .carousel-subtitle {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        max-width: 80%;
+    }
+
+    .carousel-cta {
+        padding: 14px 24px;
+        font-size: 0.938rem;
+        display: block;
+        width: 80%;
+        max-width: 80%;
+        text-align: center;
+    }
+
+    .zonas-servicio {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-arrow svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .carousel-arrow--prev {
+        left: 0.75rem;
+    }
+
+    .carousel-arrow--next {
+        right: 0.75rem;
+    }
+
+    .carousel-dots {
+        bottom: 1.25rem;
+    }
+
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Pantallas muy pequeñas (iPhone SE, etc) */
+@media (max-width: 480px) {
+    .carousel-content {
+        padding: 1.25rem 1rem;
+    }
+
+    .carousel-title {
+        font-size: 24px;
+        margin-bottom: 0.75rem;
+    }
+
+    .carousel-subtitle {
+        font-size: 15px;
+        margin-bottom: 1.25rem;
+    }
+
+    .carousel-cta {
+        padding: 12px 20px;
+        font-size: 0.875rem;
+    }
+
+    .zonas-servicio {
+        font-size: 12px;
+    }
+}
+
+/* Tablet y pantallas medianas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-title {
+        font-size: 36px;
+    }
+
+    .carousel-subtitle {
+        font-size: 17px;
+    }
+
+    .carousel-content {
+        padding: 2rem 3rem;
+        max-width: 550px;
+    }
+}
+
+/* Reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-slide {
+        transition: opacity 0.2s ease;
+    }
+
+    .carousel-title,
+    .carousel-subtitle,
+    .carousel-cta {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
 /* ===== PRINT STYLES ===== */
 @media print {
     .services .services {
@@ -1970,4 +2277,97 @@ h6.section-subtitle::before {
     .faq-answer ul {
         margin-left: var(--space-sm);
     }
+}
+
+/* ==================================================
+   AJUSTES RESPONSIVE DEL HERO CARRUSEL (ENCUDRE)
+   ================================================== */
+
+/* Base: aseguramos comportamiento correcto */
+.carousel-slide-bg img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* ----------- DESKTOP (no tocar mucho) ----------- */
+@media (min-width: 769px){
+
+    /* Slide 1 — control remoto + aire */
+    .carousel-slide[data-slide="0"] img{
+        object-position: 65% center;
+    }
+
+    /* Slide 2 — técnico trabajando */
+    .carousel-slide[data-slide="1"] img{
+        object-position: 75% 35%;
+    }
+
+    /* Slide 3 — técnico y cliente */
+    .carousel-slide[data-slide="2"] img{
+        object-position: 70% 45%;
+    }
+
+    /* Slide 4 — cámara frigorífica completa */
+    .carousel-slide[data-slide="3"] img{
+        object-position: center center;
+    }
+}
+
+
+/* ----------- MOBILE (ACÁ ESTABA EL PROBLEMA) ----------- */
+@media (max-width: 768px){
+
+    /* Slide 1 — QUE SE VEA CONTROL + SPLIT */
+    .carousel-slide[data-slide="0"] img{
+        object-position: 78% 40%;
+    }
+
+    /* Slide 2 — técnico instalando */
+    .carousel-slide[data-slide="1"] img{
+        object-position: 82% 25%;
+    }
+
+    /* Slide 3 — técnico hablando con cliente */
+    .carousel-slide[data-slide="2"] img{
+        object-position: 80% 40%;
+    }
+
+    /* Slide 4 — cámara frigorífica completa */
+    .carousel-slide[data-slide="3"] img{
+        object-position: center 50%;
+    }
+}
+
+
+/* ----------- CELULARES CHICOS (iPhone SE / Android chicos) ----------- */
+@media (max-width: 480px){
+
+    /* Slide 1 */
+    .carousel-slide[data-slide="0"] img{
+        object-position: 85% 45%;
+    }
+
+    /* Slide 2 */
+    .carousel-slide[data-slide="1"] img{
+        object-position: 88% 25%;
+    }
+
+    /* Slide 3 */
+    .carousel-slide[data-slide="2"] img{
+        object-position: 85% 45%;
+    }
+
+    /* Slide 4 */
+    .carousel-slide[data-slide="3"] img{
+        object-position: center 50%;
+    }
+}
+
+/* FIX LAYOUT HERO CUANDO USA <picture> (LCP + CLS) */
+.carousel-slide-bg picture,
+.carousel-slide-bg img{
+    width:100%;
+    height:100%;
+    display:block;
 }
