@@ -305,7 +305,7 @@ body {
     margin: 0 auto;
 }
 
-.section-title {
+/*.section-title {
     text-align: center;
     font-size: clamp(2rem, 6vw, 2.5rem);
     font-weight: 700;
@@ -386,7 +386,6 @@ body {
  
 /* Efectos hover mejorados para enlaces */
 .service-card:hover {
-    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     text-decoration: none;
     color: inherit;
@@ -402,7 +401,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.service-card:hover .service-title {
+.service-card:not(.flipped):hover .service-title {
     color: var(--primary-color);
     transition: color 0.3s ease;
 }
@@ -441,7 +440,7 @@ body {
 }
 
 /* Mantener estilos existentes de iconos y texto */
-.service-icon {
+/*.service-icon {
     width: 60px;
     height: 60px;
     background: var(--gradient);
@@ -455,7 +454,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.service-title {
+/*.service-title {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -463,7 +462,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.service-description {
+/*.service-description {
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 1rem;
@@ -1212,14 +1211,18 @@ h6.section-subtitle::before {
     line-height: var(--leading-relaxed);
     color: var(--text-light);
     margin-bottom: var(--space-lg);
-    
+}
+
+.card-back .service-description,
+.card-back .service-title {
+    color: #ffffff !important;
 }
 
 /* Primer párrafo destacado */
 .services .service-description:first-of-type {
     font-size: var(--body-normal);
     font-weight: 400;
-    color: var(--text-dark);
+    color: var(--text-light);
     line-height: var(--leading-relaxed);
 }
 
@@ -2370,4 +2373,92 @@ h6.section-subtitle::before {
     width:100%;
     height:100%;
     display:block;
+}
+/* =========================
+   FLIP CARDS SERVICES
+   ========================= */
+
+.service-card {
+    perspective: 1200px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    height: 320px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform .8s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+}
+
+/* Girar */
+.service-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Caras */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* FRONT */
+.card-front {
+    border: 1px solid #e2e8f0;
+}
+
+/* BACK */
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #005C98 0%, #0077b6 40%, #00A4E4 100%);
+    color: white;
+    align-items: center;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18),
+                inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* Botón */
+.card-button {
+    margin-top: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.card-button:hover{
+    background:#3e9f43;
+}
+
+.card-hint{
+    margin-top:15px;
+    font-size:.85rem;
+    opacity:.6;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    height: 38px;
+    width: auto;
 }

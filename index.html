@@ -103,6 +103,14 @@
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 38px;
+            width: auto;
         }
 
         .nav-menu {
@@ -341,14 +349,12 @@
 
         /* Service Cards - SOLO estructura crítica */
         .service-card {
-            background: var(--bg-card);
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid #e2e8f0;
             position: relative;
-            overflow: hidden;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -378,10 +384,18 @@
         }
 
         .service-description {
-            color: #4a5568;
+            color: var(--text-dark);
             line-height: 1.6;
             margin-bottom: 1rem;
             flex-grow: 1;
+        }
+
+        .card-back .service-description {
+            color: #ffffff;
+        }
+
+        .card-back .service-title {
+            color: #ffffff;
         }
 
         /* Mobile crítico - SOLO lo esencial */
@@ -584,7 +598,10 @@
     <header class="header">
         <nav class="nav" aria-label="Navegación principal">
             <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-            <p class="logo"><a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">DAClimaTECH</a></p>
+            <a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">
+                <img src="img/favicon-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img">
+                DAClimaTECH
+            </a>
             <ul class="nav-menu" id="navMenu" role="menubar">
                 <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
                 <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
@@ -646,7 +663,7 @@
                            aria-label="Pedir presupuesto por WhatsApp para instalación de aire acondicionado">
                             PEDIR PRESUPUESTO POR WHATSAPP
                         </a>
-                        <small class="zonas-servicio">Atendemos Villa María, General Cabrera, General Deheza, Bell Ville, Oncativo, Río Tercero, Embalse, Santa Rosa y toda la provincia de Córdoba.</small>
+                        <small class="zonas-servicio">Atendemos Villa María, Villa Nueva, General Cabrera, General Deheza, Bell Ville, Oncativo y Río Tercero.</small>
                     </div>
                 </div>
 
@@ -782,68 +799,249 @@
         <section class="services" id="services" aria-label="Servicios de climatización que ofrecemos">
             <h2 class="section-title fade-in">Nuestros Servicios</h2>
             <div class="services-grid">
+
                 <!-- Asesoría y Venta -->
-                <a href="asesoria-y-venta.html" class="service-card fade-in" aria-label="Más información sobre asesoría y venta de equipos de climatización">
-                    <div class="service-icon">🔍</div>
-                    <h3 class="service-title">Asesoría y Venta</h3>
-                    <p class="service-description">Te asesoramos en equipos, capacidad, formato y más especificaciones para llegar a una solución eficiente y que realmente se adapte a lo que estás buscando.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🔍</div>
+                            <h3 class="service-title">Asesoría y Venta</h3>
+                            <p class="service-description">
+                                Elegí el equipo correcto desde el principio.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Asesoría y Venta</h3>
+                            <p class="service-description">
+                                Te ayudamos a seleccionar la potencia, tecnología y tipo de sistema más adecuado para tu espacio y tu consumo energético.
+                            </p>
+
+                            <a href="asesoria-y-venta.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Aerotermia -->
-                <a href="aerotermia.html" class="service-card fade-in" aria-label="Más información sobre servicios de aerotermia en Villa María, Córdoba">
-                    <div class="service-icon">🏡</div>
-                    <h3 class="service-title">Aerotermia</h3>
-                    <p class="service-description">Solución sostenible y eficiente para climatizar tu hogar y producir agua caliente sanitaria, aprovechando la energía del aire de manera inteligente.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🏡</div>
+                            <h3 class="service-title">Aerotermia</h3>
+                            <p class="service-description">
+                                Calefacción, aire acondicionado y agua caliente con un solo sistema.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Aerotermia</h3>
+                            <p class="service-description">
+                                La aerotermia aprovecha la energía del aire exterior para climatizar tu hogar con un consumo mucho menor que los sistemas tradicionales.
+                            </p>
+
+                            <a href="aerotermia.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Aire Acondicionado -->
-                <a href="aire-acondicionado.html" class="service-card fade-in" aria-label="Más información sobre instalación de aire acondicionado">
-                    <div class="service-icon">❄️</div>
-                    <h3 class="service-title">Aire Acondicionado</h3>
-                    <p class="service-description">Instalación, mantenimiento y reparación de equipos de aire acondicionado para enfriar, calentar, deshumidificar y filtrar el aire, mejorando el confort y salud de las personas.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">❄️</div>
+                            <h3 class="service-title">Aire Acondicionado</h3>
+                            <p class="service-description">
+                                Confort todo el año con equipos eficientes y silenciosos.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Aire Acondicionado</h3>
+                            <p class="service-description">
+                                Instalamos sistemas de aire acondicionado dimensionados correctamente para lograr mayor rendimiento, menor consumo y una instalación duradera.
+                            </p>
+
+                            <a href="aire-acondicionado.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Calefacción -->
-                <a href="calefaccion.html" class="service-card fade-in" aria-label="Más información sobre sistemas de calefacción eficientes">
-                    <div class="service-icon">🔥</div>
-                    <h3 class="service-title">Calefacción</h3>
-                    <p class="service-description">Descubre nuestras soluciones avanzadas en calefacción para mantener tu hogar cálido y confortable durante todo el año.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🔥</div>
+                            <h3 class="service-title">Calefacción</h3>
+                            <p class="service-description">
+                                Soluciones eficientes para mantener tu hogar cálido y confortable.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Calefacción</h3>
+                            <p class="service-description">
+                                Descubre nuestras soluciones avanzadas en calefacción para mantener tu hogar cálido y confortable durante todo el año.
+                            </p>
+
+                            <a href="calefaccion.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Electricidad -->
-                <a href="electricidad.html" class="service-card fade-in" aria-label="Más información sobre servicios de electricidad y instalaciones eléctricas">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Electricidad</h3>
-                    <p class="service-description">Instalación, mantenimiento o reparación de sistemas eléctricos tanto a nivel residencial como comercial.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">⚡</div>
+                            <h3 class="service-title">Electricidad</h3>
+                            <p class="service-description">
+                                Instalaciones eléctricas seguras y preparadas para el futuro.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Electricidad</h3>
+                            <p class="service-description">
+                                Realizamos proyectos eléctricos para hogares y comercios priorizando seguridad, eficiencia energética y orden en cada instalación.
+                            </p>
+
+                            <a href="electricidad.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Frío Comercial -->
-                <a href="frio-comercial.html" class="service-card fade-in" aria-label="Más información sobre equipos de frío comercial para hostelería">
-                    <div class="service-icon">🧊</div>
-                    <h3 class="service-title">Frío Comercial</h3>
-                    <p class="service-description">Las cámaras frigoríficas tienen como fin, el de reducir o mantener a un nivel muy bajo de temperatura el producto que en ella se encuentre.</p>
-                </a>
-                
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🧊</div>
+                            <h3 class="service-title">Frío Comercial</h3>
+                            <p class="service-description">
+                                Refrigeración confiable para tu negocio.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Frío Comercial</h3>
+                            <p class="service-description">
+                                Instalamos cámaras frigoríficas y equipos comerciales diseñados para mantener la temperatura correcta y garantizar el funcionamiento continuo de tu actividad.
+                            </p>
+
+                            <a href="frio-comercial.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Maquinaria de Hostelería -->
-                <a href="maquinaria-de-hosteleria.html" class="service-card fade-in" aria-label="Más información sobre maquinaria profesional de hostelería">
-                    <div class="service-icon">🍽️</div>
-                    <h3 class="service-title">Maquinaria de Hostelería</h3>
-                    <p class="service-description">Disponer de una buena maquinaría de hostelería en tu negocio, es sinónimo de eficiencia, productividad y éxito.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🍽️</div>
+                            <h3 class="service-title">Maquinaria de Hostelería</h3>
+                            <p class="service-description">
+                                Equipos profesionales para tu negocio de hostelería.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Maquinaria de Hostelería</h3>
+                            <p class="service-description">
+                                Ofrecemos maquinaria de alta calidad para satisfacer las necesidades de tu negocio gastronómico.
+                            </p>
+
+                            <a href="maquinaria-de-hosteleria.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Ventilación - Extracción -->
-                <a href="ventilacion-extraccion.html" class="service-card fade-in" aria-label="Más información sobre sistemas de ventilación y extracción">
-                    <div class="service-icon">💨</div>
-                    <h3 class="service-title">Ventilación - Extracción</h3>
-                    <p class="service-description">Estos sistemas son fundamentales para garantizar una buena calidad del aire en cualquier espacio, ya sea un hogar, una oficina o un edificio industrial.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">💨</div>
+                            <h3 class="service-title">Ventilación - Extracción</h3>
+                            <p class="service-description">
+                                Ambientes más saludables y seguros.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Ventilación - Extracción</h3>
+                            <p class="service-description">
+                                Diseñamos sistemas de ventilación y extracción que renuevan el aire, eliminan humo y mejoran la calidad ambiental en hogares y comercios.
+                            </p>
+
+                            <a href="ventilacion-extraccion.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
                 <!-- Soporte Técnico -->
-                <a href="soporte-tecnico.html" class="service-card fade-in" aria-label="Más información sobre soporte técnico y mantenimiento">
-                    <div class="service-icon">🛠️</div>
-                    <h3 class="service-title">Soporte Técnico</h3>
-                    <p class="service-description">Brindamos asistencia técnica remota, servicio de urgencias y servicio postventa.</p>
-                </a>
+                <div class="service-card">
+                    <div class="card-inner">
+
+                        <!-- FRONT -->
+                        <div class="card-face card-front">
+                            <div class="service-icon">🛠️</div>
+                            <h3 class="service-title">Soporte Técnico</h3>
+                            <p class="service-description">
+                                Mantenimiento y reparación profesional. Servicio postventa.
+                            </p>
+                        </div>
+
+                        <!-- BACK -->
+                        <div class="card-face card-back">
+                            <h3 class="service-title">Soporte Técnico</h3>
+                            <p class="service-description">
+                                Ofrecemos asistencia técnica remota, servicio de urgencias y servicio postventa para garantizar el correcto funcionamiento de tus instalaciones.
+                            </p>
+
+                            <a href="soporte-tecnico.html" class="card-button">
+                                Ver servicio
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1118,5 +1316,32 @@
             };
         });
     </script>
+
+    <script>
+        document.querySelectorAll('.service-card').forEach(card => {
+
+            // Click (mobile)
+            card.addEventListener('click', function(e){
+                if(e.target.tagName !== "A"){
+                    card.classList.toggle('flipped');
+                }
+            });
+
+            // Hover (desktop)
+            card.addEventListener('mouseenter', ()=>{
+                if(window.innerWidth > 768){
+                    card.classList.add('flipped');
+                }
+            });
+
+            card.addEventListener('mouseleave', ()=>{
+                if(window.innerWidth > 768){
+                    card.classList.remove('flipped');
+                }
+            });
+
+        });
+    </script>
+
 </body>
 </html>
