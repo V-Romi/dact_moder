@@ -64,7 +64,7 @@
         <meta name="mobile-web-app-capable" content="yes">
 
         <!-- Canonical siempre presente -->
-        <link rel="canonical" href="https://daclimatech.com/">
+        <!-- <link rel="canonical" href="https://daclimatech.com/"> -->
 
         <!-- HTTPS Enforcement - Añadir aquí -->
         <script src="https-enforcer.js"></script>
@@ -104,44 +104,44 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "Service",
-                "name": "Servicios de Electricidad en Villa María, Córdoba",
-                "description": "Electricistas certificados en Villa María, Córdoba. Instalaciones eléctricas domiciliarias y comerciales, mantenimiento preventivo y reparaciones urgentes 24/7. Cumplimos normativa REBT.",
-                "provider": {
-                    "@type": "LocalBusiness", 
-                    "name": "DAClimaTECH",
-                    "telephone": "+5493535690667",
-                    "email": "info@daclimatech.com"
+                "@type": "Electrician",
+                "name": "DAClimaTECH",
+                "image": "https://daclimatech.com/img/favicon-daclimatech.png",
+                "url": "https://daclimatech.com/electricidad.html",
+                "telephone": "+5493535690667",
+                "email": "info@daclimatech.com",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Villa María",
+                    "addressRegion": "Córdoba",
+                    "addressCountry": "AR"
                 },
-                "areaServed": "Villa María, Córdoba",
-                "serviceType": "Electricidad",
-                "category": "Instalaciones Eléctricas",
-                "availableChannel": {
-                    "@type": "ServiceChannel",
-                    "serviceUrl": "https://daclimatech.com/electricidad.html",
-                    "serviceName": "Urgencias 24/7"
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": -32.4075,
+                    "longitude": -63.2402
                 },
+                "areaServed": [
+                    { "@type": "City", "name": "Villa María" },
+                    { "@type": "State", "name": "Córdoba" }
+                ],
+                "description": "Electricista en Villa María, Córdoba. Instalaciones eléctricas domiciliarias y comerciales, mantenimiento y urgencias. Cumplimos normativa AEA 90364.",
                 "hasOfferCatalog": {
                     "@type": "OfferCatalog",
-                    "name": "Servicios Eléctricos",
+                    "name": "Servicios eléctricos",
                     "itemListElement": [
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service",
-                                "name": "Instalaciones Eléctricas Domiciliarias",
-                                "description": "Cuadros eléctricos, cableado, enchufes e iluminación"
-                            }
-                        },
-                        {
-                            "@type": "Offer",
-                            "itemOffered": {
-                                "@type": "Service", 
-                                "name": "Instalaciones Eléctricas Comerciales",
-                                "description": "Proyectos eléctricos para negocios y comercios"
-                            }
-                        }
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalaciones eléctricas domiciliarias" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalaciones eléctricas comerciales" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento eléctrico" } },
+                        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reparaciones eléctricas urgentes" } }
                     ]
+                },
+                "priceRange": "$$",
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                    "opens": "08:00",
+                    "closes": "17:00"
                 }
             }
         </script>
@@ -202,39 +202,101 @@
             </nav>
         
             <section class="services" id="services" itemscope itemtype="https://schema.org/Service">
-                <h1 class="section-title-services" itemprop="name">Instalaciones Eléctricas Domiciliarias y Comerciales en Villa María y la región.</h1>
-                <div itemprop="provider" itemscope itemtype="https://schema.org/LocalBusiness">
-                    <meta itemprop="name" content="DAClimaTECH">
-                </div>
-                <div class="services">
-                    <h2 class="section-subtitle">Tu seguridad eléctrica, nuestra prioridad</h2>
-                    <p class="service-description">En DAClimaTECH entendemos que una instalación eléctrica segura y eficiente es la base del confort y la tranquilidad en tu hogar o negocio. Por eso, nuestro equipo especializado en servicios eléctricos domiciliarios y comerciales en Villa María, Córdoba te ofrece soluciones integrales con la máxima garantía de calidad y seguridad.</p>
-                    <h3 class="section-subtitle">Servicios eléctricos completos para tu tranquilidad</h3>
-                    <p class="service-description"><strong>Instalaciones eléctricas domiciliarias:</strong> Realizamos instalaciones eléctricas completas en viviendas, incluyendo todos los componentes esenciales: conductores, interruptores, canalizaciones, tomacorrientes, tableros y accesorios. Nuestras instalaciones cumplen con la normativa vigente y están diseñadas para distribuir la energía eléctrica de manera segura y eficiente.</p>
-                    <p class="service-description"><strong>Instalaciones comerciales:</strong> Adaptamos nuestros servicios a las necesidades específicas de tu negocio, desde pequeños comercios hasta establecimientos del sector hostelero, garantizando el suministro eléctrico adecuado para el correcto funcionamiento de tu actividad empresarial.</p>
-                    <p class="service-description"><strong>Mantenimiento eléctrico preventivo:</strong> Un mantenimiento adecuado es esencial para evitar peligros y garantizar la eficiencia de tu instalación. Realizamos inspecciones periódicas, sustitución de componentes obsoletos y actualizaciones necesarias para mantener tu sistema eléctrico en óptimas condiciones.</p>
-                    <p class="service-description"><strong>Reparaciones y urgencias:</strong> Nuestro servicio técnico especializado está preparado para resolver cualquier avería eléctrica, desde fallos puntuales hasta problemas más complejos, siempre priorizando la seguridad y la rapidez en la solución.</p>
-                    <h3 class="section-subtitle">Seguridad certificada: tu protección es lo primero</h3>
-                    <p class="service-description">En DAClimaTECH cumplimos estrictamente con todas las normativas de seguridad eléctrica. Los cuadros eléctricos estarán dotados de sistemas de seguridad (diferenciales y magnetotérmicos) y realizamos inspecciones exhaustivas de toda instalación antes de su puesta en funcionamiento.
-                    </p>
-                    <p class="service-description">Nuestro equipo técnico está certificado y actualizado en las últimas normativas, incluyendo el Reglamento Electrotécnico de Baja Tensión (REBT) y la Norma UNE 20460, garantizando que cada trabajo se realice bajo los más altos estándares de seguridad.</p>
-                    <h3 class="section-subtitle">¿Por qué elegir DAClimaTECH?</h3>
-                    <p class="service-description"><strong>Profesionales certificados:</strong> Nuestro equipo cuenta con las certificaciones necesarias y la experiencia para realizar trabajos eléctricos generales, desde instalación y mantenimiento de tableros eléctricos hasta circuitos completos de enchufes e iluminación.</p>
-                    <p class="service-description"><strong>Cumplimiento normativo:</strong> Todas nuestras instalaciones cumplen con la normativa española vigente, garantizando no solo el correcto funcionamiento sino también tu seguridad y la de tu familia o empleados.</p>
-                    <p class="service-description"><strong>Servicio integral:</strong> Desde el diseño inicial hasta el mantenimiento continuo, te acompañamos en cada etapa de tu proyecto eléctrico, ofreciéndote asesoramiento personalizado y soluciones adaptadas a tus necesidades específicas.</p>
-                    <p class="service-description"><strong>Tecnología actualizada:</strong> Trabajamos con los materiales y tecnologías más avanzados del mercado, asegurando instalaciones modernas, eficientes y preparadas para el futuro.</p>
-                    <h3 class="section-subtitle">Servicios especializados en Villa María, Córdoba</h3>
-                    <p class="service-description"><strong>Actualizaciones y modernizaciones:</strong> Actualizar o sustituir equipos obsoletos, como cuadros eléctricos, cableado o interruptores, es esencial para el mantenimiento eléctrico. Te ayudamos a modernizar tu instalación para mejorar su eficiencia y seguridad.</p>
-                    <p class="service-description"><strong>Instalaciones para climatización:</strong> Como especialistas en climatización, realizamos las instalaciones eléctricas específicas para equipos de aire acondicionado, aerotermia y sistemas de ventilación, garantizando el suministro eléctrico adecuado para cada equipo.</p>
-                    <p class="service-description"><strong>Asesoramiento energético:</strong> Te ayudamos a optimizar tu consumo eléctrico, recomendándote las mejores soluciones para reducir tu factura energética sin comprometer el confort o la funcionalidad.</p>
-                    <h3 class="section-subtitle">La tranquilidad de una instalación profesional</h3>
-                    <p class="service-description">Una instalación eléctrica realizada por profesionales no solo te garantiza seguridad inmediata, sino que representa una inversión a largo plazo. Las instalaciones bien ejecutadas y mantenidas adecuadamente duran más, funcionan de manera más eficiente y añaden valor a tu propiedad.</p>
-                    <p class="service-description">Además, contar con una instalación que cumple con todas las normativas te protege de posibles sanciones y te da la tranquilidad de saber que tu hogar o negocio está protegido contra riesgos eléctricos.</p>
-                    <h3 class="section-subtitle">Tu electricista de confianza en Villa María</h3>
-                    <p class="service-description">¿Necesitas una instalación eléctrica nueva, una reparación urgente o un mantenimiento preventivo? En DAClimaTECH combinamos nuestra experiencia en climatización con servicios eléctricos integrales, ofreciéndote la comodidad de contar con un único proveedor especializado para todas tus necesidades.</p>
-                    <p><strong>Nuestro equipo técnico evaluará tu instalación actual y te propondrá las mejores soluciones para garantizar tu seguridad y eficiencia energética.</strong></p>
-                </div>
-            </section>
+    <h1 class="section-title-services" itemprop="name">Instalaciones Eléctricas Domiciliarias y Comerciales en Villa María, Córdoba</h1>
+    
+    <div itemprop="provider" itemscope itemtype="https://schema.org/LocalBusiness">
+        <meta itemprop="name" content="DAClimaTECH">
+    </div>
+
+    <div class="services">
+        
+        <h2 class="section-subtitle">Tu seguridad eléctrica, nuestra prioridad</h2>
+        <p class="service-description">
+            En DAClimaTECH entendemos que una instalación eléctrica segura y eficiente es la base del confort y la tranquilidad en tu hogar o negocio. Por eso, ofrecemos servicios eléctricos domiciliarios y comerciales en Villa María y la región, con soluciones integrales que cumplen con las normativas argentinas vigentes y los más altos estándares de seguridad.
+        </p>
+
+        <h3 class="section-subtitle">Servicios eléctricos completos para tu tranquilidad</h3>
+
+        <p class="service-description">
+            <strong>Instalaciones eléctricas domiciliarias:</strong> Realizamos instalaciones eléctricas completas en viviendas, incluyendo conductores, interruptores, canalizaciones, tomacorrientes, tableros eléctricos y sistemas de protección. Todas nuestras instalaciones se ejecutan conforme a la Reglamentación para la Ejecución de Instalaciones Eléctricas en Inmuebles de la Asociación Electrotécnica Argentina (AEA 90364), garantizando seguridad y eficiencia.
+        </p>
+
+        <p class="service-description">
+            <strong>Instalaciones comerciales:</strong> Adaptamos cada instalación a las necesidades específicas de tu negocio, ya sea un local comercial, oficina o emprendimiento gastronómico, asegurando el correcto funcionamiento de equipos, iluminación y climatización con instalaciones seguras y eficientes.
+        </p>
+
+        <p class="service-description">
+            <strong>Mantenimiento eléctrico preventivo:</strong> El mantenimiento periódico es clave para evitar fallas y riesgos eléctricos. Realizamos inspecciones técnicas, verificación de tableros, sustitución de componentes deteriorados y mejoras en la instalación para mantener todo en óptimas condiciones.
+        </p>
+
+        <p class="service-description">
+            <strong>Reparaciones y urgencias:</strong> Brindamos asistencia rápida ante fallas eléctricas, cortocircuitos o problemas en el suministro. Nuestro equipo técnico actúa con rapidez, priorizando siempre la seguridad.
+        </p>
+
+        <h3 class="section-subtitle">Seguridad certificada: tu protección es lo primero</h3>
+
+        <p class="service-description">
+            En DAClimaTECH trabajamos bajo los lineamientos de la normativa AEA 90364, exigida en Argentina para instalaciones eléctricas seguras.
+        </p>
+
+        <p class="service-description">
+            Todas nuestras instalaciones incluyen interruptores diferenciales (protección contra descargas), interruptores termomagnéticos (protección contra sobrecargas y cortocircuitos) y correcta puesta a tierra. Antes de la puesta en servicio, realizamos verificaciones completas para asegurar el correcto funcionamiento.
+        </p>
+
+        <h3 class="section-subtitle">¿Por qué elegir DAClimaTECH?</h3>
+
+        <p class="service-description">
+            <strong>Profesionales capacitados:</strong> Contamos con experiencia en instalaciones eléctricas domiciliarias y comerciales, trabajando con criterios técnicos actualizados y buenas prácticas del sector.
+        </p>
+
+        <p class="service-description">
+            <strong>Cumplimiento normativo:</strong> Todas nuestras instalaciones se realizan conforme a la reglamentación vigente en Argentina, garantizando seguridad, confiabilidad y durabilidad.
+        </p>
+
+        <p class="service-description">
+            <strong>Servicio integral:</strong> Te acompañamos desde el diseño de la instalación hasta su ejecución y mantenimiento, brindando asesoramiento personalizado en cada etapa.
+        </p>
+
+        <p class="service-description">
+            <strong>Tecnología y materiales de calidad:</strong> Trabajamos con materiales certificados y soluciones modernas, asegurando instalaciones eficientes y preparadas para el crecimiento futuro.
+        </p>
+
+        <h3 class="section-subtitle">Servicios especializados en Villa María, Córdoba</h3>
+
+        <p class="service-description">
+            <strong>Actualización de instalaciones eléctricas:</strong> Reemplazamos instalaciones antiguas o fuera de norma, incluyendo tableros obsoletos, cableado deteriorado y sistemas sin protección adecuada, mejorando la seguridad y eficiencia.
+        </p>
+
+        <p class="service-description">
+            <strong>Instalaciones eléctricas para climatización:</strong> Como especialistas en climatización, realizamos instalaciones eléctricas para equipos de aire acondicionado, ventilación y sistemas de alta demanda energética, garantizando su correcto funcionamiento.
+        </p>
+
+        <p class="service-description">
+            <strong>Asesoramiento en eficiencia energética:</strong> Te ayudamos a optimizar el consumo eléctrico mediante una correcta distribución de circuitos y recomendaciones para reducir el gasto energético.
+        </p>
+
+        <h3 class="section-subtitle">La tranquilidad de una instalación profesional</h3>
+
+        <p class="service-description">
+            Una instalación eléctrica realizada correctamente protege tu propiedad y a las personas, reduce riesgos de incendios, mejora el rendimiento eléctrico y aumenta la vida útil de los equipos.
+        </p>
+
+        <p class="service-description">
+            Además, una instalación conforme a normativa incrementa el valor del inmueble y te brinda tranquilidad frente a posibles fallas o riesgos eléctricos.
+        </p>
+
+        <h3 class="section-subtitle">Tu electricista de confianza en Villa María</h3>
+
+        <p class="service-description">
+            ¿Necesitás una instalación eléctrica, mantenimiento o una reparación urgente? En DAClimaTECH te ofrecemos un servicio integral que combina experiencia en climatización y electricidad.
+        </p>
+
+        <p>
+            <strong>Nuestro equipo técnico evaluará tu instalación actual y te propondrá la mejor solución para garantizar seguridad y eficiencia energética.</strong>
+        </p>
+
+    </div>
+</section>
             
             <!-- Sección FAQ -->
             <div class="faq-wrapper">
