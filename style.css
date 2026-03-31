@@ -452,21 +452,18 @@ body {
     font-size: 1.5rem;
     color: white;
     transition: all 0.3s ease;
+}*/
+
+.service-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
-/*.service-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    transition: color 0.3s ease;
-}
-
-/*.service-description {
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    flex-grow: 1;
+.service-icon img {
+    width: 60px;
+    height: auto;
 }
 
 /* Responsive adjustments */
