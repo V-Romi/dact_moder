@@ -455,15 +455,24 @@ body {
 }*/
 
 .service-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 60px;
+    height: 60px;
     margin-bottom: 1.5rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+
+    overflow: hidden; /* 🔥 clave */
 }
 
 .service-icon img {
-    width: 60px;
-    height: auto;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
 
 /* Responsive adjustments */
