@@ -1,7 +1,7 @@
 // service-worker.js - Service Worker para DAClimaTECH
 // Versión: 1.1.0 - Optimizado para PageSpeed
 
-const CACHE_NAME = 'daclimatech-v1.1.0';
+const CACHE_NAME = 'daclimatech-v1.2.0';
 
 // Solo cachear recursos esenciales
 const STATIC_ASSETS = [
@@ -23,7 +23,8 @@ const SKIP_CACHE = [
   'pagead',
   'doubleclick',
   'facebook',
-  'cloudflare'
+  'cloudflare',
+  'cdn.jsdelivr.net'
 ];
 
 // INSTALL
