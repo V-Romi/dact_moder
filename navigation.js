@@ -98,7 +98,7 @@
             );
             
             // Prevenir scroll del body cuando menu está abierto
-            document.body.style.overflow = !isExpanded ? 'hidden' : '';
+            document.body.style.overflow = '';
         }, { passive: false });
 
         // Cerrar menu al hacer click fuera
@@ -299,27 +299,7 @@ window.addEventListener('load', function() {
     // HEADER SCROLL EFFECTS - NO CRÍTICO
     // ========================================
     function initHeaderScroll() {
-        const header = document.querySelector('.header');
-        if (!header) return;
-
-        let scrollTimeout;
-        const throttledHeaderScroll = () => {
-            if (!scrollTimeout) {
-                scrollTimeout = setTimeout(() => {
-                    const scrollY = window.scrollY;
-                    if (scrollY > 50) {
-                        header.style.background = 'rgba(255, 255, 255, 0.98)';
-                        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.12)';
-                    } else {
-                        header.style.background = 'rgba(255, 255, 255, 0.95)';
-                        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
-                    }
-                    scrollTimeout = null;
-                }, 16); // ~60fps
-            }
-        };
-
-        window.addEventListener('scroll', throttledHeaderScroll, { passive: true });
+        // Manejado por clase .scrolled en index.html
     }
 
     // ========================================

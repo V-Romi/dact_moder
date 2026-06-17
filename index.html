@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>DAClimaTECH - Expertos en Climatización, Aerotermia y Aire Acondicionado en Villa Maria, Córdoba, Argentina</title>
-    <meta name="google-site-verification" content="UzBdApARvZ1qL2bfPTQLAQLSsCwPucP-TkE7NRlKdK4" />
+    
     <!-- Formato de detección de número de teléfono -->
     <meta name="format-detection" content="telephone=yes">
-
-    <!-- Theme color para seguridad del navegador -->
-    <meta name="theme-color" content="#005C98">
 
     <!-- Manifest para PWA -->
     <!-- PWA META TAGS ESENCIALES -->
@@ -80,10 +77,11 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #ffffff;
+            background: transparent;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid #e2e8f0;
+            box-shadow: none;
+            border-bottom: none;
+            transition: background .3s ease, box-shadow .3s ease, border-color .3s ease;
         }
 
         .nav {
@@ -119,10 +117,31 @@
             gap: clamp(1rem, 3vw, 2rem);
             align-items: center;
         }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: clamp(60px, 8vw, 70px);
+                left: 0;
+                width: 100vw;
+                height: calc(100vh - clamp(60px, 8vw, 70px));
+                background: rgba(255,255,255,.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: clamp(1.5rem, 4vw, 2rem);
+                overflow-y: auto;
+                align-items: center;
+                justify-content: flex-start;
+                z-index: 999;
+                list-style: none;
+            }
+            .nav-menu.active {
+                display: flex !important;
+            }
+        }
 
         .nav-link {
             text-decoration: none;
-            color: var(--primary-color);
             font-weight: 500;
             font-size: clamp(0.9rem, 2vw, 1rem);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -364,25 +383,14 @@
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            color: white;
-            overflow: hidden;
+            margin-bottom: 1rem;
             flex-shrink: 0;
-        }
-
-        .service-icon img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            display: block;
         }
 
         .service-title {
@@ -516,13 +524,240 @@
             transform: none !important;
         }
 
+        /* ══════════════════════════════════════════════════════
+           SERVICIOS v2 — tarjetas con foto real
+        ══════════════════════════════════════════════════════ */
+
+        /* Contenedor principal */
+        .srv2 {
+            background: var(--bg-light);
+            padding-top: clamp(3rem, 6vw, 4rem);
+            padding-bottom: clamp(3rem, 8vw, 5rem);
+        }
+
+        /* ── Trust strip ─────────────────────────────────── */
+        .srv2-trust {
+            position: relative;
+            z-index: 10;
+            margin-top: -80px;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+        }
+        .srv2-trust-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
+            padding: clamp(1.2rem, 3vw, 1.8rem) clamp(1.5rem, 4vw, 2.5rem);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(1rem, 2vw, 1.5rem);
+        }
+        .srv2-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .srv2-trust-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        .srv2-trust-item div {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+        .srv2-trust-item strong {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+        .srv2-trust-item span {
+            font-size: 0.78rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        /* ── Header sección ──────────────────────────────── */
+        .srv2-header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: clamp(2.5rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem) clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+        }
+
+        /* ── Grid de tarjetas ────────────────────────────── */
+        .srv2-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 4vw, 2rem);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        /* ── Tarjeta individual ──────────────────────────── */
+        .srv2-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease;
+        }
+        .srv2-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Foto de fondo */
+        .srv2-card-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .srv2-card-bg picture,
+        .srv2-card-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .srv2-card:hover .srv2-card-bg img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay degradado */
+        .srv2-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.08) 0%,
+                rgba(0,0,0,0.18) 40%,
+                rgba(0,0,0,0.72) 100%
+            );
+            transition: background 0.3s ease;
+        }
+        .srv2-card:hover .srv2-card-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.12) 0%,
+                rgba(0,0,0,0.25) 40%,
+                rgba(0,0,0,0.82) 100%
+            );
+        }
+
+        /* Contenido sobre la foto */
+        .srv2-card-body {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(1rem, 2.5vw, 1.4rem);
+            gap: 6px;
+        }
+
+        /* Badge ícono */
+        .srv2-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+        .srv2-badge--green  { background: #22c55e; color: #fff; }
+        .srv2-badge--blue   { background: #3b82f6; color: #fff; }
+        .srv2-badge--orange { background: #f97316; color: #fff; }
+        .srv2-badge--teal   { background: #14b8a6; color: #fff; }
+
+        /* Textos */
+        .srv2-card-title {
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            margin: 0;
+        }
+        .srv2-card-desc {
+            font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+            color: rgba(255,255,255,0.88);
+            line-height: 1.45;
+            margin: 0;
+        }
+        .srv2-card-link {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #fbbf24;
+            letter-spacing: 0.01em;
+            margin-top: 2px;
+            display: inline-block;
+        }
+
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .srv2-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .srv2-trust-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .srv2-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+            .srv2-card {
+                aspect-ratio: 2 / 3;
+            }
+            .srv2-trust {
+                margin-top: -52px;
+            }
+            .srv2-trust-inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                border-radius: 14px;
+                padding: 1rem 1.2rem;
+            }
+            .srv2-trust-icon {
+                width: 36px;
+                height: 36px;
+                min-width: 36px;
+            }
+        }
+        @media (max-width: 400px) {
+            .srv2-grid {
+                grid-template-columns: 1fr;
+            }
+            .srv2-card {
+                aspect-ratio: 16 / 9;
+            }
+        }
+
     </style>
     
     <!-- ====================== 
          PRELOAD RECURSOS CRÍTICOS
          ====================== -->
     <!-- Preload de imagen LCP - Primer slide del carrusel -->
-    <link rel="preload" as="image" href="img/slide1-control-remoto.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="img/slide1-aire-acondicionado.webp" type="image/webp" fetchpriority="high">
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
@@ -535,9 +770,8 @@
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Expertos en climatización, electricidad, maquinaria de hostelería y frío industrial en Córdoba. Servicios de instalación, mantenimiento y reparación.">
-    <meta name="keywords" content="climatización, aire acondicionado, calefacción, electricidad, frío comercial, hostelería, Córdoba, aerotermia, instalación, mantenimiento, reparación">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Aire acondicionado en Villa María, Córdoba. Instalación, mantenimiento y venta. Presupuesto sin cargo. Distribuidor oficial Carrier, Surrey y Midea.">
+    <meta name="keywords" content="climatización, aire acondicionado, calefacción, venta, Córdoba, aerotermia, instalación, mantenimiento, reparación, Carrier, Surrey, Midea, Villa María">
     <meta name="author" content="DAClimaTECH">
     <meta name="geo.region" content="AR-X">
     <meta name="geo.placename" content="Villa María, Córdoba">
@@ -546,14 +780,24 @@
     <meta name="language" content="es">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="DAClimaTECH - Expertos en Climatización en Villa María, Córdoba">
-    <meta property="og:description" content="Expertos en climatización, electricidad, frío comercial, sistemas de ventilación - extracción y maquinaria de hostelería en Villa María, Córdoba">
+    <meta property="og:title" content="DAClimaTECH | Aire Acondicionado en Villa María, Córdoba">
+    <meta property="og:description" content="Aire acondicionado en Villa María, Córdoba. Instalación, mantenimiento y venta. Presupuesto sin cargo. Distribuidor oficial Carrier, Surrey y Midea.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://daclimatech.com">
-    <meta property="og:image" content="https://daclimatech.com/img/daclimatech-portada-640w.webp">
-    <meta property="og:image:width" content="640">
-    <meta property="og:image:height" content="360">
-    
+    <meta property="og:image" content="https://daclimatech.com/img/slide1-aire-acondicionado.webp">
+    <meta property="og:image:width" content="1600">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="Instalación profesional de aire acondicionado en Villa María, Córdoba — DAClimaTECH">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="DAClimaTECH">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DAClimaTECH | Aire Acondicionado en Villa María, Córdoba">
+    <meta name="twitter:description" content="Aire acondicionado en Villa María, Córdoba. Instalación, mantenimiento y venta. Presupuesto sin cargo. Distribuidor oficial Carrier, Surrey y Midea.">
+    <meta name="twitter:image" content="https://daclimatech.com/img/slide1-aire-acondicionado.webp">
+    <meta name="twitter:image:alt" content="Instalación profesional de aire acondicionado en Villa María, Córdoba — DAClimaTECH">
+
     <!-- Schema.org para LocalBusiness -->
     <script type="application/ld+json">
         {
@@ -561,19 +805,17 @@
             "@type": "LocalBusiness",
             "name": "DAClimaTECH",
             "alternateName": "DA Clima TECH",
-            "description": "Expertos en climatización sostenible, aerotermia, aire acondicionado, calefacción, electricidad, frío comercial y maquinaria de hostelería en Villa María, Córdoba",
+            "description": "Venta, instalación y mantenimiento de aire acondicionado, aerotermia, ventilación extracción y calefacción en Villa María, Córdoba. Distribuidor oficial Carrier, Surrey y Midea.",
             "url": "https://daclimatech.com",
             "logo": "https://daclimatech.com/img/daclimatech-portada-640w.webp",
-            "image": "https://daclimatech.com/img/slide1-control-remoto.webp",
+            "image": "https://daclimatech.com/img/slide1-aire-acondicionado.webp",
             "telephone": "+5493535690667",
             "email": "info@daclimatech.com",
             "foundingDate": "2024",
             "priceRange": "$$$",
             "paymentAccepted": ["Efectivo", "Transferencia", "Tarjeta"],
             "currenciesAccepted": "ARS",
-            "openingHours": [
-                "Mo-Fr 08:00-17:00"
-            ],
+            "openingHours": ["Mo-Fr 08:00-17:00"],
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Villa María",
@@ -599,50 +841,304 @@
                 },
                 "geoRadius": "50000"
             },
-            "sameAs": [
-                "https://www.instagram.com/daclimatech/"
+            "sameAs": ["https://www.instagram.com/daclimatech/"],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "3",
+                "bestRating": "5",
+                "worstRating": "1"
+            },
+            "review": [
+                {
+                    "@type": "Review",
+                    "author": { "@type": "Person", "name": "Yanina R." },
+                    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                    "reviewBody": "Excelente asesoramiento y servicio. Súper recomendables. Los trabajos súper prolijos, cuidando hasta el mínimo detalle."
+                },
+                {
+                    "@type": "Review",
+                    "author": { "@type": "Person", "name": "Carlos T." },
+                    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                    "reviewBody": "Excelente trabajo en la instalacion de aire acondicionado. Cumpliendo en tiempo y forma la fecha y horario del servicio. Recomendable."
+                },
+                {
+                    "@type": "Review",
+                    "author": { "@type": "Person", "name": "Silvana J." },
+                    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+                    "reviewBody": "Excelente profesional! Trabajo prolijo, instalación cuidada acompañada de asesoramiento! Precios acorde al trabajo realizado. Lo recomiendo!"
+                }
             ]
         }
     </script>
 </head>
 <body>
     <!-- Navigation -->
-    <header class="header">
-        <nav class="nav" aria-label="Navegación principal">
-            <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
-            <a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">
+    <!-- ═══════════════════════════════════════════════════════════
+     NUEVO HEADER — MEGA MENÚ PREMIUM
+     Reemplaza el <header class="header">...</header> actual
+     en index.html (y en cada página de servicio)
+═══════════════════════════════════════════════════════════ -->
+<header class="header" id="mainHeader">
+    <nav class="nav" aria-label="Navegación principal">
+        <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+        <!-- LOGO (idéntico al actual) -->
+        <a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">
+            <img src="img/favicon-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img">
+            DAClimaTECH
+        </a>
+
+        <!-- LINKS DESKTOP -->
+        <ul class="nav-menu" id="navMenu" role="menubar">
+            <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
+
+            <!-- SERVICIOS con mega menú -->
+            <li class="nav-item has-megamenu" role="menuitem" aria-haspopup="true">
+                <a href="index.html#services" class="nav-link nav-link--megamenu" aria-expanded="false" aria-controls="megaMenuServicios">
+                    Servicios
+                    <svg class="nav-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+
+                <!-- MEGA MENÚ PANEL -->
+                <div class="megamenu" id="megaMenuServicios" role="menu" aria-label="Menú de servicios">
+                    <div class="megamenu-header">
+                        <span class="megamenu-eyebrow">Soluciones para tu confort</span>
+                        <p class="megamenu-title">Tecnología inteligente para un hogar mejor</p>
+                    </div>
+
+                    <div class="megamenu-cards">
+
+                        <!-- Card Aire Acondicionado -->
+                        <a href="aire-acondicionado.html" class="megamenu-card" role="menuitem">
+                            <div class="megamenu-card-img megamenu-card-img--ac">
+                                <picture>
+                                    <source srcset="img/slide1-aire-acondicionado.webp" type="image/webp">
+                                    <img src="img/slide1-aire-acondicionado.webp" alt="Aire acondicionado" loading="lazy" decoding="async">
+                                </picture>
+                                <span class="megamenu-card-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+                                </span>
+                            </div>
+                            <div class="megamenu-card-body">
+                                <h3 class="megamenu-card-title">Aire acondicionado</h3>
+                                <p class="megamenu-card-desc">Sistemas inverter de alta eficiencia y máximo confort.</p>
+                                <span class="megamenu-card-link">Ver más →</span>
+                            </div>
+                        </a>
+
+                        <!-- Card Aerotermia -->
+                        <a href="aerotermia.html" class="megamenu-card" role="menuitem">
+                            <div class="megamenu-card-img megamenu-card-img--aero">
+                                <picture>
+                                    <source srcset="img/slide2-aerotermia.webp" type="image/webp">
+                                    <img src="img/slide2-aerotermia.png" alt="Aerotermia" loading="lazy" decoding="async">
+                                </picture>
+                                <span class="megamenu-card-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                                </span>
+                            </div>
+                            <div class="megamenu-card-body">
+                                <h3 class="megamenu-card-title">Aerotermia</h3>
+                                <p class="megamenu-card-desc">Calefacción, refrigeración y ACS con alta eficiencia energética.</p>
+                                <span class="megamenu-card-link">Ver más →</span>
+                            </div>
+                        </a>
+
+                        <!-- Card Calefacción -->
+                        <a href="calefaccion.html" class="megamenu-card" role="menuitem">
+                            <div class="megamenu-card-img megamenu-card-img--cal">
+                                <picture>
+                                    <source srcset="img/slide3-calefaccion.webp" type="image/webp">
+                                    <img src="img/slide3-calefaccion.png" alt="Calefacción" loading="lazy" decoding="async">
+                                </picture>
+                                <span class="megamenu-card-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c0 6-8 6-8 12a8 8 0 0 0 16 0c0-6-8-6-8-12z"/></svg>
+                                </span>
+                            </div>
+                            <div class="megamenu-card-body">
+                                <h3 class="megamenu-card-title">Calefacción</h3>
+                                <p class="megamenu-card-desc">Piso radiante y sistemas de bajo consumo. Instalación prolija.</p>
+                                <span class="megamenu-card-link">Ver más →</span>
+                            </div>
+                        </a>
+
+                        <!-- Card Ventilación -->
+                        <a href="ventilacion-extraccion.html" class="megamenu-card" role="menuitem">
+                            <div class="megamenu-card-img megamenu-card-img--vent">
+                                <picture>
+                                    <source srcset="img/slide4-ventilacion.webp" type="image/webp">
+                                    <img src="img/slide4-ventilacion.png" alt="Ventilación" loading="lazy" decoding="async">
+                                </picture>
+                                <span class="megamenu-card-badge">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                                </span>
+                            </div>
+                            <div class="megamenu-card-body">
+                                <h3 class="megamenu-card-title">Ventilación y extracción</h3>
+                                <p class="megamenu-card-desc">Aire limpio y saludable con recuperación de calor.</p>
+                                <span class="megamenu-card-link">Ver más →</span>
+                            </div>
+                        </a>
+
+                    </div><!-- /.megamenu-cards -->
+
+                    <!-- TRUST BADGES -->
+                    <div class="megamenu-trust">
+                        <div class="megamenu-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <div>
+                                <strong>Hasta 95%</strong>
+                                <span>recuperación energética</span>
+                            </div>
+                        </div>
+                        <div class="megamenu-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <div>
+                                <strong>Instalación certificada</strong>
+                                <span>técnicos habilitados</span>
+                            </div>
+                        </div>
+                        <div class="megamenu-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg>
+                            <div>
+                                <strong>Marcas líderes</strong>
+                                <span>Carrier, Surrey, Midea</span>
+                            </div>
+                        </div>
+                        <div class="megamenu-trust-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                            <div>
+                                <strong>Asesoramiento</strong>
+                                <span>personalizado sin cargo</span>
+                            </div>
+                        </div>
+                    </div><!-- /.megamenu-trust -->
+
+                </div><!-- /.megamenu -->
+            </li><!-- /.has-megamenu -->
+
+            <!-- CLIENTES (ex Proyectos) -->
+            <li><a href="index.html#clientes" class="nav-link">Clientes</a></li>
+
+            <!-- EMPRESA (ex Nosotros) -->
+            <li><a href="descubre-mas.html" class="nav-link">Empresa</a></li>
+
+            <!-- CONTACTO -->
+            <li><a href="index.html#contact" class="nav-link">Contacto</a></li>
+        </ul>
+
+        <!-- CTA DESKTOP -->
+        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20asesoramiento." 
+           class="nav-cta-btn" target="_blank" rel="noopener noreferrer"
+           aria-label="Solicitar asesoramiento por WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Solicitar asesoramiento
+        </a>
+
+        <!-- HAMBURGER MOBILE -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
+            <span class="hamburger-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </span>
+        </button>
+    </nav>
+
+    <!-- OVERLAY MOBILE -->
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+    <!-- DRAWER MOBILE -->
+    <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+        <div class="mobile-drawer-header">
+            <a href="index.html" class="logo mobile-drawer-logo" aria-label="DAClimaTECH inicio">
                 <img src="img/favicon-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img">
                 DAClimaTECH
             </a>
-            <ul class="nav-menu" id="navMenu" role="menubar">
-                <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
-                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
-                    <a href="index.html#services" class="nav-link" aria-expanded="false" data-dropdown-toggle>Servicios</a>
-                    <ul class="dropdown-menu" role="menu" aria-label="Menú de servicios">
-                        <li><a href="asesoria-y-venta.html" class="dropdown-link">Asesoría y Venta</a></li>
-                        <li><a href="aerotermia.html" class="dropdown-link">Aerotermia</a></li>
-                        <li><a href="aire-acondicionado.html" class="dropdown-link">Aire Acondicionado</a></li>
-                        <li><a href="calefaccion.html" class="dropdown-link">Calefacción</a></li>
-                        <li><a href="electricidad.html" class="dropdown-link">Electricidad</a></li>
-                        <li><a href="frio-comercial.html" class="dropdown-link">Frío Comercial</a></li>
-                        <li><a href="maquinaria-de-hosteleria.html" class="dropdown-link">Maquinaria de Hostelería</a></li>
-                        <li><a href="ventilacion-extraccion.html" class="dropdown-link">Ventilación - Extracción</a></li>
-                        <li><a href="soporte-tecnico.html" class="dropdown-link">Soporte Técnico</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown" role="menuitem" aria-haspopup="true">
-                    <a href="index.html#about" class="nav-link" aria-expanded="false" data-dropdown-toggle>Nosotros</a>
-                    <ul class="dropdown-menu" role="menu" aria-label="Información sobre la empresa">
-                        <li><a href="descubre-mas.html" class="dropdown-link">Descubre Más</a></li>
-                    </ul>
-                </li>
-                <li><a href="index.html#contact" class="nav-link" aria-label="Ir a sección de contacto">Contacto</a></li>
-            </ul>
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navMenu">
-                <span class="hamburger-icon" aria-hidden="true">☰</span>
+            <button class="mobile-drawer-close" id="drawerClose" aria-label="Cerrar menú">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
-        </nav> 
-    </header>
+        </div>
+
+        <div class="mobile-drawer-body">
+
+            <!-- Sección Servicios con cards compactas -->
+            <div class="mobile-drawer-section-label">Servicios</div>
+
+            <a href="aire-acondicionado.html" class="mobile-service-row">
+                <div class="mobile-service-thumb mobile-service-thumb--ac">
+                    <picture>
+                        <source srcset="img/slide1-aire-acondicionado.webp" type="image/webp">
+                        <img src="img/slide1-aire-acondicionado.webp" alt="Aire acondicionado" loading="lazy">
+                    </picture>
+                </div>
+                <div class="mobile-service-text">
+                    <strong>Aire acondicionado</strong>
+                    <span>Confort eficiente todo el año</span>
+                </div>
+                <svg class="mobile-service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="aerotermia.html" class="mobile-service-row">
+                <div class="mobile-service-thumb mobile-service-thumb--aero">
+                    <picture>
+                        <source srcset="img/slide2-aerotermia.webp" type="image/webp">
+                        <img src="img/slide2-aerotermia.png" alt="Aerotermia" loading="lazy">
+                    </picture>
+                </div>
+                <div class="mobile-service-text">
+                    <strong>Aerotermia</strong>
+                    <span>Calefacción, refrigeración y ACS</span>
+                </div>
+                <svg class="mobile-service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="calefaccion.html" class="mobile-service-row">
+                <div class="mobile-service-thumb mobile-service-thumb--cal">
+                    <picture>
+                        <source srcset="img/slide3-calefaccion.webp" type="image/webp">
+                        <img src="img/slide3-calefaccion.png" alt="Calefacción" loading="lazy">
+                    </picture>
+                </div>
+                <div class="mobile-service-text">
+                    <strong>Calefacción</strong>
+                    <span>Piso radiante y radiadores</span>
+                </div>
+                <svg class="mobile-service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <a href="ventilacion-extraccion.html" class="mobile-service-row">
+                <div class="mobile-service-thumb mobile-service-thumb--vent">
+                    <picture>
+                        <source srcset="img/slide4-ventilacion.webp" type="image/webp">
+                        <img src="img/slide4-ventilacion.png" alt="Ventilación" loading="lazy">
+                    </picture>
+                </div>
+                <div class="mobile-service-text">
+                    <strong>Ventilación y extracción</strong>
+                    <span>Aire limpio y recuperación de calor</span>
+                </div>
+                <svg class="mobile-service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+
+            <!-- Divisor -->
+            <div class="mobile-drawer-divider"></div>
+
+            <!-- Links generales -->
+            <a href="index.html#clientes" class="mobile-plain-link">Clientes</a>
+            <a href="descubre-mas.html" class="mobile-plain-link">Empresa</a>
+            <a href="index.html#contact" class="mobile-plain-link">Contacto</a>
+
+            <!-- CTA -->
+            <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20asesoramiento."
+               class="mobile-drawer-cta" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Solicitar asesoramiento
+            </a>
+
+        </div><!-- /.mobile-drawer-body -->
+    </div><!-- /.mobile-drawer -->
+
+</header>
 
     <!-- HERO CARRUSEL -->
     <main id="main-content">
@@ -653,10 +1149,10 @@
                 <div class="carousel-slide active" data-slide="0">
                     <div class="carousel-slide-bg">
                         <picture>
-                            <source srcset="img/slide1-control-remoto.avif" type="image/avif">
-                            <source srcset="img/slide1-control-remoto.webp" type="image/webp">
+                            <source srcset="img/slide1-aire-acondicionado.avif" type="image/avif">
+                            <source srcset="img/slide1-aire-acondicionado.webp" type="image/webp">
 
-                            <img src="img/slide1-control-remoto.png"
+                            <img src="img/slide1-aire-acondicionado.webp"
                                 alt="Instalación profesional de aire acondicionado en Villa María Córdoba"
                                 width="1600"
                                 height="900"
@@ -675,46 +1171,48 @@
                            aria-label="Pedir presupuesto por WhatsApp para instalación de aire acondicionado">
                             PEDIR PRESUPUESTO POR WHATSAPP
                         </a>
-                        <small class="zonas-servicio">Atendemos Villa María, Villa Nueva, General Cabrera, General Deheza, Bell Ville, Oncativo y Río Tercero.</small>
+                        <small class="zonas-servicio">Atendemos Villa María, Rio Cuarto, General Cabrera, General Deheza, Bell Ville, Oncativo y Río Tercero.</small>
                     </div>
                 </div>
 
-                <!-- Slide 2 — Técnico instalando -->
+                <!-- Slide 2 — Aerotermia -->
                 <div class="carousel-slide" data-slide="1">
                     <div class="carousel-slide-bg">
                         <picture>
-                                <source srcset="img/slide2-tecnico-instalando.avif" type="image/avif">
-                                <source srcset="img/slide2-tecnico-instalando.webp" type="image/webp">
-
-                                <img src="img/slide2-tecnico-instalando.png"
-                                    alt="Técnico instalando un aire acondicionado split en pared"
-                                    width="1600"
-                                    height="900"
-                                    loading="lazy"
-                                    decoding="async">
+                            <source media="(max-width: 768px)" srcset="img/slide2-aerotermia-mobile.avif" type="image/avif">
+                            <source media="(max-width: 768px)" srcset="img/slide2-aerotermia-mobile.webp" type="image/webp">
+                            <source srcset="img/slide2-aerotermia.avif" type="image/avif">
+                            <source srcset="img/slide2-aerotermia.webp" type="image/webp">
+                            <img src="img/slide2-aerotermia.png"
+                                alt="Sistema de aerotermia instalado en casa residencial en Córdoba Argentina"
+                                width="1600"
+                                height="900"
+                                loading="lazy"
+                                decoding="async">
                         </picture>
                     </div>
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content carousel-content--left">
-                        <h2 class="carousel-title">Un equipo real detrás de cada instalación</h2>
-                        <p class="carousel-subtitle">Te acompañamos antes, durante y después del trabajo. Si algo no queda como corresponde, volvemos y lo solucionamos.</p>
-                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20coordinar%20una%20instalación." 
-                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
-                           aria-label="Coordinar instalación por WhatsApp">
-                            COORDINAR INSTALACIÓN
+                        <h2 class="carousel-title">Aerotermia en Villa María: calefacción, frío y agua caliente</h2>
+                        <p class="carousel-subtitle">Hasta un 70% menos de consumo frente a sistemas tradicionales. Te asesoramos desde cero.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20saber%20más%20sobre%20aerotermia."
+                        class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                        aria-label="Consultar sobre aerotermia por WhatsApp">
+                            QUIERO SABER MÁS
                         </a>
                     </div>
                 </div>
 
-                <!-- Slide 3 — Técnico con cliente -->
+                <!-- Slide 3 — Calefacción -->
                 <div class="carousel-slide" data-slide="2">
                     <div class="carousel-slide-bg">
                         <picture>
-                            <source srcset="img/slide3-tecnico-cliente.avif" type="image/avif">
-                            <source srcset="img/slide3-tecnico-cliente.webp" type="image/webp">
-
-                            <img src="img/slide3-tecnico-cliente.png"
-                                alt="Técnico explicando el uso del aire acondicionado a cliente en su casa"
+                            <source media="(max-width: 768px)" srcset="img/slide3-calefaccion-mobile.avif" type="image/avif">
+                            <source media="(max-width: 768px)" srcset="img/slide3-calefaccion-mobile.webp" type="image/webp">
+                            <source srcset="img/slide3-calefaccion.avif" type="image/avif">
+                            <source srcset="img/slide3-calefaccion.webp" type="image/webp">
+                            <img src="img/slide3-calefaccion.png"
+                                alt="Instalación de piso radiante para calefacción en Villa María Córdoba"
                                 width="1600"
                                 height="900"
                                 loading="lazy"
@@ -723,52 +1221,26 @@
                     </div>
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content carousel-content--left">
-                        <h2 class="carousel-title">Te explicamos todo antes de irnos</h2>
-                        <p class="carousel-subtitle">Probamos el equipo con vos, configuramos el control y te explicamos cómo usarlo paso a paso.</p>
-                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20asesoramiento%20sobre%20climatización." 
-                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
-                           aria-label="Pedir asesoramiento por WhatsApp">
-                            QUIERO ASESORAMIENTO
+                        <h2 class="carousel-title">Calefacción eficiente para tu hogar en Villa María</h2>
+                        <p class="carousel-subtitle">Piso radiante, fan coils y sistemas de bajo consumo. Instalación técnica y prolija.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20consultar%20opciones%20de%20calefacción."
+                        class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                        aria-label="Consultar opciones de calefacción por WhatsApp">
+                            CONSULTAR OPCIONES
                         </a>
                     </div>
                 </div>
 
-                <!-- Slide 4 — Cámara frigorífica -->
+                <!-- Slide 4 — Ventilación/Extracción -->
                 <div class="carousel-slide" data-slide="3">
                     <div class="carousel-slide-bg">
                         <picture>
-                            <source srcset="img/slide4-camara-frigorifica.avif" type="image/avif">
-                            <source srcset="img/slide4-camara-frigorifica.webp" type="image/webp">
-
-                            <img src="img/slide4-camara-frigorifica.png"
-                                alt="Cámara frigorífica industrial instalada con control de temperatura"
-                                width="1600"
-                                height="900"
-                                loading="lazy"
-                                decoding="async">
-                        </picture>
-                    </div>
-                    <div class="carousel-overlay"></div>
-                    <div class="carousel-content carousel-content--right">
-                        <h2 class="carousel-title">Climatización y refrigeración para comercios</h2>
-                        <p class="carousel-subtitle">Cámaras frigoríficas, equipos confiables y dimensionados correctamente. Te asesoramos desde el inicio para que funcione correctamente todos los días.</p>
-                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20visita%20técnica." 
-                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
-                           aria-label="Solicitar visita técnica por WhatsApp">
-                            SOLICITAR VISITA TÉCNICA
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Slide 5 — Equipos en azotea -->
-                <div class="carousel-slide" data-slide="4">
-                    <div class="carousel-slide-bg">
-                        <picture>
-                            <source srcset="img/slide5-equipos-azotea.avif" type="image/avif">
-                            <source srcset="img/slide5-equipos-azotea.webp" type="image/webp">
-
-                            <img src="img/slide5-equipos-azotea.png"
-                                alt="Equipos de climatización y aire acondicionado instalados en azotea comercial"
+                            <source media="(max-width: 768px)" srcset="img/slide4-ventilacion-mobile.avif" type="image/avif">
+                            <source media="(max-width: 768px)" srcset="img/slide4-ventilacion-mobile.webp" type="image/webp">
+                            <source srcset="img/slide4-ventilacion.avif" type="image/avif">
+                            <source srcset="img/slide4-ventilacion.webp" type="image/webp">
+                            <img src="img/slide4-ventilacion.png"
+                                alt="Sistema de ventilación y extracción instalado en vivienda en Córdoba"
                                 width="1600"
                                 height="900"
                                 loading="lazy"
@@ -777,12 +1249,12 @@
                     </div>
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content carousel-content--left">
-                        <h2 class="carousel-title">Instalaciones que funcionan desde el primer día</h2>
-                        <p class="carousel-subtitle">Planificamos la instalación para evitar fallas. Un equipo bien colocado enfría mejor, consume menos y dura más.</p>
-                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20cotización." 
-                           class="carousel-cta" target="_blank" rel="noopener noreferrer"
-                           aria-label="Solicitar cotización por WhatsApp">
-                            SOLICITAR COTIZACIÓN
+                        <h2 class="carousel-title">Ventilación y extracción en Villa María y zona</h2>
+                        <p class="carousel-subtitle">Renovamos el aire de tu hogar, local u oficina. Sistemas silenciosos y eficientes.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20visita%20técnica%20para%20ventilación."
+                        class="carousel-cta" target="_blank" rel="noopener noreferrer"
+                        aria-label="Solicitar visita técnica para ventilación por WhatsApp">
+                            SOLICITAR VISITA TÉCNICA
                         </a>
                     </div>
                 </div>
@@ -801,404 +1273,407 @@
                     <button class="carousel-dot" data-dot="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
                     <button class="carousel-dot" data-dot="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
                     <button class="carousel-dot" data-dot="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
-                    <button class="carousel-dot" data-dot="4" role="tab" aria-selected="false" aria-label="Slide 5"></button>
                 </div>
 
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section class="services" id="services" aria-label="Servicios de climatización que ofrecemos">
-            <h2 class="section-title fade-in">Nuestros Servicios</h2>
-            <div class="services-grid">
+        <!-- ═══════════════════════════════════════════════════════════
+     SECCIÓN 1: SERVICIOS v2 — tarjetas con foto real
+═══════════════════════════════════════════════════════════ -->
+        <section class="srv2" id="services" aria-label="Servicios de climatización que ofrecemos">
 
-                <!-- Asesoría y Venta -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/asesoramiento-y-venta-icon.webp" 
-                                    alt="Asesoría y Venta" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Asesoría y Venta</h3>
-                            <p class="service-description">
-                                Elegí el equipo correcto desde el principio.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Asesoría y Venta</h3>
-                            <p class="service-description">
-                                Te ayudamos a seleccionar la potencia, tecnología y tipo de sistema más adecuado para tu espacio y tu consumo energético.
-                            </p>
-
-                            <a href="asesoria-y-venta.html" class="card-button">
-                                Ver servicio
-                            </a>
+            <!-- Trust strip -->
+            <div class="srv2-trust">
+                <div class="srv2-trust-inner">
+                    <div class="srv2-trust-item">
+                        <span class="srv2-trust-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </span>
+                        <div>
+                            <strong>Hasta 70%</strong>
+                            <span>de ahorro energético</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Aerotermia -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/aerotermia-icon.webp" 
-                                    alt="Aerotermia" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Aerotermia</h3>
-                            <p class="service-description">
-                                Calefacción, aire acondicionado y agua caliente con un solo sistema.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Aerotermia</h3>
-                            <p class="service-description">
-                                La aerotermia aprovecha la energía del aire exterior para climatizar tu hogar con un consumo mucho menor que los sistemas tradicionales.
-                            </p>
-
-                            <a href="aerotermia.html" class="card-button">
-                                Ver servicio
-                            </a>
+                    <div class="srv2-trust-item">
+                        <span class="srv2-trust-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </span>
+                        <div>
+                            <strong>Instalación certificada</strong>
+                            <span>técnicos habilitados</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Aire Acondicionado -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/aire-acondicionado-icon-blanco.webp" 
-                                    alt="Aire Acondicionado" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Aire Acondicionado</h3>
-                            <p class="service-description">
-                                Confort todo el año con equipos eficientes y silenciosos.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Aire Acondicionado</h3>
-                            <p class="service-description">
-                                Instalamos sistemas de aire acondicionado dimensionados correctamente para lograr mayor rendimiento, menor consumo y una instalación duradera.
-                            </p>
-
-                            <a href="aire-acondicionado.html" class="card-button">
-                                Ver servicio
-                            </a>
+                    <div class="srv2-trust-item">
+                        <span class="srv2-trust-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </span>
+                        <div>
+                            <strong>Marcas líderes</strong>
+                            <span>Carrier · Surrey · Midea</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Calefacción -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/calefaccion-icon.webp" 
-                                    alt="Calefacción" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Calefacción</h3>
-                            <p class="service-description">
-                                Soluciones eficientes para mantener tu hogar cálido y confortable.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Calefacción</h3>
-                            <p class="service-description">
-                                Descubre nuestras soluciones avanzadas en calefacción para mantener tu hogar cálido y confortable durante todo el año.
-                            </p>
-
-                            <a href="calefaccion.html" class="card-button">
-                                Ver servicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Electricidad -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/electricidad-icon.webp" 
-                                    alt="Electricidad" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Electricidad</h3>
-                            <p class="service-description">
-                                Instalaciones eléctricas seguras y preparadas para el futuro.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Electricidad</h3>
-                            <p class="service-description">
-                                Realizamos proyectos eléctricos para hogares y comercios priorizando seguridad, eficiencia energética y orden en cada instalación.
-                            </p>
-
-                            <a href="electricidad.html" class="card-button">
-                                Ver servicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Frío Comercial -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/frio-comercial-icon.webp" 
-                                    alt="Frío Comercial" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Frío Comercial</h3>
-                            <p class="service-description">
-                                Refrigeración confiable para tu negocio.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Frío Comercial</h3>
-                            <p class="service-description">
-                                Instalamos cámaras frigoríficas y equipos comerciales diseñados para mantener la temperatura correcta y garantizar el funcionamiento continuo de tu actividad.
-                            </p>
-
-                            <a href="frio-comercial.html" class="card-button">
-                                Ver servicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Maquinaria de Hostelería -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/equipamiento-gastronomico-icon.webp" 
-                                    alt="Equipamiento Gastronómico" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Maquinaria de Hostelería</h3>
-                            <p class="service-description">
-                                Equipos profesionales para tu negocio de hostelería.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Maquinaria de Hostelería</h3>
-                            <p class="service-description">
-                                Ofrecemos maquinaria de alta calidad para satisfacer las necesidades de tu negocio gastronómico.
-                            </p>
-
-                            <a href="maquinaria-de-hosteleria.html" class="card-button">
-                                Ver servicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Ventilación - Extracción -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/ventilacion-extraccion-icon.webp" 
-                                    alt="Ventilación - Extracción" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Ventilación - Extracción</h3>
-                            <p class="service-description">
-                                Ambientes más saludables y seguros.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Ventilación - Extracción</h3>
-                            <p class="service-description">
-                                Diseñamos sistemas de ventilación y extracción que renuevan el aire, eliminan humo y mejoran la calidad ambiental en hogares y comercios.
-                            </p>
-
-                            <a href="ventilacion-extraccion.html" class="card-button">
-                                Ver servicio
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Soporte Técnico -->
-                <div class="service-card">
-                    <div class="card-inner">
-
-                        <!-- FRONT -->
-                        <div class="card-face card-front">
-                            <div class="service-icon">
-                                <img src="img/soporte-tecnico-icon.webp" 
-                                    alt="Soporte Técnico" 
-                                    width="60" 
-                                    height="60" 
-                                    loading="lazy"
-                                    decoding="async">
-                            </div>
-                            <h3 class="service-title">Soporte Técnico</h3>
-                            <p class="service-description">
-                                Mantenimiento y reparación profesional. Servicio postventa.
-                            </p>
-                        </div>
-
-                        <!-- BACK -->
-                        <div class="card-face card-back">
-                            <h3 class="service-title">Soporte Técnico</h3>
-                            <p class="service-description">
-                                Ofrecemos asistencia técnica remota, servicio de urgencias y servicio postventa para garantizar el correcto funcionamiento de tus instalaciones.
-                            </p>
-
-                            <a href="soporte-tecnico.html" class="card-button">
-                                Ver servicio
-                            </a>
+                    <div class="srv2-trust-item">
+                        <span class="srv2-trust-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </span>
+                        <div>
+                            <strong>Presupuesto sin cargo</strong>
+                            <span>respuesta en &lt;2 hs</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Header -->
+            <div class="srv2-header">
+                <span class="section-tag">Nuestras soluciones</span>
+                <h2 class="section-heading">Confort para cada espacio</h2>
+                <p class="section-sub">Tecnología, diseño y eficiencia en cada detalle.</p>
+            </div>
+
+            <!-- Grid de tarjetas -->
+            <div class="srv2-grid">
+
+                <!-- Aerotermia -->
+                <a href="aerotermia.html" class="srv2-card" aria-label="Ver servicio de Aerotermia">
+                    <div class="srv2-card-bg">
+                        <picture>
+                            <source srcset="img/srv-aerotermia.avif" type="image/avif">
+                            <source srcset="img/srv-aerotermia.webp" type="image/webp">
+                            <img src="img/srv-aerotermia.webp" alt="Instalación de aerotermia en Villa María Córdoba" loading="lazy" decoding="async" width="800" height="1067">
+                        </picture>
+                    </div>
+                    <div class="srv2-card-overlay"></div>
+                    <div class="srv2-card-body">
+                        <span class="srv2-badge srv2-badge--green" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                        </span>
+                        <h3 class="srv2-card-title">Aerotermia</h3>
+                        <p class="srv2-card-desc">Calefacción, refrigeración y agua caliente sanitaria con máxima eficiencia energética.</p>
+                        <span class="srv2-card-link">Ver más →</span>
+                    </div>
+                </a>
+
+                <!-- Aire Acondicionado -->
+                <a href="aire-acondicionado.html" class="srv2-card" aria-label="Ver servicio de Aire Acondicionado">
+                    <div class="srv2-card-bg">
+                        <picture>
+                            <source srcset="img/srv-aire-acondicionado.avif" type="image/avif">
+                            <source srcset="img/srv-aire-acondicionado.webp" type="image/webp">
+                            <img src="img/srv-aire-acondicionado.webp" alt="Instalación de aire acondicionado en Villa María Córdoba" loading="lazy" decoding="async" width="800" height="1067">
+                        </picture>
+                    </div>
+                    <div class="srv2-card-overlay"></div>
+                    <div class="srv2-card-body">
+                        <span class="srv2-badge srv2-badge--blue" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+                        </span>
+                        <h3 class="srv2-card-title">Aire Acondicionado</h3>
+                        <p class="srv2-card-desc">Sistemas Inverter de alta eficiencia para enfriar y calefaccionar tu hogar todo el año.</p>
+                        <span class="srv2-card-link">Ver más →</span>
+                    </div>
+                </a>
+
+                <!-- Calefacción -->
+                <a href="calefaccion.html" class="srv2-card" aria-label="Ver servicio de Calefacción">
+                    <div class="srv2-card-bg">
+                        <picture>
+                            <source srcset="img/srv-calefaccion.avif" type="image/avif">
+                            <source srcset="img/srv-calefaccion.webp" type="image/webp">
+                            <img src="img/srv-calefaccion.webp" alt="Piso radiante y calefacción en Villa María Córdoba" loading="lazy" decoding="async" width="800" height="1067">
+                        </picture>
+                    </div>
+                    <div class="srv2-card-overlay"></div>
+                    <div class="srv2-card-body">
+                        <span class="srv2-badge srv2-badge--orange" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 6-8 6-8 12a8 8 0 0 0 16 0c0-6-8-6-8-12z"/></svg>
+                        </span>
+                        <h3 class="srv2-card-title">Calefacción</h3>
+                        <p class="srv2-card-desc">Piso radiante y sistemas de bajo consumo que brindan confort térmico superior.</p>
+                        <span class="srv2-card-link">Ver más →</span>
+                    </div>
+                </a>
+
+                <!-- Ventilación -->
+                <a href="ventilacion-extraccion.html" class="srv2-card" aria-label="Ver servicio de Ventilación y Extracción">
+                    <div class="srv2-card-bg">
+                        <picture>
+                            <source srcset="img/srv-ventilacion-extraccion.avif" type="image/avif">
+                            <source srcset="img/srv-ventilacion-extraccion.webp" type="image/webp">
+                            <img src="img/srv-ventilacion-extraccion.webp" alt="Ventilación y extracción en Villa María Córdoba" loading="lazy" decoding="async" width="800" height="1067">
+                        </picture>
+                    </div>
+                    <div class="srv2-card-overlay"></div>
+                    <div class="srv2-card-body">
+                        <span class="srv2-badge srv2-badge--teal" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                        </span>
+                        <h3 class="srv2-card-title">Ventilación · Extracción</h3>
+                        <p class="srv2-card-desc">Ambientes más saludables con renovación y filtrado de aire inteligente.</p>
+                        <span class="srv2-card-link">Ver más →</span>
+                    </div>
+                </a>
+
+            </div><!-- /.srv2-grid -->
+
+            <!-- Métricas -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-num">+200</div>
+                    <div class="metric-label">Instalaciones realizadas en Villa María y zona</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-num">&lt;2 hs</div>
+                    <div class="metric-label">Tiempo de respuesta a consultas y urgencias</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-num">100%</div>
+                    <div class="metric-label">A medida de cada proyecto</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-num">$0</div>
+                    <div class="metric-label">Costo del presupuesto y visita técnica</div>
+                </div>
+            </div>
+
         </section>
 
         <!-- About Section -->
         <section class="about" id="about" aria-label="Información sobre nuestra empresa">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Nosotros</h2>
-                    <p class="about-description">
-                        Somos una empresa joven con un compromiso sólido: ofrecer calidad, rapidez y respeto al medio ambiente en cada proyecto que emprendemos.
-                    </p>
-                    <p class="about-description">
-                        Con una trayectoria respaldada por experiencia, nos especializamos en la instalación, mantenimiento y reparación de sistemas de climatización, electricidad, equipos de hostelería y frío comercial.
-                    </p>
-                    <p class="about-description">
-                        Nuestro enfoque se centra en crear un ambiente agradable para nuestros clientes, garantizando soluciones eficientes, sostenibles y que permitan ahorro de energía.
-                    </p>
-                    <p class="about-description">
-                        Nos enorgullece contar con técnicos cualificados, especializados y comprometidos con ofrecer un servicio de alta calidad y satisfacción del cliente.
-                    </p>
-                   
+            <div class="about-inner">
+
+                <div class="about-header">
+                    <span class="section-tag section-tag--light">Quiénes somos</span>
+                    <h2 class="section-heading section-heading--light">De Mallorca a Villa María.<br>Un estándar diferente.</h2>
+                    <p class="section-sub section-sub--light">Técnica europea. Servicio local.</p>
                 </div>
-                <div class="about-why-choose-us">
-                    <h3 class="section-title-w">¿Por qué elegir a DAClimaTECH?</h3>
-                    <p class="about-description">
-                        <strong>Experiencia y trayectoria:</strong> Nuestro equipo de técnicos cualificados te garantiza un servicio de calidad y personalizado.
-                    </p>
-                    <p class="about-description">
-                        <strong>Soluciones eficientes:</strong> Ofrecemos sistemas de alta eficiencia energética que te ayudarán a ahorrar en tu factura de la luz.
-                    </p>
-                    <p class="about-description">
-                        <strong>Comodidad y bienestar:</strong> Disfruta de un ambiente interior confortable y saludable gracias a nuestros sistemas silenciosos, de alto rendimiento y de bajo consumo.
-                    </p>
-                    <p class="about-description">
-                        <strong>Compromiso con el medio ambiente:</strong> Utilizamos tecnologías limpias y sostenibles para cuidar el planeta.
-                    </p>
+
+                <div class="about-grid">
+
+                    <!-- Col texto -->
+                    <div class="about-text">
+                        <p>Somos una empresa de climatización con raíces en Mallorca, España, hoy completamente establecidos en Villa María, Córdoba.</p>
+                        <p>Con años de experiencia en Europa y ahora instalados en la región, traemos otro nivel de exigencia técnica a cada proyecto.</p>
+                        <p>Nos especializamos en aerotermia, aire acondicionado, calefacción y ventilación-extracción. Aprendimos que un buen trabajo no termina cuando nos vamos: termina cuando el equipo funciona como tiene que funcionar y el cliente sabe usarlo.</p>
+                        <p>Atendemos hogares y comercios de Villa María, Oncativo, Bell Ville, San Francisco, Río Cuarto y toda la provincia de Córdoba. Si necesitás climatizar un espacio, contanos el proyecto y te asesoramos sin compromiso.</p>
+                        <a href="https://wa.me/5493535690667?text=Hola%20DAClimaTECH%2C%20quiero%20pedir%20un%20presupuesto" class="about-cta" target="_blank" rel="noopener">Pedí tu presupuesto gratis →</a>
+                    </div>
+
+                    <!-- Col pilares -->
+                    <div class="about-pillars">
+
+                        <div class="pilar-card">
+                            <div class="pilar-icon pilar-icon--blue">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="pilar-title">Conocemos la región</p>
+                                <p class="pilar-text">Sabemos cómo es el clima de Córdoba y qué tecnología funciona mejor para cada caso. No vendemos lo mismo a todos.</p>
+                            </div>
+                        </div>
+
+                        <div class="pilar-card">
+                            <div class="pilar-icon pilar-icon--green">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+                            </div>
+                            <div>
+                                <p class="pilar-title">Eficiencia energética real</p>
+                                <p class="pilar-text">Tecnología Inverter y aerotermia que puede reducir hasta un 70% el consumo frente a equipos tradicionales.</p>
+                            </div>
+                        </div>
+
+                        <div class="pilar-card">
+                            <div class="pilar-icon pilar-icon--blue">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <div>
+                                <p class="pilar-title">Servicio integral</p>
+                                <p class="pilar-text">Asesoramiento, instalación, puesta en marcha y mantenimiento. Un solo equipo para todo el proceso.</p>
+                            </div>
+                        </div>
+
+                        <div class="pilar-card">
+                            <div class="pilar-icon pilar-icon--green">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.06 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.1a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <p class="pilar-title">Respuesta rápida</p>
+                                <p class="pilar-text">Presupuesto sin cargo y respuesta en menos de 2 horas por WhatsApp. Cuando hay una urgencia, no hacemos esperar.</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="about-highlight">
-                    <strong>¡Estamos para brindarte las soluciones que mejor se adapten a tus necesidades, mejoren tu calidad de vida y cuiden de nuestro planeta!</strong>
+
+                <!-- Distribuidores banner -->
+                <div class="about-brands-banner">
+                    <p class="about-brands-label">Distribuidores oficiales en Villa María</p>
+                    <p class="about-brands-names">Carrier · Surrey · Midea</p>
                 </div>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════
+            SECCIÓN: TESTIMONIOS
+            Reseñas reales de Google Maps
+        ═══════════════════════════════════════════════════════════ -->
+        <section style="padding: clamp(48px,8vw,80px) clamp(1rem,4vw,2rem); background: var(--bg-light);" id="testimonios" aria-label="Reseñas de clientes">
+            <div style="max-width:1200px; margin:0 auto;">
+
+                <div style="text-align:center; margin-bottom: clamp(32px,5vw,48px);">
+                    <span class="stag">Reseñas verificadas</span>
+                    <h2 class="stitle" style="margin:8px auto 10px;">Lo que dicen nuestros clientes</h2>
+                    <p style="font-size:16px;color:#4b5563;max-width:520px;margin:0 auto;line-height:1.65;">
+                        Opiniones reales de Google Maps. Sin filtros.
+                    </p>
+                    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;">
+                        <span style="font-size:22px;font-weight:700;color:#1a1a2e;">5.0</span>
+                        <span style="color:#f59e0b;font-size:20px;" aria-label="5 estrellas">★★★★★</span>
+                        <span style="font-size:13px;color:#6b7280;">· 3 reseñas en Google</span>
+                    </div>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;">
+
+                    <!-- Reseña 1 — Yanina R. -->
+                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;" itemscope itemtype="https://schema.org/Review">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                            <div style="display:flex;gap:12px;align-items:center;">
+                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">YR</div>
+                                <div>
+                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Yanina R.</span></p>
+                                    <p style="font-size:12px;color:#6b7280;margin:0;">General Cabrera</p>
+                                </div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        </div>
+                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5">
+                            <meta itemprop="bestRating" content="5">
+                            ★★★★★
+                        </div>
+                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;" itemprop="reviewBody">Excelente asesoramiento y servicio. Súper recomendables. Los trabajos súper prolijos, cuidando hasta el mínimo detalle.</p>
+                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
+                    </div>
+
+                    <!-- Reseña 2 — Carlos T. -->
+                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;" itemscope itemtype="https://schema.org/Review">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                            <div style="display:flex;gap:12px;align-items:center;">
+                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">CT</div>
+                                <div>
+                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Carlos T.</span></p>
+                                    <p style="font-size:12px;color:#6b7280;margin:0;">General Deheza</p>
+                                </div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        </div>
+                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5">
+                            <meta itemprop="bestRating" content="5">
+                            ★★★★★
+                        </div>
+                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;" itemprop="reviewBody">Excelente trabajo en la instalacion de aire acondicionado. Cumpliendo en tiempo y forma la fecha y horario del servicio. Recomendable.</p>
+                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
+                    </div>
+
+                    <!-- Reseña 3 — Silvana J. -->
+                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;" itemscope itemtype="https://schema.org/Review">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                            <div style="display:flex;gap:12px;align-items:center;">
+                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">SJ</div>
+                                <div>
+                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Silvana J.</span></p>
+                                    <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                </div>
+                            </div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                        </div>
+                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5">
+                            <meta itemprop="bestRating" content="5">
+                            ★★★★★
+                        </div>
+                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;" itemprop="reviewBody">Excelente profesional! Trabajo prolijo, instalación cuidada acompañada de asesoramiento! Precios acorde al trabajo realizado. Lo recomiendo!</p>
+                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
+                    </div>
+
+                </div>
+
+                <!-- CTA Google Maps -->
+                <div style="text-align:center;margin-top:32px;">
+                    <a href="https://maps.app.goo.gl/KHgYnFsXZxpiX4EP6" target="_blank" rel="noopener noreferrer"
+                    style="display:inline-flex;align-items:center;gap:8px;color:#005C98;font-size:14px;font-weight:600;text-decoration:none;border:1px solid #005C98;padding:10px 20px;border-radius:8px;transition:.2s;"
+                    onmouseover="this.style.background='#005C98';this.style.color='#fff'" 
+                    onmouseout="this.style.background='transparent';this.style.color='#005C98'">
+                        Ver todas las reseñas en Google Maps →
+                    </a>
+                </div>
+
             </div>
         </section>
 
         <!-- Contact Section -->
         <section class="contact" id="contact" aria-label="Información de contacto">
             <div class="contact-content">
-                <h2 class="section-title fade-in">¿Hablamos?</h2>
+
+                <div class="contact-header">
+                    <span class="contact-pretag">PRESUPUESTO SIN CARGO · RESPUESTA EN MENOS DE 2 HS</span>
+                    <h2 class="contact-title">¿Hablamos?</h2>
+                    <p class="contact-sub">Contanos qué necesitás y te asesoramos sin compromiso. Desde una instalación de aire acondicionado hasta un proyecto integral de climatización.</p>
+                    <div class="contact-ctas">
+                        <a href="https://wa.me/5493535690667?text=Hola%20DAClimaTECH%2C%20quiero%20consultar%20sobre%20sus%20servicios"
+                           class="contact-btn contact-btn--primary" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.523 5.845L.057 23.273a.75.75 0 0 0 .92.92l5.428-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.502-5.24-1.38l-.375-.214-3.88 1.048 1.048-3.879-.214-.375A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                            Escribinos por WhatsApp
+                        </a>
+                        <a href="tel:+543535690667" class="contact-btn contact-btn--outline" aria-label="Llamar ahora">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.06 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.1a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Llamar ahora
+                        </a>
+                    </div>
+                </div>
+
                 <div class="contact-info">
                     <div class="contact-card fade-in">
-                        <div class="contact-icon">📞</div>
-                        <h3 class="contact-title">Teléfono</h3>
+                        <div class="contact-icon">💬</div>
+                        <h3 class="contact-card-title">WhatsApp</h3>
                         <p class="contact-details">
-                            <a href="tel:+5493535690667" class="contact-link" aria-label="Llamar por teléfono al +54 9 353 5690667">353 5690667</a>
+                            <a href="https://wa.me/5493535690667?text=Hola%20DAClimaTECH%2C%20quiero%20consultar%20sobre%20sus%20servicios" class="contact-link" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">353 5690667</a>
                         </p>
                     </div>
                     <div class="contact-card fade-in">
                         <div class="contact-icon">✉️</div>
-                        <h3 class="contact-title">Email</h3>
+                        <h3 class="contact-card-title">Email</h3>
                         <p class="contact-details">
-                            <a href="mailto:info@daclimatech.com" class="contact-link" aria-label="Enviar email a info@daclimatech.com">info@daclimatech.com</a>
+                            <a href="mailto:info@daclimatech.com" class="contact-link" aria-label="Enviar email a info">info@daclimatech.com</a><br>
+                            <a href="mailto:ventas@daclimatech.com" class="contact-link" aria-label="Enviar email a ventas">ventas@daclimatech.com</a>
                         </p>
                     </div>
                     <div class="contact-card fade-in">
                         <div class="contact-icon">📍</div>
-                        <h3 class="contact-title">Ubicación</h3>
-                        <p class="contact-details">Villa María, Córdoba<br>Nos desplazamos a toda provincia</p>
+                        <h3 class="contact-card-title">Zona de cobertura</h3>
+                        <p class="contact-details">Villa María · Oncativo · Bell Ville<br>San Francisco · Río Cuarto y toda la prov. de Córdoba</p>
                     </div>
                     <div class="contact-card fade-in">
                         <div class="contact-icon">🕐</div>
-                        <h3 class="contact-title">Horario</h3>
-                        <p class="contact-details">Lunes a Viernes<br>8:00 a 17:00 horas</p>
+                        <h3 class="contact-card-title">Horario</h3>
+                        <p class="contact-details">Lunes a Viernes<br>8:00 a 17:00 hs</p>
                     </div>
                 </div>
+
             </div>
         </section>
+
         <!-- Map Section -->
         <section id="map" class="map-section">
             <div>
-                <h2>Encuéntranos</h2>
+                <h2>Nuestra oficina</h2>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3367.8916535849858!2d-63.233444399999996!3d-32.422060200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc43cfa88d278b%3A0x9721536f72a570a!2sDAClimaTECH%20%7C%20Expertos%20en%20Climatizaci%C3%B3n%20y%20Refrigeraci%C3%B3n!5e0!3m2!1ses-419!2sar!4v1767996360192!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                    <iframe title="Ubicación de DAClimaTECH en Villa María, Córdoba" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3367.8916535849858!2d-63.233444399999996!3d-32.422060200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cc43cfa88d278b%3A0x9721536f72a570a!2sDAClimaTECH%20%7C%20Expertos%20en%20Climatizaci%C3%B3n%20y%20Refrigeraci%C3%B3n!5e0!3m2!1ses-419!2sar!4v1767996360192!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>   
                 </div>
             </div>
         </section> 
@@ -1356,7 +1831,7 @@
     </script>
 
     <!-- Scripts externos - TODOS con defer -->
-    <script src="navigation.js" defer></script>
+    
     <script src="cookie-loader.js" defer onerror="console.warn('Cookie loader no disponible')"></script>
     <script src="sw-register.js" defer onerror="console.warn('Service Worker no disponible')"></script>
     <script src="https-enforcer.js" defer onerror="console.warn('HTTPS enforcer no disponible')"></script>
@@ -1384,39 +1859,106 @@
             document.head.appendChild(script);
             
             script.onload = function() {
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'G-8YMR75F5Q9');
             };
         });
     </script>
 
-    <script>
-        document.querySelectorAll('.service-card').forEach(card => {
 
-            // Click (mobile)
-            card.addEventListener('click', function(e){
-                if(e.target.tagName !== "A"){
-                    card.classList.toggle('flipped');
+<script>
+(function () {
+    'use strict';
+
+    /* ── Referencias ───────────────────────────────────────── */
+    const hamburger   = document.getElementById('menuToggle');
+    const drawer      = document.getElementById('mobileDrawer');
+    const overlay     = document.getElementById('mobileOverlay');
+    const drawerClose = document.getElementById('drawerClose');
+    const megaParent  = document.querySelector('.has-megamenu');
+
+    /* ── MOBILE: abrir/cerrar drawer ───────────────────────── */
+    function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+        hamburger.setAttribute('aria-expanded', 'true');
+        drawerClose.focus();
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.focus();
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    /* Cerrar drawer con Escape */
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            if (drawer && drawer.classList.contains('open')) closeDrawer();
+            if (megaParent && megaParent.classList.contains('open')) closeMega();
+        }
+    });
+
+    /* ── DESKTOP: mega menú con click/hover ─────────────────── */
+    function openMega() {
+        if (!megaParent) return;
+        megaParent.classList.add('open');
+        const link = megaParent.querySelector('.nav-link--megamenu');
+        if (link) link.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeMega() {
+        if (!megaParent) return;
+        megaParent.classList.remove('open');
+        const link = megaParent.querySelector('.nav-link--megamenu');
+        if (link) link.setAttribute('aria-expanded', 'false');
+    }
+
+    if (megaParent) {
+        /* Hover desktop */
+        megaParent.addEventListener('mouseenter', openMega);
+        megaParent.addEventListener('mouseleave', closeMega);
+
+        /* Click en el link "Servicios" en mobile/tablet previene navegación y abre drawer */
+        const megaLink = megaParent.querySelector('.nav-link--megamenu');
+        if (megaLink) {
+            megaLink.addEventListener('click', function (e) {
+                /* En desktop dejamos que el hover lo maneje; click solo bloquea la navegación */
+                if (window.innerWidth >= 769) {
+                    e.preventDefault();
+                    megaParent.classList.contains('open') ? closeMega() : openMega();
                 }
             });
+        }
+    }
 
-            // Hover (desktop)
-            card.addEventListener('mouseenter', ()=>{
-                if(window.innerWidth > 768){
-                    card.classList.add('flipped');
-                }
-            });
+    /* Click fuera del mega menú → cerrar */
+    document.addEventListener('click', function (e) {
+        if (megaParent && !megaParent.contains(e.target)) closeMega();
+    });
 
-            card.addEventListener('mouseleave', ()=>{
-                if(window.innerWidth > 768){
-                    card.classList.remove('flipped');
-                }
-            });
+    /* ── Scroll: marcar header como scrolled ───────────────── */
+    const header = document.getElementById('mainHeader') || document.querySelector('.header');
+    if (header) {
+        const onScroll = function () {
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); /* estado inicial */
+    }
 
-        });
-    </script>
-
+})();
+</script>
 </body>
 </html>
