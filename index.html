@@ -777,12 +777,12 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=optional"></noscript>
     
     <!-- Cargar CSS no-crítico de forma asíncrona -->
-    <link rel="preload" href="non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="non-critical.css"></noscript>
+    <link rel="preload" href="non-critical.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="non-critical.css?v=2"></noscript>
     
     <!-- style.css bloqueante - tiene estilos críticos del header y carrusel -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="style.css?v=2" as="style">
+    <link rel="stylesheet" href="style.css?v=2">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
@@ -912,7 +912,7 @@
 
         <!-- LINKS DESKTOP -->
         <ul class="nav-menu" id="navMenu" role="menubar">
-            <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
+            <li role="menuitem"><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
 
             <!-- SERVICIOS con mega menú -->
             <li class="nav-item has-megamenu" role="menuitem" aria-haspopup="true">
@@ -996,7 +996,7 @@
                                 </span>
                             </div>
                             <div class="megamenu-card-body">
-                                <h3 class="megamenu-card-title">Ventilación y extracción</h3>
+                                <h3 class="megamenu-card-title">Ventilación Mecánica Controlada (VMC)</h3>
                                 <p class="megamenu-card-desc">Aire limpio y saludable con recuperación de calor.</p>
                                 <span class="megamenu-card-link">Ver más →</span>
                             </div>
@@ -1040,13 +1040,13 @@
             </li><!-- /.has-megamenu -->
 
             <!-- CLIENTES (ex Proyectos) -->
-            <li><a href="index.html#clientes" class="nav-link">Clientes</a></li>
+            <li role="menuitem"><a href="index.html#clientes" class="nav-link">Clientes</a></li>
 
             <!-- EMPRESA (ex Nosotros) -->
-            <li><a href="descubre-mas.html" class="nav-link">Empresa</a></li>
+            <li role="menuitem"><a href="descubre-mas.html" class="nav-link">Empresa</a></li>
 
             <!-- CONTACTO -->
-            <li><a href="index.html#contact" class="nav-link">Contacto</a></li>
+            <li role="menuitem"><a href="index.html#contact" class="nav-link">Contacto</a></li>
         </ul>
 
         <!-- CTA DESKTOP -->
@@ -1138,7 +1138,7 @@
                     </picture>
                 </div>
                 <div class="mobile-service-text">
-                    <strong>Ventilación y extracción</strong>
+                    <strong>Ventilación Mecánica Controlada (VMC)</strong>
                     <span>Aire limpio y recuperación de calor</span>
                 </div>
                 <svg class="mobile-service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -1273,7 +1273,7 @@
                     </div>
                     <div class="carousel-overlay"></div>
                     <div class="carousel-content carousel-content--left">
-                        <h2 class="carousel-title">Ventilación y extracción en Villa María y zona</h2>
+                        <h2 class="carousel-title">Ventilación Mecánica Controlada (VMC) y Recuperación de Calor en Villa María y zona</h2>
                         <p class="carousel-subtitle">Renovamos el aire de tu hogar, local u oficina. Sistemas silenciosos y eficientes.</p>
                         <a href="https://wa.me/5493535690667?text=Hola!%20Quisiera%20solicitar%20una%20visita%20técnica%20para%20ventilación."
                         class="carousel-cta" target="_blank" rel="noopener noreferrer"
@@ -1433,7 +1433,7 @@
                         <span class="srv2-badge srv2-badge--teal" aria-hidden="true">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
                         </span>
-                        <h3 class="srv2-card-title">Ventilación · Extracción</h3>
+                        <h3 class="srv2-card-title">Ventilación Mecánica Controlada (VMC)</h3>
                         <p class="srv2-card-desc">Ambientes más saludables con renovación y filtrado de aire inteligente.</p>
                         <span class="srv2-card-link">Ver más →</span>
                     </div>
@@ -1784,6 +1784,9 @@
     <script defer>
     // === FUNCIONALIDADES ESPECÍFICAS DE INDEX.HTML ===
     document.addEventListener('DOMContentLoaded', function() {
+        // Diferir inicialización al siguiente frame para no bloquear el paint
+        requestAnimationFrame(function() {
+        setTimeout(function() {
         console.log('🏠 Inicializando página principal...');
         
         // === HERO CAROUSEL ===
@@ -1857,12 +1860,11 @@
                 carouselEl.addEventListener('mouseleave', startAutoplay);
             }
 
-            // Teclado
+            // Teclado — sin getBoundingClientRect en cada keydown
+            var carousel = document.querySelector('.hero-carousel');
             document.addEventListener('keydown', function(e) {
-                var carousel = document.querySelector('.hero-carousel');
                 if (!carousel) return;
-                var rect = carousel.getBoundingClientRect();
-                if (rect.top > window.innerHeight || rect.bottom < 0) return;
+                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
                 if (e.key === 'ArrowRight') { nextSlide(); startAutoplay(); }
                 if (e.key === 'ArrowLeft') { prevSlide(); startAutoplay(); }
             });
@@ -1892,6 +1894,7 @@
         });
         
         console.log('✅ Página principal inicializada correctamente');
+        }, 0); }); // fin setTimeout + requestAnimationFrame
     });
     </script>
 

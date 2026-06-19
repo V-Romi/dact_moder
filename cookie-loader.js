@@ -39,6 +39,7 @@ class CookieBannerLoader {
         banner.className = 'cookie-banner-new';
         banner.setAttribute('role', 'dialog');
         banner.setAttribute('aria-labelledby', 'cookie-title');
+        banner.setAttribute('aria-label', 'Gestión de Cookies');
         banner.innerHTML = this.getBannerHTML();
 
         document.body.appendChild(banner);
