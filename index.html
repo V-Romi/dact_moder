@@ -780,6 +780,9 @@
     <link rel="preload" href="non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="non-critical.css"></noscript>
     
+    <!-- style.css bloqueante - tiene estilos críticos del header y carrusel -->
+    <link rel="stylesheet" href="style.css">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
     
@@ -1725,9 +1728,7 @@
      TODOS LOS SCRIPTS CON DEFER - CARGAN DESPUÉS DEL HTML
      ====================== -->
     
-    <!-- CSS No Crítico - Carga diferida -->
-    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    <!-- style.css ya se carga en el head -->
     
     <!-- JavaScript Principal - TODO con defer -->
     <script defer>
