@@ -42,7 +42,6 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://www.google-analytics.com">
 
     <!-- Fuentes con preload + noscript fallback -->
@@ -2317,7 +2316,7 @@
         }
 
         /* ── Carrusel galería mobile ── */
-        (function() {
+        (window.requestIdleCallback || function(cb){ setTimeout(cb, 200); })(function() {
             var row = document.querySelector('.gallery-cards-row');
             var dots = document.querySelectorAll('.gallery-dot');
             if (!row || !dots.length) return;
@@ -2351,7 +2350,7 @@
                     }
                 });
             });
-        })();
+        });
         function setRoom(n, btn) {
             /* Tabs */
             document.querySelectorAll('.stab').forEach(function(b) {
@@ -2367,7 +2366,9 @@
             var target = document.getElementById('room-' + n);
             if (target) {
                 target.classList.add('active');
-                target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (window.innerWidth < 768) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
             }
             /* Mostrar en "Otras soluciones" todas las opciones excepto la activa */
             document.querySelectorAll('.other-card').forEach(function(card) {
@@ -2408,6 +2409,7 @@
    (o agregar al navigation.js si ya lo usás en todas las páginas)
 ══════════════════════════════════════════════════════════════ */
 
+setTimeout(function() {
 (function () {
     'use strict';
 
@@ -2500,6 +2502,7 @@
     }
 
     })();
+}, 0);
     </script>
 </body>
 </html>
