@@ -781,6 +781,7 @@
     <noscript><link rel="stylesheet" href="non-critical.css"></noscript>
     
     <!-- style.css bloqueante - tiene estilos críticos del header y carrusel -->
+    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
     
     <!-- Favicon -->
@@ -902,7 +903,10 @@
 
         <!-- LOGO (idéntico al actual) -->
         <a href="index.html" class="logo" aria-label="DAClimaTECH - Ir a página de inicio">
-            <img src="img/favicon-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img" width="38" height="38">
+            <picture>
+                <source srcset="img/logo-daclimatech.webp" type="image/webp">
+                <img src="img/logo-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img" width="38" height="38">
+            </picture>
             DAClimaTECH
         </a>
 
@@ -1068,7 +1072,10 @@
     <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
         <div class="mobile-drawer-header">
             <a href="index.html" class="logo mobile-drawer-logo" aria-label="DAClimaTECH inicio">
-                <img src="img/favicon-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img" width="38" height="38">
+                <picture>
+                    <source srcset="img/logo-daclimatech.webp" type="image/webp">
+                    <img src="img/logo-daclimatech.png" alt="Logo DAClimaTECH" class="logo-img" width="38" height="38">
+                </picture>
                 DAClimaTECH
             </a>
             <button class="mobile-drawer-close" id="drawerClose" aria-label="Cerrar menú">
