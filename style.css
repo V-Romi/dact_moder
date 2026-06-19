@@ -797,9 +797,15 @@ body {
     cursor: pointer;
     transition: all .3s ease;
     padding: 0;
-    /* Touch target mínimo 24x24px para accesibilidad */
-    min-width: 24px; min-height: 24px;
-    display: flex; align-items: center; justify-content: center;
+    position: relative;
+}
+/* Touch target 24x24 sin cambiar visual */
+.carousel-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px; height: 24px;
 }
 .carousel-dot.active {
     background: #fff;
