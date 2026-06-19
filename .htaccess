@@ -78,7 +78,7 @@ Header always set Content-Security-Policy "default-src 'self'; script-src 'self'
     </FilesMatch>
 
     # Cache imágenes por 1 año
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
         Header unset Pragma
         Header unset Expires
@@ -223,6 +223,7 @@ Header always set Content-Security-Policy "default-src 'self'; script-src 'self'
 AddType application/javascript .js
 AddType text/css .css
 AddType image/webp .webp
+AddType image/avif .avif
 AddType application/font-woff2 .woff2
 AddType application/manifest+json .webmanifest
 
