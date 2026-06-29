@@ -54,9 +54,8 @@
     <link rel="stylesheet" href="tabler-icons.min.css">
 
     <!-- CSS principal -->
-    <link rel="preload" href="style.css?v=3" as="style">
-    <link rel="stylesheet" href="style.css?v=3">
-    <noscript><link rel="stylesheet" href="style.css?v=3"></noscript>
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
     <link rel="preload" href="https-security.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https-security.css"></noscript>
 
@@ -288,7 +287,7 @@
 
         <!-- LINKS DESKTOP -->
         <ul class="nav-menu" id="navMenu" role="menubar">
-            <li role="menuitem"><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
+            <li><a href="index.html" class="nav-link active" aria-label="Ir a página de inicio">Inicio</a></li>
 
             <!-- SERVICIOS con mega menú -->
             <li class="nav-item has-megamenu" role="menuitem" aria-haspopup="true">

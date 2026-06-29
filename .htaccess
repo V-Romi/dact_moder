@@ -50,6 +50,12 @@ Header always set Content-Security-Policy "default-src 'self'; script-src 'self'
     RewriteCond %{HTTP_HOST} ^www\.daclimatech\.com [NC]
     RewriteRule ^(.*)$ https://daclimatech.com/$1 [L,R=301]
 
+    # Redirigir páginas eliminadas al inicio
+    Redirect 301 /asesoria-y-venta.html https://daclimatech.com/
+    Redirect 301 /electricidad.html https://daclimatech.com/
+    Redirect 301 /frio-comercial.html https://daclimatech.com/
+    Redirect 301 /soporte-tecnico.html https://daclimatech.com/
+
     # OPTIMIZACIÓN DE IMÁGENES AUTOMÁTICA - WebP
     # Servir WebP automáticamente si está disponible
     RewriteCond %{HTTP_ACCEPT} image/webp
