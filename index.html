@@ -777,12 +777,12 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=optional"></noscript>
     
     <!-- Cargar CSS no-crítico de forma asíncrona -->
-    <link rel="preload" href="non-critical.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="non-critical.css?v=3"></noscript>
+    <link rel="preload" href="non-critical.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="non-critical.css?v=4"></noscript>
     
     <!-- style.css bloqueante - tiene estilos críticos del header y carrusel -->
-    <link rel="preload" href="style.css?v=3" as="style">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="preload" href="style.css?v=4" as="style">
+    <link rel="stylesheet" href="style.css?v=4">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
@@ -1461,8 +1461,24 @@
 
                 <!-- Distribuidores banner -->
                 <div class="about-brands-banner">
-                    <p class="about-brands-label">Distribuidores oficiales en Villa María</p>
-                    <p class="about-brands-names">Carrier · Surrey · Midea</p>
+                    <p class="about-brands-label">Distribuidor oficial en Villa María</p>
+                    <div class="about-brands-logos" role="list" aria-label="Marcas oficiales">
+                        <span role="listitem"><picture>
+                            <source srcset="img/logo-carrier.webp" type="image/webp">
+                            <img src="img/logo-carrier.png" alt="Carrier" class="about-brands-logo-img" loading="lazy" decoding="async" width="550" height="220">
+                        </picture></span>
+                        <div class="about-brands-sep" aria-hidden="true"></div>
+                        <span role="listitem"><picture>
+                            <source srcset="img/logo-surrey.webp" type="image/webp">
+                            <img src="img/logo-surrey.png" alt="Surrey" class="about-brands-logo-img" loading="lazy" decoding="async" width="1277" height="220">
+                        </picture></span>
+                        <div class="about-brands-sep" aria-hidden="true"></div>
+                        <span role="listitem"><picture>
+                            <source srcset="img/logo-midea.webp" type="image/webp">
+                            <img src="img/logo-midea.png" alt="Midea" class="about-brands-logo-img" loading="lazy" decoding="async" width="549" height="220">
+                        </picture></span>
+                    </div>
+                    <p class="about-brands-sub">Equipos originales · Garantía oficial · Servicio técnico especializado</p>
                 </div>
 
             </div>

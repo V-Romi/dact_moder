@@ -2477,16 +2477,52 @@ h6.section-subtitle::before { display: none; }
 }
 
 .about-brands-banner {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: var(--dc-bg);
+    border: 1px solid var(--dc-border);
     border-radius: 14px;
-    padding: clamp(18px,3vw,28px) clamp(20px,4vw,40px);
+    padding: clamp(24px,3.5vw,34px) clamp(16px,4vw,40px);
     text-align: center;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
 }
 .about-brands-label {
     font-size: 11px; font-weight: 700;
     letter-spacing: .12em; text-transform: uppercase;
-    color: rgba(255,255,255,0.80); margin: 0 0 8px;
+    color: var(--dc-text); opacity: .72; margin: 0 0 18px;
+}
+.about-brands-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 5vw, 44px);
+    flex-wrap: wrap;
+}
+.about-brands-logos picture {
+    width: clamp(72px, 8vw, 104px);
+    height: clamp(32px, 3.5vw, 42px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-brands-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.about-brands-sep {
+    display: none;
+}
+.about-brands-sub {
+    font-size: 12.5px;
+    color: var(--dc-text);
+    opacity: .55;
+    margin: 18px 0 0;
+    letter-spacing: .01em;
+}
+@media (min-width: 768px) {
+    .about-brands-logos { gap: clamp(60px, 7vw, 110px); }
 }
 .about-brands-names {
     font-size: clamp(16px,2.5vw,22px);

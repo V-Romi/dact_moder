@@ -1,7 +1,7 @@
 // service-worker.js - Service Worker para DAClimaTECH
-// Versión: 1.3.0 - Optimizado para PageSpeed
+// Versión: 1.3.1 - Fix logos de marca + about-brands-banner
 
-const CACHE_NAME = 'daclimatech-v1.3.0';
+const CACHE_NAME = 'daclimatech-v1.3.1';
 
 // Solo cachear recursos esenciales
 const STATIC_ASSETS = [
@@ -30,7 +30,7 @@ const SKIP_CACHE = [
 
 // INSTALL
 self.addEventListener('install', event => {
-  console.log('[SW] Installing v1.3.0...');
+  console.log('[SW] Installing v1.3.1...');
   // skipWaiting inmediato para que el nuevo SW tome control sin esperar
   self.skipWaiting();
   event.waitUntil(
@@ -42,7 +42,7 @@ self.addEventListener('install', event => {
 
 // ACTIVATE - Limpiar cachés antiguos y tomar control inmediatamente
 self.addEventListener('activate', event => {
-  console.log('[SW] Activating v1.3.0...');
+  console.log('[SW] Activating v1.3.1...');
   event.waitUntil(
     caches.keys()
       .then(keys => Promise.all(
@@ -113,4 +113,4 @@ self.addEventListener('message', event => {
   }
 });
 
-console.log('[SW] Service Worker v1.3.0 loaded');
+console.log('[SW] Service Worker v1.3.1 loaded');
