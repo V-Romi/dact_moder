@@ -31,8 +31,7 @@
     # CSP básica - Ajusta según tus necesidades específicas
 Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.gstatic.com https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googleusercontent.com https://maps.googleapis.com https://maps.gstatic.com; font-src 'self' data: https://fonts.gstatic.com https://fonts.googleapis.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com https://api.whatsapp.com https://fonts.googleapis.com https://fonts.gstatic.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me; upgrade-insecure-requests; block-all-mixed-content"
 
-    # Header de test para verificar que .htaccess funciona
-    Header always set X-Test-Header "htaccess-funcionando"
+    
 </IfModule>
 
 # =====================================
@@ -237,3 +236,36 @@ AddType application/manifest+json .webmanifest
 
 # Forzar UTF-8 para todo el sitio
 AddDefaultCharset UTF-8
+
+# =====================================
+# NO CACHEAR PÁGINAS PHP DINÁMICAS
+# (login, catálogo instalador, sesiones — nunca deben guardarse en caché)
+# =====================================
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.php$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, private"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+        Header unset ETag
+    </FilesMatch>
+</IfModule>
+
+# Si el hosting corre LiteSpeed (Dinahosting lo usa), esto apaga
+# específicamente su caché propio (LSCache) para archivos PHP.
+<IfModule LiteSpeed>
+    <FilesMatch "\.php$">
+        CacheLookup off
+    </FilesMatch>
+</IfModule>
+
+# =====================================
+# SIN CACHÉ LARGA: catálogos instalador y sus JS de datos/precios
+# (se actualizan seguido — nunca deben quedar pegados en el navegador)
+# =====================================
+
+<IfModule mod_headers.c>
+    <FilesMatch "^catalogo-(aire-acondicionado|aerotermia|comercial|insumos)-instalador\.js$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>

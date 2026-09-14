@@ -765,6 +765,77 @@
             }
         }
 
+        /* ── Carrusel de testimonios (home) ── */
+        .testi-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 4px;
+        }
+        .testi-track::-webkit-scrollbar { display: none; }
+        .testi-card {
+            flex: 0 0 86%;
+            scroll-snap-align: start;
+            display: flex;
+        }
+        @media (min-width: 700px) {
+            .testi-card { flex: 0 0 47%; }
+        }
+        @media (min-width: 1000px) {
+            .testi-card { flex: 0 0 31.5%; }
+        }
+        .testi-dots {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+        }
+        .testi-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            transition: all .25s ease;
+        }
+        .testi-dot.active {
+            background: #005C98;
+            width: 22px;
+            border-radius: 4px;
+        }
+        .testi-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .testi-text.is-expanded {
+            display: block;
+            -webkit-line-clamp: unset;
+            line-clamp: unset;
+            overflow: visible;
+        }
+        .testi-readmore {
+            display: none;
+            align-self: flex-start;
+            background: none;
+            border: 0;
+            padding: 0;
+            margin: -8px 0 0;
+            color: var(--dc-blue, #005C98);
+            font-size: 13px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        .testi-readmore:hover { text-decoration: underline; }
     </style>
     
     <!-- ====================== 
@@ -781,8 +852,8 @@
     <noscript><link rel="stylesheet" href="non-critical.css?v=4"></noscript>
     
     <!-- style.css bloqueante - tiene estilos críticos del header y carrusel -->
-    <link rel="preload" href="style.css?v=4" as="style">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="preload" href="style.css?v=6" as="style">
+    <link rel="stylesheet" href="style.css?v=6">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/favicon-daclimatech.png">
@@ -817,7 +888,7 @@
     <meta name="twitter:image:alt" content="Instalación profesional de aire acondicionado en Villa María, Córdoba — DAClimaTECH">
 
     <!-- Schema.org para LocalBusiness -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"DAClimaTECH","alternateName":"DA Clima TECH","description":"Venta, instalación y mantenimiento de aire acondicionado, aerotermia, ventilación extracción y calefacción en Villa María, Córdoba. Distribuidor oficial Carrier, Surrey y Midea.","url":"https://daclimatech.com","logo":"https://daclimatech.com/img/daclimatech-portada-640w.webp","image":"https://daclimatech.com/img/slide1-aire-acondicionado.webp","telephone":"+5493535690667","email":"info@daclimatech.com","foundingDate":"2024","priceRange":"$$$","paymentAccepted":["Efectivo","Transferencia","Tarjeta"],"currenciesAccepted":"ARS","openingHours":["Mo-Fr 08:00-17:00"],"address":{"@type":"PostalAddress","addressLocality":"Villa María","addressRegion":"Córdoba","postalCode":"5900","addressCountry":"AR"},"geo":{"@type":"GeoCoordinates","latitude":-32.4072,"longitude":-63.2401},"areaServed":{"@type":"Place","name":"Villa María y alrededores"},"serviceArea":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":-32.4072,"longitude":-63.2401},"geoRadius":"50000"},"sameAs":["https://www.instagram.com/daclimatech/"]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"DAClimaTECH","alternateName":"DA Clima TECH","description":"Venta, instalación y mantenimiento de aire acondicionado, aerotermia, ventilación extracción y calefacción en Villa María, Córdoba. Distribuidor oficial Carrier, Surrey y Midea.","url":"https://daclimatech.com","logo":"https://daclimatech.com/img/daclimatech-portada-640w.webp","image":"https://daclimatech.com/img/slide1-aire-acondicionado.webp","telephone":"+5493535690667","email":"info@daclimatech.com","foundingDate":"2024","priceRange":"$$$","paymentAccepted":["Efectivo","Transferencia","Tarjeta"],"currenciesAccepted":"ARS","openingHours":["Mo-Fr 08:00-17:00"],"address":{"@type":"PostalAddress","streetAddress":"Italia Blvd. 1284","addressLocality":"Villa María","addressRegion":"Córdoba","postalCode":"5900","addressCountry":"AR"},"geo":{"@type":"GeoCoordinates","latitude":-32.4072,"longitude":-63.2401},"areaServed":{"@type":"Place","name":"Villa María y alrededores"},"serviceArea":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":-32.4072,"longitude":-63.2401},"geoRadius":"50000"},"sameAs":["https://www.instagram.com/daclimatech/","https://www.facebook.com/share/1ErV7z3SAo/","https://www.tiktok.com/@daclimatech"]}</script>
 </head>
 <body>
     <!-- Navigation -->
@@ -885,7 +956,7 @@
                                     <img src="img/slide2-aerotermia.png" alt="Aerotermia" loading="lazy" decoding="async">
                                 </picture>
                                 <span class="megamenu-card-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g transform="translate(12,12) scale(1.18) translate(-12,-12)"><path d="M2 10.5L9 4l3.2 3"/><path d="M11.6 6.6V4.6h2v3.4"/><path d="M2 10.5V17.5"/><path d="M2 17.5H9"/><path d="M3.8 11.6c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><path d="M3.8 13.7c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><path d="M3.8 15.8c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><g transform="translate(8.5,7.5) scale(0.62)"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></g></g></svg>
                                 </span>
                             </div>
                             <div class="megamenu-card-body">
@@ -903,7 +974,7 @@
                                     <img src="img/slide3-calefaccion.png" alt="Calefacción" loading="lazy" decoding="async">
                                 </picture>
                                 <span class="megamenu-card-badge">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c0 6-8 6-8 12a8 8 0 0 0 16 0c0-6-8-6-8-12z"/></svg>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.6"/><path d="M12 1.8v2.6M12 19.6v2.6M3.5 3.5l1.9 1.9M18.6 18.6l1.9 1.9M1.8 12h2.6M19.6 12h2.6M3.5 20.5l1.9-1.9M18.6 5.4l1.9-1.9"/></svg>
                                 </span>
                             </div>
                             <div class="megamenu-card-body">
@@ -969,6 +1040,7 @@
             </li><!-- /.has-megamenu -->
 
             <!-- INSTALADORES -->
+            <li><a href="equipamiento.html" class="nav-link">Tienda</a></li>
             <li role="menuitem"><a href="instaladores.html" class="nav-link">Instaladores</a></li>
 
             <!-- EMPRESA (ex Nosotros) -->
@@ -1077,6 +1149,7 @@
             <div class="mobile-drawer-divider"></div>
 
             <!-- Links generales -->
+            <a href="equipamiento.html" class="mobile-plain-link">Tienda</a>
             <a href="instaladores.html" class="mobile-plain-link">Instaladores</a>
             <a href="descubre-mas.html" class="mobile-plain-link">Empresa</a>
             <a href="index.html#contact" class="mobile-plain-link">Contacto</a>
@@ -1300,7 +1373,7 @@
                     <div class="srv2-card-overlay"></div>
                     <div class="srv2-card-body">
                         <span class="srv2-badge srv2-badge--green" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(12,12) scale(1.18) translate(-12,-12)"><path d="M2 10.5L9 4l3.2 3"/><path d="M11.6 6.6V4.6h2v3.4"/><path d="M2 10.5V17.5"/><path d="M2 17.5H9"/><path d="M3.8 11.6c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><path d="M3.8 13.7c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><path d="M3.8 15.8c.8-.8 1.6-.8 2.4 0s1.6.8 2.4 0"/><g transform="translate(8.5,7.5) scale(0.62)"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></g></g></svg>
                         </span>
                         <h3 class="srv2-card-title">Aerotermia</h3>
                         <p class="srv2-card-desc">Calefacción, refrigeración y agua caliente sanitaria con máxima eficiencia energética.</p>
@@ -1340,7 +1413,7 @@
                     <div class="srv2-card-overlay"></div>
                     <div class="srv2-card-body">
                         <span class="srv2-badge srv2-badge--orange" aria-hidden="true">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c0 6-8 6-8 12a8 8 0 0 0 16 0c0-6-8-6-8-12z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.6"/><path d="M12 1.8v2.6M12 19.6v2.6M3.5 3.5l1.9 1.9M18.6 18.6l1.9 1.9M1.8 12h2.6M19.6 12h2.6M3.5 20.5l1.9-1.9M18.6 5.4l1.9-1.9"/></svg>
                         </span>
                         <h3 class="srv2-card-title">Calefacción</h3>
                         <p class="srv2-card-desc">Piso radiante y sistemas de bajo consumo que brindan confort térmico superior.</p>
@@ -1486,7 +1559,7 @@
 
         <!-- ═══════════════════════════════════════════════════════════
             SECCIÓN: TESTIMONIOS
-            Reseñas reales de Google Maps
+            Reseñas reales de Google Maps — carrusel
         ═══════════════════════════════════════════════════════════ -->
         <section style="padding: clamp(48px,8vw,80px) clamp(1rem,4vw,2rem); background: var(--bg-light);" id="testimonios" aria-label="Reseñas de clientes">
             <div style="max-width:1200px; margin:0 auto;">
@@ -1500,75 +1573,207 @@
                     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;">
                         <span style="font-size:22px;font-weight:700;color:#1a1a2e;">5.0</span>
                         <span style="color:#f59e0b;font-size:20px;" aria-label="5 estrellas">★★★★★</span>
-                        <span style="font-size:13px;color:#6b7280;">· 3 reseñas en Google</span>
+                        <span style="font-size:13px;color:#6b7280;">· 17 reseñas en Google</span>
                     </div>
                 </div>
 
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px;">
+                <div class="testi-track">
 
-                    <!-- Reseña 1 — Yanina R. -->
-                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;">
-                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-                            <div style="display:flex;gap:12px;align-items:center;">
-                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">YR</div>
-                                <div>
-                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Yanina R.</span></p>
-                                    <p style="font-size:12px;color:#6b7280;margin:0;">General Cabrera</p>
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">MR</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Martha R.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Embalse</p>
+                                    </div>
                                 </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Renové los equipos de aire acondicionado tradicional por la tecnología inverter. Lo hice con el asesoramiento de DAClimaTECH. La marca recomendada de los equipos fue Midea por su excelente performance y relación precio/calidad. La instalación fue realizada por DAClimaTECH. Impecable todo, desde la entrega en tiempo y forma como el cumplimiento en el tiempo estipulado para la instalación. El trabajo fue realizado en la localidad de Embalse. Muy conforme. Muchas gracias Abel y Romina. ¡Una empresa para recomendar sin dudar!</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Actualización de aire acondicionado</span>
                         </div>
-                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
-                            <meta content="5">
-                            <meta content="5">
-                            ★★★★★
-                        </div>
-                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;">Excelente asesoramiento y servicio. Súper recomendables. Los trabajos súper prolijos, cuidando hasta el mínimo detalle.</p>
-                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
                     </div>
 
-                    <!-- Reseña 2 — Carlos T. -->
-                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;">
-                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-                            <div style="display:flex;gap:12px;align-items:center;">
-                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">CT</div>
-                                <div>
-                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Carlos T.</span></p>
-                                    <p style="font-size:12px;color:#6b7280;margin:0;">General Deheza</p>
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">CP</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Celia P.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                    </div>
                                 </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Excelente el trabajo de Abel y Franco! Muy buen precio. Muy ordenados, saben lo que hacen. Llegaron a horario acordado y resuelven cualquier contratiempo que surja. Colocaron aire acondicionado nuevo en el dormitorio y arreglaron otro en el comedor. Muy conformes, dejaron todo impecable. ¡Los recomiendo!</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
                         </div>
-                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
-                            <meta content="5">
-                            <meta content="5">
-                            ★★★★★
-                        </div>
-                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;">Excelente trabajo en la instalacion de aire acondicionado. Cumpliendo en tiempo y forma la fecha y horario del servicio. Recomendable.</p>
-                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
                     </div>
 
-                    <!-- Reseña 3 — Silvana J. -->
-                    <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;">
-                        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-                            <div style="display:flex;gap:12px;align-items:center;">
-                                <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">SJ</div>
-                                <div>
-                                    <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Silvana J.</span></p>
-                                    <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">SJ</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Silvana J.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                    </div>
                                 </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Excelente profesional! Trabajo prolijo, instalación cuidada acompañada de asesoramiento! Precios acorde al trabajo realizado. Lo recomiendo!</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
                         </div>
-                        <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
-                            <meta content="5">
-                            <meta content="5">
-                            ★★★★★
-                        </div>
-                        <p style="font-size:14px;color:#374151;line-height:1.7;margin:0;flex-grow:1;">Excelente profesional! Trabajo prolijo, instalación cuidada acompañada de asesoramiento! Precios acorde al trabajo realizado. Lo recomiendo!</p>
-                        <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;">Instalación de aire acondicionado</span>
                     </div>
 
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">GP</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Gonzalo P.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                    </div>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Responsables, trabajo excelente y precio acorde!!!!</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">YR</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Yanina R.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">General Cabrera</p>
+                                    </div>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Excelente asesoramiento y servicio. Súper recomendables. Los trabajos súper prolijos, cuidando hasta el mínimo detalle.</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">CT</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Carlos T.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">General Deheza</p>
+                                    </div>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Excelente trabajo en la instalación de aire acondicionado. Cumpliendo en tiempo y forma la fecha y horario del servicio. Recomendable.</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">MB</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Marcelo B.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                    </div>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Excelente trabajo. Prolijo y responsable. Lo recomiendo.</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado y mantenimiento</span>
+                        </div>
+                    </div>
+
+                    <div class="testi-card">
+                        <div style="background:#fff;border-radius:16px;padding:24px;border:1px solid #e5e7eb;display:flex;flex-direction:column;gap:14px;height:100%;">
+                            <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                                <div style="display:flex;gap:12px;align-items:center;">
+                                    <div style="width:42px;height:42px;min-width:42px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#1d4ed8;">OS</div>
+                                    <div>
+                                        <p style="font-size:14px;font-weight:700;color:#1a1a2e;margin:0;"><span>Ortega S.</span></p>
+                                        <p style="font-size:12px;color:#6b7280;margin:0;">Villa María</p>
+                                    </div>
+                                </div>
+                                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            </div>
+                            <div style="color:#f59e0b;font-size:16px;" aria-label="5 estrellas">
+                                <meta content="5">
+                                <meta content="5">
+                                ★★★★★
+                            </div>
+                            <p class="testi-text" style="font-size:14px;color:#374151;line-height:1.7;margin:0;">Soluciones. Predisposición y asesoramiento 👏👏</p>
+                            <button class="testi-readmore" type="button">Ver más</button>
+                            <span style="display:inline-block;background:#f0fdf4;color:#166534;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;width:fit-content;margin-top:auto;">Instalación de aire acondicionado</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="testi-dots" role="tablist" aria-label="Navegación de reseñas">
+                        <button class="testi-dot active" aria-label="Reseña 1" aria-selected="true"></button>
+                        <button class="testi-dot" aria-label="Reseña 2" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 3" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 4" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 5" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 6" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 7" aria-selected="false"></button>
+                        <button class="testi-dot" aria-label="Reseña 8" aria-selected="false"></button>
                 </div>
 
                 <!-- CTA Google Maps -->
@@ -1598,7 +1803,7 @@
                             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.523 5.845L.057 23.273a.75.75 0 0 0 .92.92l5.428-1.466A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.502-5.24-1.38l-.375-.214-3.88 1.048 1.048-3.879-.214-.375A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
                             Escribinos por WhatsApp
                         </a>
-                        <a href="tel:+543535690667" class="contact-btn contact-btn--outline" aria-label="Llamar ahora">
+                        <a href="tel:+5493535690667" class="contact-btn contact-btn--outline" aria-label="Llamar ahora">
                             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.06 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.1a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                             Llamar ahora
                         </a>
@@ -1694,12 +1899,47 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <nav class="footer-nav">
-                <a href="aviso-legal.html" class="footer-link">Aviso Legal</a>
-                <a href="politica-de-cookies.html" class="footer-link">Política de Cookies</a>
-                <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a>
-            </nav>
-            <p class="copyright">© 2026 DAClimaTECH. Todos los derechos reservados.</p>
+            <div class="footer-top">
+                <div class="footer-col footer-col--brand">
+                    <p class="footer-brand-name">DAClimaTECH</p>
+                    <p class="footer-desc">Distribuidor oficial Carrier, Surrey y Midea en Villa María, Córdoba. Venta e instalación de aire acondicionado, aerotermia, calefacción y ventilación mecánica controlada.</p>
+                    <ul class="footer-nap">
+                        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.14 7-11a7 7 0 1 0-14 0c0 4.86 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Italia Blvd. 1284, X5900 Villa María, Córdoba</span></li>
+                        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+5493535690667">+54 9 3535 69-0667</a></li>
+                        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:info@daclimatech.com">info@daclimatech.com</a></li>
+                    </ul>
+                    <div class="footer-social" aria-label="Redes sociales de DAClimaTECH">
+                        <a href="https://www.instagram.com/daclimatech/" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram de DAClimaTECH"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 1.802c-2.67 0-2.987.01-4.04.059-.976.045-1.505.207-1.858.344-.466.181-.8.398-1.15.748-.35.35-.566.683-.747 1.15-.137.352-.3.881-.344 1.857-.05 1.054-.06 1.37-.06 4.04 0 2.67.01 2.987.06 4.04.045.976.207 1.505.344 1.858.181.466.398.8.748 1.15.35.35.683.566 1.15.747.352.137.881.3 1.857.344 1.054.05 1.37.06 4.04.06 2.67 0 2.987-.01 4.04-.06.976-.045 1.505-.207 1.858-.344.466-.181.8-.397 1.15-.747.35-.35.566-.683.747-1.15.137-.352.3-.881.344-1.857.05-1.054.06-1.37.06-4.04 0-2.67-.01-2.987-.06-4.04-.045-.976-.207-1.505-.344-1.858a3.09 3.09 0 0 0-.747-1.15 3.09 3.09 0 0 0-1.15-.747c-.352-.137-.881-.3-1.857-.344-1.054-.05-1.37-.06-4.04-.06zm0 4.595a5.603 5.603 0 1 1 0 11.206 5.603 5.603 0 0 1 0-11.206zm0 1.802a3.8 3.8 0 1 0 0 7.601 3.8 3.8 0 0 0 0-7.6zm5.838-1.802a1.31 1.31 0 1 1-2.618 0 1.31 1.31 0 0 1 2.618 0z"/></svg></a>
+                        <a href="https://www.facebook.com/share/1ErV7z3SAo/" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook de DAClimaTECH"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.505 17.523 2 12 2S2 6.505 2 12.06c0 5.02 3.657 9.184 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.459h-1.26c-1.243 0-1.63.771-1.63 1.562v1.877h2.773l-.443 2.91h-2.33V22c4.78-.756 8.437-4.92 8.437-9.94z"/></svg></a>
+                        <a href="https://www.tiktok.com/@daclimatech" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok de DAClimaTECH"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3v13.5a2.5 2.5 0 1 1-2.5-2.5c.17 0 .34.015.5.043V9.98a5.5 5.5 0 1 0 5 5.48V9.4a7.3 7.3 0 0 0 4 1.2V7.55a4.24 4.24 0 0 1-4-3.7V2z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul class="footer-col-links">
+                        <li><a href="aire-acondicionado.html">Aire Acondicionado</a></li>
+                        <li><a href="aerotermia.html">Aerotermia</a></li>
+                        <li><a href="calefaccion.html">Calefacción</a></li>
+                        <li><a href="ventilacion-extraccion.html">Ventilación Mecánica Controlada (VMC)</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul class="footer-col-links">
+                        <li><a href="instaladores.html">Instaladores</a></li>
+                        <li><a href="equipamiento.html">Tienda</a></li>
+                        <li><a href="index.html#contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <nav class="footer-nav">
+                    <a href="aviso-legal.html" class="footer-link">Aviso Legal</a>
+                    <a href="politica-de-cookies.html" class="footer-link">Política de Cookies</a>
+                    <a href="politica-privacidad.html" class="footer-link">Política de Privacidad</a>
+                </nav>
+                <p class="copyright">© 2026 DAClimaTECH. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
@@ -1816,6 +2056,57 @@
 
             // Iniciar
             startAutoplay();
+        })();
+
+        // === CARRUSEL DE TESTIMONIOS ===
+        (function() {
+            var track = document.querySelector('.testi-track');
+            var dots = document.querySelectorAll('.testi-dot');
+            if (!track || !dots.length) return;
+
+            var cards = track.querySelectorAll('.testi-card');
+
+            // Mostrar "Ver más" solo en las reseñas que realmente quedan recortadas
+            cards.forEach(function(card) {
+                var text = card.querySelector('.testi-text');
+                var btn = card.querySelector('.testi-readmore');
+                if (!text || !btn) return;
+
+                if (text.scrollHeight > text.clientHeight + 2) {
+                    btn.style.display = 'inline-block';
+                }
+
+                btn.addEventListener('click', function() {
+                    var expanded = text.classList.toggle('is-expanded');
+                    btn.textContent = expanded ? 'Ver menos' : 'Ver más';
+                });
+            });
+
+            function updateDots(index) {
+                dots.forEach(function(d, i) {
+                    d.classList.toggle('active', i === index);
+                    d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                });
+            }
+
+            var testiObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                        var idx = Array.from(cards).indexOf(entry.target);
+                        if (idx >= 0) updateDots(idx);
+                    }
+                });
+            }, { root: track, threshold: 0.5 });
+
+            cards.forEach(function(card) { testiObserver.observe(card); });
+
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function() {
+                    if (cards[i]) {
+                        cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                    }
+                });
+            });
         })();
 
         // === SCROLL ANIMATIONS ===

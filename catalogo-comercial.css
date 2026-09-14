@@ -1,0 +1,305 @@
+/* =========================================================
+   DAClimaTECH — CATÁLOGO COMERCIAL / PROFESIONAL
+   CSS aislado, copiado de catalogo-ventilacion.css (mismas
+   clases cat-*, mismo layout de sidebar + grid).
+   Se apoya en las variables y componentes (eq-container,
+   eq-category-nav, eq-product*, eq-modal*) ya definidos en
+   equipamiento.css — NO los redefine.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   MINI-HEADER (reemplaza al hero-v2 en esta página: el
+   usuario ya eligió categoría, así que priorizamos que
+   filtros + productos entren cuanto antes en pantalla)
+   --------------------------------------------------------- */
+.cat-header {
+  /* El header (.header) es position:fixed y arranca transparente
+     hasta hacer scroll (ver comentario en equipamiento.css sobre
+     .hero-img-overlay) — tu eq-category-nav ya reserva 70px con
+     "top:70px" para no quedar tapado por el nav; hacemos lo mismo
+     acá con padding-top, porque este mini-header no tiene la altura
+     de una hero-v2 que "absorbe" el nav flotando encima. */
+  padding: 104px 0 26px;
+  background: var(--eq-navy);
+  color: #fff;
+}
+.cat-breadcrumb .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+}
+.cat-breadcrumb .breadcrumb li:not(:last-child)::after {
+  content: "/";
+  margin-left: 6px;
+  color: rgba(255,255,255,.35);
+}
+.cat-breadcrumb .breadcrumb a {
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+}
+.cat-breadcrumb .breadcrumb a:hover { color: #fff; }
+.cat-breadcrumb .breadcrumb li[aria-current="page"] { color: #fff; font-weight: 600; }
+
+.cat-title {
+  margin: 0 0 14px;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+.cat-subtitle {
+  margin: 0 0 22px;
+  max-width: 46ch;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,.75);
+}
+.cat-chips { margin: 0; }
+.cat-chips .hchip {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   LAYOUT: sidebar + resultados
+   --------------------------------------------------------- */
+.cat-catalog { padding: 40px 0 92px; }
+
+.cat-filter-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 46px;
+  margin-bottom: 18px;
+  border: 1px solid var(--eq-line);
+  border-radius: 10px;
+  background: #fff;
+  color: #344054;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cat-layout {
+  display: grid;
+  grid-template-columns: 272px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* SIDEBAR */
+.cat-sidebar {
+  position: sticky;
+  top: 128px;
+  background: #fff;
+  border: 1px solid var(--eq-line);
+  border-radius: 16px;
+  padding: 20px;
+  max-height: calc(100vh - 148px);
+  overflow-y: auto;
+}
+.cat-sidebar-head { display: none; }
+
+.cat-active-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--eq-line);
+}
+.cat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--eq-blue-soft);
+  color: var(--eq-blue);
+  font-size: .78rem;
+  font-weight: 700;
+  border: 0;
+  cursor: pointer;
+}
+.cat-chip span { font-size: .95em; }
+
+.cat-sidebar-group {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--eq-line);
+}
+.cat-sidebar-group:first-child { padding-top: 0; }
+.cat-sidebar-group:last-child { border-bottom: 0; padding-bottom: 4px; }
+.cat-sidebar-group h3 {
+  margin: 0 0 10px;
+  font-size: .82rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+  color: #1d2939;
+}
+.cat-sidebar-options { display: flex; flex-direction: column; gap: 2px; }
+.cat-sidebar-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  border: 0;
+  background: none;
+  text-align: left;
+  padding: 8px 6px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: .85rem;
+  color: #475467;
+  cursor: pointer;
+}
+.cat-sidebar-option:hover { background: var(--eq-blue-soft); color: var(--eq-blue); }
+.cat-sidebar-option-dot {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1.5px solid #d0d8e2;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  color: transparent;
+}
+.cat-sidebar-option.is-selected {
+  color: var(--eq-blue);
+  font-weight: 700;
+}
+.cat-sidebar-option.is-selected .cat-sidebar-option-dot {
+  background: var(--eq-blue);
+  border-color: var(--eq-blue);
+  color: #fff;
+}
+.cat-sidebar-count { margin-left: auto; color: #98a2b3; font-size: .74rem; }
+
+.cat-clear-btn { margin-top: 6px; }
+
+.cat-sidebar-backdrop { display: none; }
+
+/* RESULTADOS */
+.cat-results-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.cat-results-count {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--eq-muted);
+}
+.cat-results-count strong { color: var(--eq-text); }
+.cat-sort { flex: 0 0 auto; }
+
+/* ---------------------------------------------------------
+   GRILLA DE PRODUCTOS: columnas según ancho, como en ML
+   (ver capturas: iPad Air 820px → 2 col. con sidebar fijo,
+   iPad Pro 1024px → 3 col. con sidebar fijo, mobile → 1 col.
+   apilada). equipamiento.css cambia .eq-products a un carrusel
+   de scroll horizontal en <=1000px (por el bug de overflow de
+   los filtros horizontales en esa página) — acá no aplica
+   porque los filtros ya viven en el sidebar, así que pisamos
+   esa regla con una grilla real en todos los anchos.
+   --------------------------------------------------------- */
+.cat-results .eq-products { grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+@media (min-width: 1300px) {
+  .cat-results .eq-products { grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+
+@media (max-width: 999px) {
+  .cat-results .eq-products {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0;
+  }
+  .cat-results .eq-product { flex: initial; scroll-snap-align: none; }
+}
+
+@media (max-width: 699px) {
+  .cat-results .eq-products { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE: sidebar pasa a panel deslizable
+   Umbral en 700px (no 1000px): en tablets como iPad Air/Pro
+   el sidebar se mantiene fijo al costado, igual que en ML —
+   solo se esconde detrás de "Filtros" en mobile angosto.
+   --------------------------------------------------------- */
+@media (max-width: 699px) {
+  .cat-filter-toggle { display: flex; }
+
+  .cat-layout { grid-template-columns: 1fr; }
+
+  .cat-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(340px, 86vw);
+    max-height: none;
+    border-radius: 0;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    padding: 20px 20px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cat-sidebar.is-open { transform: translateX(0); }
+  .cat-sidebar-groups { overflow-y: auto; flex: 1; }
+
+  .cat-sidebar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--eq-line);
+  }
+  .cat-sidebar-close {
+    border: 0;
+    background: none;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    color: #667085;
+  }
+
+  .cat-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(3,14,27,.5);
+    z-index: 1100;
+  }
+  .cat-sidebar-backdrop.is-open { display: block; }
+
+  body.cat-sidebar-open { overflow: hidden; }
+}
+
+/* Entre 700px y 999px (tablets) el sidebar sigue estático dentro
+   del grid (272px + contenido) — angostamos un poco la columna
+   para dejarle más aire a las 2 columnas de productos. */
+@media (max-width: 999px) and (min-width: 700px) {
+  .cat-layout { grid-template-columns: 240px 1fr; }
+  .cat-sidebar { top: 96px; }
+}
+
+@media (max-width: 768px) {
+  .cat-header { padding: 88px 0 20px; }
+  .cat-results-head { flex-wrap: wrap; }
+}
