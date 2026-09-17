@@ -72,7 +72,7 @@
    descargarlas al entorno de archivos). Quedan los nombres de archivo
    de siempre en img/comercial/ para que subas las tuyas. */
 
-const WA_NUMBER = "5493535690667";
+const WA_NUMBER = "5493534089909";
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
 /* ---------------------------------------------------------
@@ -2396,9 +2396,15 @@ document.getElementById("sortProducts").addEventListener("change", applyFiltersA
 
 /* ---------------------------------------------------------
    SEO: JSON-LD
+   Solo entran los productos con precio propio confirmado
+   (price numérico). Los "Cotizar por proyecto" (price: null)
+   quedan afuera del listado estructurado: no hay precio real
+   que ofrecer y no queremos publicar un Offer inventado.
    --------------------------------------------------------- */
 function injectProductJsonLd() {
-  const itemListElement = EQ_PRODUCTS.map((p, i) => ({
+  const pricedProducts = EQ_PRODUCTS.filter(p => p.price != null);
+
+  const itemListElement = pricedProducts.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,
     item: {
@@ -2407,9 +2413,19 @@ function injectProductJsonLd() {
       sku: p.model,
       brand: { "@type": "Brand", name: p.brand },
       description: p.description,
-      image: `https://daclimatech.com/${productImages(p)[0].src}`
+      image: `https://daclimatech.com/${productImages(p)[0].src}`,
+      url: "https://daclimatech.com/catalogo-comercial.html",
+      offers: {
+        "@type": "Offer",
+        price: p.price,
+        priceCurrency: "ARS",
+        availability: "https://schema.org/InStock",
+        url: "https://daclimatech.com/catalogo-comercial.html"
+      }
     }
   }));
+
+  if (!itemListElement.length) return;
 
   const script = document.createElement("script");
   script.type = "application/ld+json";

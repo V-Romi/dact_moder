@@ -25,7 +25,7 @@
    Precios: reales, sacados de INSUMOS.xlsx, hoja "Calc.Precio",
    columna J "Precio Mostrador Con IVA" (resaltada en verde por Ro). */
 
-const WA_NUMBER = "5493535690667";
+const WA_NUMBER = "5493534089909";
 const WA_INSTALLER_NUMBER = "5493534089909"; // Solo para el botón "Solicitar precio" de instaladores en esta página
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 const waInstaller = (text) => `https://wa.me/${WA_INSTALLER_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -1883,10 +1883,13 @@ document.addEventListener("keydown", e => {
 document.getElementById("sortProducts").addEventListener("change", applyFiltersAndSort);
 
 /* ---------------------------------------------------------
-   SEO: JSON-LD
+   SEO: JSON-LD (con offers — el precio ya es real, coincide
+   con el que se muestra en la tarjeta y el modal)
    --------------------------------------------------------- */
 function injectProductJsonLd() {
-  const itemListElement = EQ_PRODUCTS.map((p, i) => ({
+  const pricedProducts = EQ_PRODUCTS.filter(p => p.price != null);
+
+  const itemListElement = pricedProducts.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,
     item: {
@@ -1895,9 +1898,19 @@ function injectProductJsonLd() {
       sku: p.model,
       brand: { "@type": "Brand", name: p.brand },
       description: p.description,
-      image: `https://daclimatech.com/${productImages(p)[0].src}`
+      image: `https://daclimatech.com/${productImages(p)[0].src}`,
+      url: "https://daclimatech.com/catalogo-insumos.html",
+      offers: {
+        "@type": "Offer",
+        price: p.price,
+        priceCurrency: "ARS",
+        availability: "https://schema.org/InStock",
+        url: "https://daclimatech.com/catalogo-insumos.html"
+      }
     }
   }));
+
+  if (!itemListElement.length) return;
 
   const script = document.createElement("script");
   script.type = "application/ld+json";

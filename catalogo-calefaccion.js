@@ -25,7 +25,7 @@
    compartió Ro para cada producto (placa Novafix, radiadores Nereus
    500/350, toallero Nereus 80). */
 
-const WA_NUMBER = "5493535690667";
+const WA_NUMBER = "5493534089909";
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
 /* ---------------------------------------------------------
@@ -593,10 +593,21 @@ document.addEventListener("keydown", e => {
 document.getElementById("sortProducts").addEventListener("change", applyFiltersAndSort);
 
 /* ---------------------------------------------------------
-   SEO: JSON-LD (sin precio: no hay uno confirmado todavía)
+   SEO: JSON-LD
+   Ningún producto de esta página tiene precio propio
+   confirmado (la tarjeta siempre muestra "Consultar precio";
+   el campo "price" interno es solo una referencia aproximada
+   de mercado, no el precio de DAClimaTECH). Por eso no se
+   publica ningún Product/Offer acá: no queremos que Google
+   muestre un precio que no coincide con lo que ve el usuario.
+   Cuando carguemos precios reales, sacar este early-return y
+   usar el mismo criterio que catalogo-insumos.js.
    --------------------------------------------------------- */
 function injectProductJsonLd() {
-  const itemListElement = EQ_PRODUCTS.map((p, i) => ({
+  const pricedProducts = EQ_PRODUCTS.filter(p => p.price != null && !p.priceApprox);
+  if (!pricedProducts.length) return;
+
+  const itemListElement = pricedProducts.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,
     item: {
@@ -604,7 +615,15 @@ function injectProductJsonLd() {
       name: `${p.brand} ${p.name}`,
       brand: { "@type": "Brand", name: p.brand },
       description: p.description,
-      image: `https://daclimatech.com/${productImages(p)[0].src}`
+      image: `https://daclimatech.com/${productImages(p)[0].src}`,
+      url: "https://daclimatech.com/catalogo-calefaccion.html",
+      offers: {
+        "@type": "Offer",
+        price: p.price,
+        priceCurrency: "ARS",
+        availability: "https://schema.org/InStock",
+        url: "https://daclimatech.com/catalogo-calefaccion.html"
+      }
     }
   }));
 

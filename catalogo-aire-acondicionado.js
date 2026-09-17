@@ -4,7 +4,7 @@
    consuman un JSON/endpoint común) y reemplaza únicamente la UI de
    filtros por el formato sidebar. */
 
-const WA_NUMBER = "5493535690667";
+const WA_NUMBER = "5493534089909";
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
 /* ---------------------------------------------------------
@@ -1433,22 +1433,77 @@ document.addEventListener("keydown", e => {
 document.getElementById("sortProducts").addEventListener("change", applyFiltersAndSort);
 
 /* ---------------------------------------------------------
-   SEO: JSON-LD (idéntico criterio que equipamiento.js — sin
-   precio, ya que el precio visible es todavía un placeholder)
+   SEO: JSON-LD (con offers — el precio ya es real, coincide
+   con el que se muestra en la tarjeta y el modal)
    --------------------------------------------------------- */
-function injectProductJsonLd() {
-  const itemListElement = EQ_PRODUCTS.map((p, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "Product",
-      name: `${p.brand} ${p.name}`,
-      sku: p.model,
-      brand: { "@type": "Brand", name: p.brand },
-      description: p.description,
-      image: `https://daclimatech.com/${p.image}`
+
+/* Política de devolución real de DAClimaTECH: 48hs para reclamo,
+   flete de devolución a cargo del cliente. Devoluciones fuera de
+   ese plazo se rigen por la garantía del fabricante (no es parte
+   de este campo). */
+const MERCHANT_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "AR",
+  returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+  merchantReturnDays: 2,
+  returnFees: "https://schema.org/ReturnShippingFees"
+};
+
+/* Envío: tarifa desde $50.000 (varía según zona/producto, se cotiza
+   en cada caso). Tiempo: 1-5 días hábiles con stock, hasta 15 días
+   si hay que pedirlo al proveedor — mapeado como handlingTime ya
+   que ambos casos dependen de disponibilidad, no de tránsito. */
+const SHIPPING_DETAILS = {
+  "@type": "OfferShippingDetails",
+  shippingRate: {
+    "@type": "MonetaryAmount",
+    value: "50000",
+    currency: "ARS"
+  },
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "AR"
+  },
+  deliveryTime: {
+    "@type": "ShippingDeliveryTime",
+    handlingTime: {
+      "@type": "QuantitativeValue",
+      minValue: 1,
+      maxValue: 15
     }
-  }));
+  }
+};
+
+function injectProductJsonLd() {
+  const pricedProducts = EQ_PRODUCTS.filter(p => p.price != null);
+
+  const itemListElement = pricedProducts.map((p, i) => {
+    const pricing = getPricing(p);
+    return {
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        name: `${p.brand} ${p.name}`,
+        sku: p.model,
+        brand: { "@type": "Brand", name: p.brand },
+        description: p.description,
+        image: `https://daclimatech.com/${p.image}`,
+        url: "https://daclimatech.com/catalogo-aire-acondicionado.html",
+        offers: {
+          "@type": "Offer",
+          price: pricing.final,
+          priceCurrency: "ARS",
+          availability: "https://schema.org/InStock",
+          url: "https://daclimatech.com/catalogo-aire-acondicionado.html",
+          hasMerchantReturnPolicy: MERCHANT_RETURN_POLICY,
+          shippingDetails: SHIPPING_DETAILS
+        }
+      }
+    };
+  });
+
+  if (!itemListElement.length) return;
 
   const script = document.createElement("script");
   script.type = "application/ld+json";
