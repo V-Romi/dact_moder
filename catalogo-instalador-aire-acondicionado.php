@@ -25,10 +25,18 @@ require_once __DIR__ . '/instalador-prices-loader.php'; // carga $__precios_inst
   <link rel="stylesheet" href="equipamiento.css?v=1">
   <!-- CSS exclusivo del catálogo (mini-header, layout de sidebar) -->
   <link rel="stylesheet" href="catalogo-aire-acondicionado.css">
+  <!-- Carrito de pedido instalador: mismo CSS/JS para los 4 catálogos -->
+  <link rel="stylesheet" href="cart-instalador.css?v=3">
 
   <script defer src="navigation.js"></script>
   <script>const INSTALADOR_PRICES = <?php echo json_encode($__precios_instalador, JSON_UNESCAPED_UNICODE); ?>;</script>
-  <script defer src="catalogo-aire-acondicionado-instalador.js"></script>
+  <script>
+    const CART_CATALOG_ID = "aire-acondicionado"; // slug único por catálogo: separa el pedido guardado de cada uno
+    const INSTALADOR_EMPRESA = <?php echo json_encode($_SESSION['instalador_empresa'] ?? '', JSON_UNESCAPED_UNICODE); ?>;
+  </script>
+  <script defer src="catalogo-aire-acondicionado-instalador.js?v=3"></script>
+  <!-- Carga DESPUÉS del JS de catálogo: necesita EQ_PRODUCTS/getPricing ya definidos -->
+  <script defer src="cart-instalador.js?v=3"></script>
 </head>
 
 <body class="eq-page cat-page">
@@ -439,6 +447,15 @@ require_once __DIR__ . '/instalador-prices-loader.php'; // carga $__precios_inst
         </div>
         <span class="eq-price-installments" id="modalInstallments"></span>
         <small>Precio de referencia, puede variar sin previo aviso.</small>
+      </div>
+
+      <div class="dac-cart-widget" data-cart-widget>
+        <div class="dac-cart-widget-qty">
+          <button type="button" data-cart-widget-step="-1" aria-label="Restar">−</button>
+          <input type="number" min="1" value="1" id="modalCartQty" data-cart-qty-input aria-label="Cantidad a agregar">
+          <button type="button" data-cart-widget-step="1" aria-label="Sumar">+</button>
+        </div>
+        <button type="button" class="dac-cart-add-btn" id="modalCartAdd" data-cart-add="">Agregar al pedido</button>
       </div>
 
       <div class="eq-delivery-options">

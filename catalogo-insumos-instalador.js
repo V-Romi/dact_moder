@@ -9,14 +9,12 @@
       Tampoco hay precio de lista tachado / % OFF: el Excel no maneja
       ese concepto para insumos, solo costo → margen → precio mostrador.
 
-   2) El bloque del modal que en el resto del sitio dice "Instalación
-      standard / Envío gratis / Desde $150.000 + Materiales" se
-      reemplaza acá por "Precio para instaladores + Beneficios" con
-      un botón "Solicitar precio" que va a un WhatsApp DISTINTO del
-      resto del sitio: +54 9 353 4089909 (no el general
-      5493535690667). El precio de instalador en sí (columna "Precio
-      Instalador Con IVA" del Excel) NO se muestra en la página —
-      por eso es "a consultar" por WhatsApp.
+   2) El precio instalador se muestra directo en la página (viene de
+      INSTALADOR_PRICES, cargado server-side solo para sesiones
+      logueadas y aprobadas), no hay que "solicitarlo" por WhatsApp
+      como en el catálogo público — por eso el modal solo tiene la
+      opción de "Retirar en tienda"; agregar al pedido se hace con el
+      widget de cantidad (ver cart-instalador.js).
 
    3) Las tarjetas no muestran el chip "Instalación disponible" que
       sí tiene el resto del catálogo: son insumos/repuestos, no
@@ -26,7 +24,7 @@
    columna J "Precio Mostrador Con IVA" (resaltada en verde por Ro). */
 
 const WA_NUMBER = "5493535690667";
-const WA_INSTALLER_NUMBER = "5493534089909"; // Solo para el botón "Solicitar precio" de instaladores en esta página
+const WA_INSTALLER_NUMBER = "5493534089909"; // WhatsApp exclusivo de instaladores — usado por el carrito de pedido y por "Retirar en tienda" en esta página
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 const waInstaller = (text) => `https://wa.me/${WA_INSTALLER_NUMBER}?text=${encodeURIComponent(text)}`;
 
@@ -1513,6 +1511,15 @@ function formatPrice(n) {
   return `$${n.toLocaleString("es-AR")}`;
 }
 
+/* Shim para que cart-instalador.js (compartido con los otros 3
+   catálogos) tenga la misma interfaz getPricing(p). Insumos no
+   tiene precio de lista/descuento — el precio instalador es directo. */
+function getPricing(p) {
+  const final = (typeof INSTALADOR_PRICES !== "undefined") ? INSTALADOR_PRICES[p.id] : undefined;
+  if (final == null) return { hasPrice: false };
+  return { hasPrice: true, final, original: final, discountPct: 0 };
+}
+
 /* ---------------------------------------------------------
    FILTROS
    --------------------------------------------------------- */
@@ -1569,6 +1576,7 @@ function applyFiltersAndSort() {
   renderSidebarOptions();
   renderActiveChips();
   renderResultsCount(list.length);
+  if (window.dacCartRefresh) window.dacCartRefresh();
 }
 
 function renderResultsCount(n) {
@@ -1706,6 +1714,15 @@ function productCard(p) {
           ${(typeof INSTALADOR_PRICES !== "undefined" && INSTALADOR_PRICES[p.id] != null) ? `<span class="eq-price-installments">Sin cuotas (consultar)</span>` : ``}
         </div>
 
+        <div class="dac-cart-widget" data-cart-widget>
+          <div class="dac-cart-widget-qty">
+            <button type="button" data-cart-widget-step="-1" aria-label="Restar">−</button>
+            <input type="number" min="1" value="1" data-cart-qty-input aria-label="Cantidad a agregar">
+            <button type="button" data-cart-widget-step="1" aria-label="Sumar">+</button>
+          </div>
+          <button type="button" class="dac-cart-add-btn" data-cart-add="${p.id}">Agregar al pedido</button>
+        </div>
+
         <button class="eq-product-btn" type="button" data-product="${p.id}">
           Ver producto <span>→</span>
         </button>
@@ -1820,6 +1837,14 @@ function openProduct(id) {
   document.getElementById("modalPriceOff").textContent = "";
   document.getElementById("modalInstallments").textContent = (__efectivo != null) ? "Sin cuotas (consultar)" : "";
 
+  const modalCartAdd = document.getElementById("modalCartAdd");
+  if (modalCartAdd) {
+    modalCartAdd.dataset.cartAdd = p.id;
+    const modalCartQty = document.getElementById("modalCartQty");
+    if (modalCartQty) modalCartQty.value = 1;
+    if (window.dacCartRefresh) window.dacCartRefresh();
+  }
+
   document.getElementById("modalDescription").textContent = p.description;
 
   document.getElementById("modalFeatures").innerHTML =
@@ -1831,13 +1856,10 @@ function openProduct(id) {
     Object.entries(p.specs).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
 
   document.getElementById("modalInstallInfo").textContent =
-    "Insumo de venta directa para el público e instaladores. Si sos instalador, pedí tu precio especial y beneficios por WhatsApp con el botón de arriba.";
+    "Insumo de venta directa para el público e instaladores. Elegí la cantidad y agregalo a tu pedido, o consultá stock para retirar en tienda.";
 
   document.getElementById("modalPickup").href =
     waInstaller(`Hola DAClimaTECH, quiero consultar disponibilidad en tienda de ${p.name} (${p.model}) para retirar personalmente.`);
-  // Botón "Solicitar precio" — WhatsApp de instaladores, distinto al general del sitio.
-  document.getElementById("modalInstall").href =
-    waInstaller(`Hola, soy instalador y quiero consultar el precio especial y los beneficios para ${p.name} (${p.model}).`);
 
   switchModalTab("caracteristicas");
 

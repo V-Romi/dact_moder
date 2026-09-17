@@ -1,0 +1,173 @@
+/* ============================================================
+   DAClimaTECH — Carrito de pedido instalador
+   Un solo archivo, compartido por los 4 catálogos instalador.
+   Colores alineados a instalador-bar.php / login-instaladores.php
+   (--primary-color:#005C98, --accent-color:#4CAF50).
+   ============================================================ */
+
+/* ---------- Barra flotante ---------- */
+.dac-cart-bar {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #005C98;
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 92, 152, .35);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.dac-cart-bar:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0, 92, 152, .4); }
+.dac-cart-bar i { font-size: 1.1rem; }
+.dac-cart-bar-count {
+  background: #4CAF50;
+  color: #fff;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  padding: 0 5px;
+}
+.dac-cart-bar.is-empty .dac-cart-bar-count { background: rgba(255, 255, 255, .25); }
+.dac-cart-bar-total { opacity: .9; font-weight: 600; }
+@media (max-width: 640px) {
+  .dac-cart-bar { right: 14px; bottom: 14px; padding: 11px 14px; }
+  .dac-cart-bar-label { display: none; }
+}
+
+/* ---------- Backdrop + panel lateral ---------- */
+.dac-cart-backdrop {
+  position: fixed; inset: 0; z-index: 1200;
+  background: rgba(15, 23, 42, .45);
+  opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+}
+.dac-cart-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+.dac-cart-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 1201;
+  width: min(420px, 100vw);
+  background: #fff;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, .18);
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #2d3748;
+}
+.dac-cart-drawer.is-open { transform: translateX(0); }
+
+.dac-cart-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; border-bottom: 1px solid #e2e8f0;
+  font-size: 1.05rem;
+}
+.dac-cart-close {
+  background: none; border: 0; font-size: 1.4rem; line-height: 1; cursor: pointer; color: #64748b;
+  padding: 4px 8px; border-radius: 8px;
+}
+.dac-cart-close:hover { background: #f1f5f9; color: #2d3748; }
+
+.dac-cart-lines { flex: 1; overflow-y: auto; padding: 12px 20px; }
+.dac-cart-empty { color: #64748b; font-size: .9rem; padding: 24px 0; text-align: center; }
+
+.dac-cart-line {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eef2f6;
+}
+.dac-cart-line-remove {
+  position: absolute; top: 12px; right: 0;
+  background: none; border: 0; color: #94a3b8; font-size: 1.15rem; line-height: 1; cursor: pointer;
+  padding: 2px 6px; border-radius: 6px;
+}
+.dac-cart-line-remove:hover { background: #fef2f2; color: #b91c1c; }
+.dac-cart-line-info { display: flex; flex-direction: column; gap: 2px; padding-right: 24px; }
+.dac-cart-line-catalog {
+  font-size: .68rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  color: #005C98; background: #e8f2fa; border-radius: 5px; padding: 2px 7px; width: max-content;
+}
+.dac-cart-line-info strong { font-size: .92rem; }
+.dac-cart-sku { font-size: .78rem; color: #64748b; }
+.dac-cart-line-price { font-size: .82rem; color: #005C98; font-weight: 600; }
+.dac-cart-line-subtotal { grid-column: 1 / -1; text-align: right; font-weight: 700; font-size: .9rem; color: #2d3748; }
+
+.dac-cart-line-qty {
+  grid-column: 1 / -1;
+  display: inline-flex; align-items: center; gap: 0; width: max-content;
+  border: 1.5px solid #e2e8f0; border-radius: 10px; overflow: hidden;
+}
+.dac-cart-line-qty button {
+  background: #f8fafc; border: 0; width: 30px; height: 30px; font-size: 1rem; cursor: pointer; color: #005C98;
+}
+.dac-cart-line-qty button:hover { background: #eef2f6; }
+.dac-cart-line-qty input {
+  width: 46px; text-align: center; border: 0; border-left: 1.5px solid #e2e8f0; border-right: 1.5px solid #e2e8f0;
+  height: 30px; font-family: inherit; font-size: .9rem;
+  -moz-appearance: textfield;
+}
+.dac-cart-line-qty input::-webkit-outer-spin-button,
+.dac-cart-line-qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dac-cart-foot { border-top: 1px solid #e2e8f0; padding: 16px 20px 20px; }
+.dac-cart-total-row {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 1rem; margin-bottom: 6px;
+}
+.dac-cart-total-row strong { font-size: 1.15rem; color: #005C98; }
+.dac-cart-note { font-size: .76rem; color: #92600a; background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 8px 10px; margin: 8px 0; }
+.dac-cart-foot .eq-secondary-btn { width: 100%; margin-bottom: 10px; justify-content: center; }
+.dac-cart-foot .eq-primary-btn { width: 100%; justify-content: center; }
+.dac-cart-foot .is-disabled { opacity: .5; pointer-events: none; }
+
+body.dac-cart-open { overflow: hidden; }
+
+/* ---------- Widget de cantidad en la card / modal de producto ---------- */
+.dac-cart-widget {
+  display: flex; align-items: center; gap: 8px;
+  margin: 10px 0 4px;
+}
+.dac-cart-widget-qty {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid #e2e8f0; border-radius: 10px; overflow: hidden; flex-shrink: 0;
+}
+.dac-cart-widget-qty button {
+  background: #f8fafc; border: 0; width: 30px; height: 34px; font-size: 1rem; cursor: pointer; color: #005C98;
+}
+.dac-cart-widget-qty button:hover { background: #eef2f6; }
+.dac-cart-widget-qty input {
+  width: 42px; text-align: center; border: 0; border-left: 1.5px solid #e2e8f0; border-right: 1.5px solid #e2e8f0;
+  height: 34px; font-family: inherit; font-size: .9rem;
+  -moz-appearance: textfield;
+}
+.dac-cart-widget-qty input::-webkit-outer-spin-button,
+.dac-cart-widget-qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dac-cart-add-btn {
+  flex: 1;
+  background: #4CAF50; color: #fff; border: 0; border-radius: 10px;
+  padding: 0 14px; height: 34px; font-weight: 700; font-size: .82rem; cursor: pointer;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dac-cart-add-btn:hover { background: #43a047; }
+.dac-cart-add-btn.is-in-cart { background: #005C98; }

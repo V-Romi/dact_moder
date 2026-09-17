@@ -26,10 +26,18 @@ require_once __DIR__ . '/instalador-prices-loader.php'; // carga $__precios_inst
   <!-- CSS exclusivo del catálogo (mini-header, layout de sidebar) — copiado
        aislado de catalogo-comercial.css (mismas clases cat-*). -->
   <link rel="stylesheet" href="catalogo-insumos.css">
+  <!-- Carrito de pedido instalador: mismo CSS/JS para los 4 catálogos -->
+  <link rel="stylesheet" href="cart-instalador.css?v=3">
 
   <script defer src="navigation.js"></script>
   <script>const INSTALADOR_PRICES = <?php echo json_encode($__precios_instalador, JSON_UNESCAPED_UNICODE); ?>;</script>
-  <script defer src="catalogo-insumos-instalador.js"></script>
+  <script>
+    const CART_CATALOG_ID = "insumos"; // slug único por catálogo: separa el pedido guardado de cada uno
+    const INSTALADOR_EMPRESA = <?php echo json_encode($_SESSION['instalador_empresa'] ?? '', JSON_UNESCAPED_UNICODE); ?>;
+  </script>
+  <script defer src="catalogo-insumos-instalador.js?v=3"></script>
+  <!-- Carga DESPUÉS del JS de catálogo: necesita EQ_PRODUCTS/getPricing ya definidos -->
+  <script defer src="cart-instalador.js?v=3"></script>
 </head>
 
 <body class="eq-page cat-page">
@@ -441,6 +449,15 @@ require_once __DIR__ . '/instalador-prices-loader.php'; // carga $__precios_inst
         <small>Precio de referencia, puede variar sin previo aviso.</small>
       </div>
 
+      <div class="dac-cart-widget" data-cart-widget>
+        <div class="dac-cart-widget-qty">
+          <button type="button" data-cart-widget-step="-1" aria-label="Restar">−</button>
+          <input type="number" min="1" value="1" id="modalCartQty" data-cart-qty-input aria-label="Cantidad a agregar">
+          <button type="button" data-cart-widget-step="1" aria-label="Sumar">+</button>
+        </div>
+        <button type="button" class="dac-cart-add-btn" id="modalCartAdd" data-cart-add="">Agregar al pedido</button>
+      </div>
+
       <div class="eq-delivery-options">
         <div class="eq-delivery-option">
           <div class="eq-delivery-icon"><i class="ti ti-building-store" aria-hidden="true"></i></div>
@@ -449,14 +466,6 @@ require_once __DIR__ . '/instalador-prices-loader.php'; // carga $__precios_inst
             <span>Consultá stock disponible en nuestro local.</span>
           </div>
           <a id="modalPickup" class="eq-secondary-btn" href="#" target="_blank" rel="noopener">Ver disponibilidad</a>
-        </div>
-        <div class="eq-delivery-option">
-          <div class="eq-delivery-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
-          <div class="eq-delivery-text">
-            <strong>Precio para instaladores</strong>
-            <span>+ Beneficios</span>
-          </div>
-          <a id="modalInstall" class="eq-secondary-btn" href="#" target="_blank" rel="noopener">Solicitar precio</a>
         </div>
       </div>
 

@@ -73,6 +73,7 @@
    de siempre en img/comercial/ para que subas las tuyas. */
 
 const WA_NUMBER = "5493535690667";
+const WA_INSTALLER_NUMBER = "5493534089909"; // Número exclusivo de instaladores — usado por el carrito de pedido
 const wa = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
 /* ---------------------------------------------------------
@@ -2051,6 +2052,7 @@ function applyFiltersAndSort() {
   renderSidebarOptions();
   renderActiveChips();
   renderResultsCount(list.length);
+  if (window.dacCartRefresh) window.dacCartRefresh();
 }
 
 function renderResultsCount(n) {
@@ -2205,6 +2207,15 @@ function productCard(p) {
           <div><strong>${pricing.hasPrice ? "Instalación disponible" : "Se comercializa junto con la instalación · a cotizar por proyecto"}</strong></div>
         </div>
 
+        <div class="dac-cart-widget" data-cart-widget>
+          <div class="dac-cart-widget-qty">
+            <button type="button" data-cart-widget-step="-1" aria-label="Restar">−</button>
+            <input type="number" min="1" value="1" data-cart-qty-input aria-label="Cantidad a agregar">
+            <button type="button" data-cart-widget-step="1" aria-label="Sumar">+</button>
+          </div>
+          <button type="button" class="dac-cart-add-btn" data-cart-add="${p.id}">Agregar al pedido</button>
+        </div>
+
         <button class="eq-product-btn" type="button" data-product="${p.id}">
           Ver equipo <span>→</span>
         </button>
@@ -2341,6 +2352,14 @@ function openProduct(id) {
       wa(`Hola DAClimaTECH, quiero cotizar ${p.brand} ${p.name} (${p.model}) para mi proyecto. ¿Me pasan precio?`);
     document.getElementById("modalQuoteInstall").href =
       wa(`Hola DAClimaTECH, quiero coordinar la instalación de ${p.brand} ${p.name} (${p.model}).`);
+  }
+
+  const modalCartAdd = document.getElementById("modalCartAdd");
+  if (modalCartAdd) {
+    modalCartAdd.dataset.cartAdd = p.id;
+    const modalCartQty = document.getElementById("modalCartQty");
+    if (modalCartQty) modalCartQty.value = 1;
+    if (window.dacCartRefresh) window.dacCartRefresh();
   }
 
   document.getElementById("modalDescription").textContent = p.description;
